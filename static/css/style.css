@@ -1,0 +1,332 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'jost';
+}
+
+@font-face {
+  font-family: 'Baskerville Regular';
+  src: url('/fonts/Baskervville-Regular.ttf') format('ttf'),
+    url('/fonts/Baskervville-Italic.ttf') format('ttf');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'jost', 'sans-serif';
+}
+
+:root {
+  --primary-color: #e49b80;
+  --secondary-color: #d8de96;
+  --tertiary-color: #a1ccda;
+  --section-bg-color: #F3F9FD;
+  --heading-black: #1b1b1b;
+}
+
+.bg-green {
+  background-color: var(--secondary-color);
+}
+
+.bg-pink {
+  background-color: var(--primary-color);
+}
+
+h1 {
+  font-size: 80px;
+  line-height: 96px;
+  font-family: 'Baskerville Regular';
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #000000;
+  font-family: 'Baskerville Regular';
+}
+
+p,
+li {
+  color: #000000;
+  font-size: 25px;
+  line-height: 38px;
+  font-weight: 300;
+}
+
+.btn-custom {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 15px !important;
+  font-weight: 500;
+  padding: 10px 18px !important;
+  line-height: 1.45;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  width: 140px;
+
+}
+
+.btn-hover-green:hover {
+  background-color: #ffffff;
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+}
+
+.btn-hover-pink:hover {
+  background-color: #ffffff;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.section-padding-tb {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+/* ----------------Navbar--------------------- */
+
+
+.navbar-btn i {
+  font-size: 11px;
+  text-decoration: none;
+  color: var(--tertiary-color);
+  margin-right: 4px;
+}
+
+#logo img {
+  width: 100%;
+}
+
+#neubar {
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+#neubar .nav-item {
+  margin: auto 4px;
+}
+
+#neubar a {
+  color: #000000;
+  font-size: 24px;
+  margin-bottom: 0px;
+  font-family: 'Baskerville Regular'
+}
+
+#neubar a :hover {
+
+  color: var(--tertiary-color) !important;
+}
+
+#neubar .dropdown-menu {
+  background: #ffffff;
+  z-index: 9999;
+}
+
+#neubar .dropdown-item {
+  color: rgb(0, 0, 0) !important;
+}
+
+.btn-yellow:hover {
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 9px 0 rgba(0, 0, 0, .4), 0 4px 9px 0 rgba(255, 211, 11, .6) !important;
+
+  color: #ffffff !important;
+
+}
+
+
+/* ----------------------------Hero Slider Section------------------------- */
+#carouselExampleCaptions {
+  height: 85vh;
+}
+
+.contaniner {
+  position: relative;
+  flex-grow: 1;
+  margin: auto;
+  max-width: 1200px;
+  max-height: 1200px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 2vmin;
+  justify-items: center;
+  align-items: center;
+}
+
+.cards-outer-container {
+  overflow: hidden;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+}
+
+/* img {
+  z-index: 1;
+  grid-column: span 2;
+  max-width: 100%;
+  margin-bottom: -52%;
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: all .25s;
+}
+img:nth-child(7n + 1) {
+  grid-column: 2 / span 2;
+} */
+
+/* ------------------------------Section About Coaching Studio---------------------- */
+
+.custom-card {
+  background-color: #ffffff;
+  /* background: url(/images/about-card.png); */
+  background-size: cover;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  border: none !important;
+  width: auto;
+  position: relative !important;
+}
+
+.card-head {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #000000;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.card-text {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+}
+
+.btn-pink-bg {
+  width: 250px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+/* -------------------------- Setion Goals------------------------- */
+
+.goals-sec-pink {
+  width: 85%;
+  padding: 70px 30px;
+  border-radius: 25px;
+  position: relative;
+}
+
+.green-circle-wrapper {
+  position: absolute;
+  bottom: -87px;
+  left: calc(50% - 83px);
+  width: 100px;
+}
+
+.green-leaf-img {
+  width: auto;
+  margin-top: -22px;
+}
+
+
+/* ------------------------Section Gateway---------------------- */
+
+.pink-flower-left {
+  opacity: 0.5;
+}
+
+.blue-flower-right {
+  opacity: 0.5;
+  transform: rotate(120deg);
+  margin-right: -60%;
+  margin-top: 30px;
+}
+
+/* --------------------- Section Program Works-------------------- */
+
+.number-icon {
+  position: absolute;
+  top: -45px;
+  left: calc(50% - 15%);
+  margin-bottom: 20px;
+}
+
+.card-radius{
+border-radius: 29px;
+}
+
+.padding-t-5{
+  padding-top: 40px !important;
+  padding-bottom: 20px !important;
+}
+
+/* -----------------------Section Our Latest News------------------- */
+
+/* <!-- ----------------------------Our Latest News------------------------- --> */
+.card-img-top{
+  border-top-left-radius: 29px;
+  border-top-right-radius: 29px;
+}
+/* -----------------------------Popup Card-------------------------- */
+
+/* .card {
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  width: 70%;
+  max-width: 600px; /
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.popup-content img {
+  max-width: 100%;
+  height: 500px;
+  margin-bottom: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+} */
