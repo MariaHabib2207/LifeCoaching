@@ -230,7 +230,109 @@
         </div>
 
     </section>
+<!-- ---------------------------Section Book Appointment------------------ -->
 
+<section id="book-appointment" class="text-center">
+
+    <h2 class="text-center mb-5">Book Your Appointment Now</h2>
+
+
+    <div class="container d-flex align-items-center justify-content-center">
+
+        <div class="row goals-sec-pink bg-pink">
+
+            <div class="col-md-1">
+
+                <img class="green-leaf-img" src="images/green-leaf.png" alt="">
+            </div>
+
+            <div class="col-md-10">
+
+                <div class="row contact-cont pt-0" >
+
+                    <div class="col-md-6">
+
+                        <form action="{{ url_for('book_appointment') }}" method="post" id="contact-form">
+                            <ul>
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <li>{{ message }}</li>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                            </ul>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <input type="text" name="full_name" required="required"
+                                            placeholder="Full Name">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                        
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <input type="text" name="email" required="required" placeholder="Email">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <input type="text" name="phone" required="required" placeholder="Phone">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <textarea name="address" placeholder="Write your message..."></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-custom bg-green btn-green-bg">Book Now</button>
+                        </form>
+
+                    </div>
+
+                    <div class="col-md-6 p-3 d-flex align-items-center justify-content-center">
+                        <img src="animations/contact-us-animation.gif" alt="">
+                    </div>
+
+                    <div class="form-group pb-2 text-center mt-4">
+
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-1"></div>
+
+        </div>
+    </div>
+
+</section>
     <!-- --------------------------Section About------------------------ -->
 
     <section id="sec-about" class="bg-green section-padding-tb">
@@ -607,6 +709,56 @@
         </div>
     </div>
  <!-- -------------------Life Coaching Code------------------- -->
+     <!-- ---------------------------Section Contact Us------------------ -->
+
+     <section id="sec-contact" class="text-center bg-green section-padding-tb">
+        <h2 class="text-center mb-5">Contact Us</h2>
+        <p class="text-center">Your journey is important to us, and we can't wait to hear from you.</p>
+        <p>Want to contact us or need additional details? Let's have a discussion that will lead towards development,
+            transformation, and empowerment together.</p>
+    </section>
+
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="row contact-sec-pink bg-pink">
+            <div class="col-md-12">
+                <form action="{{ url_for('send_mail') }}" method="post" id="contact-form-b">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                            <input type="text" name="full_name" required="required" placeholder="Full Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" name="username" required="required" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" name="phone" required="required" placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea name="address" placeholder="Write your message..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pb-2 text-center mt-4">
+                        <button type="submit" class="btn btn-custom bg-green btn-green-bg">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- ---------------------Scripts---------------------- -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

@@ -330,3 +330,118 @@ border-radius: 29px;
   font-size: 20px;
   cursor: pointer;
 } */
+
+
+#contact-info .custom-card i.fas {
+  font-size: 60px;
+  /* Adjust the font size value as desired */
+  color: #ffffff;
+}
+
+#contact-info .custom-card a.contact-info-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: normal;
+}
+
+#contact-form input[type="text"],
+textarea,
+input[type="number"]{
+  margin-bottom: 15px;
+  border: none;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 15px;
+  height: 60px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0px 0px 5px rgba(119, 119, 119, 0.75);
+}
+
+#contact-form textarea {
+  height: 120px !important;
+  padding-top: 20px;
+}
+
+.btn-green-bg {
+  width: 250px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+
+#sec-contact{
+  height: 70vh;
+  }
+  
+  .contact-sec-pink{
+    width: 75%;
+    padding: 5% 15%;
+    border-radius: 25px;
+    position: relative;
+    margin-top: -15%;
+    background-image: url(/images/contact-form-bg.png);
+    background-size: cover;
+  
+  }
+  
+  #contact-form-b input[type="text"],
+  textarea,
+  input[type="number"]
+  {
+    margin-bottom: 20px;
+    border: none;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 15px;
+    height: 70px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0px 0px 10px rgba(71, 71, 71, 0.75);
+  }
+  
+  #contact-form-b textarea {
+    height: 120px !important;
+    padding-top: 20px;
+  }
+
+  #contact-info .custom-card i.fas {
+    font-size: 60px;
+    /* Adjust the font size value as desired */
+    color: #ffffff;
+  }
+  
+  #contact-info .custom-card a.contact-info-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: normal;
+  }
+  
+  #contact-form input[type="text"],
+  textarea,
+  input[type="number"]{
+    margin-bottom: 15px;
+    border: none;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 15px;
+    height: 60px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0px 0px 5px rgba(119, 119, 119, 0.75);
+  }
+  
+  #contact-form textarea {
+    height: 120px !important;
+    padding-top: 20px;
+  }
+  
+  .btn-green-bg {
+    width: 250px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  
