@@ -672,81 +672,90 @@
 
     </section>
 
-
     <!-- ----------------------------Our Latest News------------------------- -->
 
     <section class="section-padding-tb">
 
-    <div class="container mt-4">
+        <div class="container mt-4">
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-md-4 px-4">
+                <div class="col-md-4 px-4">
 
-                <div class="card card-radius custom-card">
+                    <div class="card popup-card card-radius custom-card">
 
-                    <img src="{{url_for('static', filename= 'images/tree-img-1.jpg') }}" class="card-img-top" alt="Image 1">
+                        <img src="images/tree-img-1.jpg" class="card-img-top" alt="Image 1">
 
-                    <div class="card-body">
+                        <div class="card-body py-4">
 
-                        <h5 class="card-title">Does life Coaching work?</h5>
+                            <h5 class="card-title">Does life Coaching work?</h5>
 
-                        <p class="card-text">The importance of life coaching has been argued over, with proponents emphasizing its advantages and detractors doubting its scientific validity. Numerous studies, however, indicate that life coaching might help a person in a number of ways.</p>
+                            <p class="card-text">The importance of life coaching has been argued over, with proponents
+                                emphasizing its advantages and detractors...
+                            </p>
 
-                        <button class="btn btn-custom bg-pink  see-more-button" data-image="image1.jpg"
-                            data-title="Card 1 Title" data-description="Card 1 description.">See more</button>
+                            <button class="btn btn-custom bg-pink see-more-button mb-2 btn-hover-pink"
+                                data-image="images/tree-img-1.jpg" data-title="Does life Coaching work?"
+                                data-description="The importance of life coaching has been argued over, with proponents
+                                emphasizing its advantages and detractors doubting its scientific validity. Numerous
+                                studies, however, indicate that life coaching might help a person in a number of ways.">
+                                See more</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-4 px-4">
+                <div class="col-md-4 px-4">
 
-                <div class="card card-radius custom-card">
+                    <div class="card popup-card card-radius custom-card">
 
-                    <img src="{{url_for('static', filename= 'images/cozy-sofa.jpg')}}" class="card-img-top" alt="Image 2">
+                        <img src="images/cozy-sofa.jpg" class="card-img-top" alt="Image 2">
 
-                    <div class="card-body">
+                        <div class="card-body py-4">
 
-                        <h5 class="card-title">How to build a better relationship with someone</h5>
+                            <h5 class="card-title">How to build a better relationship with someone</h5>
 
-                        <p class="card-text">Card 2 description.</p>
+                            <p class="card-text">You become more adaptable as you build relationships, which is vital...
+                            </p>
 
-                        <button class="btn btn-custom bg-pink  see-more-button" data-image="image2.jpg"
-                            data-title="Card 2 Title" data-description="Card 2 description.">See more</button>
+                            <button class="btn btn-custom bg-pink see-more-button mb-2 btn-hover-pink"
+                                data-image="images/cozy-sofa.jpg"
+                                data-title="How to build a better relationship with someone" data-description="You become more adaptable as you build relationships, which is vital.
+                                You have a network of people you can turn to for support when you find yourself in a
+                                challenging position. The better your relationship with someone is from the very
+                                beginning, the easier it can be to overcome problems along the way.">
+                                See more</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-4 px-4">
+                <div class="col-md-4 px-4">
 
-                <div class="card card-radius custom-card">
+                    <div class="card popup-card card-radius custom-card">
 
-                    <img src="{{url_for('static', filename= 'images/tree-img-2.jpg')}}" class="card-img-top" alt="Image 3">
+                        <img src="images/tree-img-2.jpg" class="card-img-top" alt="Image 3">
 
-                    <div class="card-body">
+                        <div class="card-body py-4">
 
-                        <h5 class="card-title">Card 3 Title</h5>
+                            <h5 class="card-title">Stress management tips and tricks</h5>
 
-                        <p class="card-text">Card 3 description.</p>
+                            <p class="card-text">The pressures of modern life, such as work pressure, economical strain,
+                                and family duties, can be challenging...</p>
 
-                        <button class="btn btn-custom bg-pink  see-more-button" data-image="image3.jpg"
-                            data-title="Card 3 Title" data-description="Card 3 description.">See more</button>
+                            <button class="btn btn-custom bg-pink see-more-button mb-2 btn-hover-pink"
+                                data-image="images/tree-img-2.jpg" data-title="Stress management tips and tricks"
+                                data-description="The pressures of modern life, such as work pressure, economical strain,
+                            and family duties, can be challenging for anyone. One of the effective ways to overcome
+                            these difficulties is to work with a life coach who can help you create a strategy and
+                            eventually get rid of stress.">See more</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</section>
+    </section>
 
-    <div id="popup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" id="closePopup">&times;</span>
-            <img id="popupImage" src="" alt="Popup Image" class="mb-3">
-            <h5 id="popupTitle" class="mb-3"></h5>
-            <p id="popupDescription"></p>
-        </div>
-    </div>
+
  <!-- -------------------Life Coaching Code------------------- -->
      <!-- ---------------------------Section Contact Us------------------ -->
 
@@ -797,7 +806,96 @@
         </div>
     </div>
 
+    <div id="popup" class="popup" style="display: none;">
 
+        <div class="d-flex align-items-center justify-content-center">
+
+            <div class="popup-content">
+
+                <span class="close" id="closePopup">&times;</span>
+
+                <img id="popupImage" src="" alt="Popup Image" class="mb-3">
+
+                <h2 id="popupTitle" class="mb-3"></h2>
+
+                <p id="popupDescription"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- -----------------Footer (finalized)----------------- -->
+        <section class="bg-pink" style="margin-top:80px;">
+
+            <div class="container px-4">
+    
+                <div class="row text-center d-flex justify-content-center py-4">
+    
+                    <div class="col-md-4">
+    
+                        <p class="mb-0 info-text"><i class="fas fa-phone mr-4 footer-icon"></i><a
+                                href="tel:347.369.7385">347.369.7385</a> </p>
+    
+                    </div>
+    
+                    <div class="col-md-4">
+    
+                        <p class="mb-0 info-text"><i class="fas fa-envelope mr-4 footer-icon"></i> <a
+                                href="mailto:info@coachingstudiony.com">info@coachingstudiony.com</a></p>
+    
+                    </div>
+    
+                    <div class="col-md-4">
+    
+                        <p class=" mb-0"><i class="fas fa-map mr-4 footer-icon"></i> Spring Valley NY, 10977</p>
+    
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+        </section>
+    
+        <div class="bg-green px-0">
+    
+            <footer class="container text-center text-white">
+    
+                <div class="pt-5 pb-3">
+    
+                    <div class="row">
+    
+                        <div class="col-md-2">
+    
+                        </div>
+    
+                        <div class="col-md-8 text-center px-5">
+    
+                            <div class="mb-3"><img src="images/footer-logo.png" alt=""></div>
+    
+                            <p class="footer-text">Ready to get started on a path of personal development, growth and
+                                empowerment?
+                                At The Coaching Studio, together, we'll find the path to meet you needs and set goals with
+                                confidence, perseverance, and an exciting sense of purpose.
+                                Reach For the Stars!</p>
+    
+                            <p class="footer-text"> To start your transformational journey, get in touch with us today!</p>
+    
+                            <p class="text-copyright">Copyright © 2023, All Right Reserved The Coaching Studio NY</p>
+    
+                        </div>
+    
+                        <div class="col-md-2"></div>
+    
+                    </div>
+    
+                </div>
+    
+            </footer>
+    
+        </div>
 
     <!-- ---------------------Scripts---------------------- -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
