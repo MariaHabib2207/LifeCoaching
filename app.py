@@ -17,7 +17,7 @@ mail = Mail(app)
 @app.route('/')
 def hello_world():
     return render_template('index.html')
-
+    
 # Define a route and view function for sending email
 @app.route('/send-mail', methods=['POST'])
 def send_mail():

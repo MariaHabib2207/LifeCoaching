@@ -4,7 +4,8 @@
 }
 
 body {
-  font-family: 'jost';
+  font-family: 'Jost';
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -16,8 +17,16 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Jost';
+  src: url('/fonts/Jost/Jost-Light.ttf') format('ttf'),
+  url('/fonts/Jost/Jost-Bold.ttf'), format('ttf'),
+  url('/fonts/Jost/Jost-Medium.ttf'), format('ttf');
+
+}
+
 body {
-  font-family: 'jost', 'sans-serif';
+  font-family: 'Jost', 'sans-serif';
 }
 
 :root {
@@ -61,7 +70,7 @@ li {
 .btn-custom {
   display: inline-block;
   margin-bottom: 0;
-  font-size: 15px !important;
+  font-size: 22px !important;
   font-weight: 500;
   padding: 10px 18px !important;
   line-height: 1.45;
@@ -69,8 +78,6 @@ li {
   text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 12px;
-  width: 140px;
-
 }
 
 .btn-hover-green:hover {
@@ -146,52 +153,49 @@ li {
 
 /* ----------------------------Hero Slider Section------------------------- */
 #carouselExampleCaptions {
+}
+
+.carousel-item{
   height: 85vh;
 }
 
-.contaniner {
-  position: relative;
-  flex-grow: 1;
-  margin: auto;
-  max-width: 1200px;
-  max-height: 1200px;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-gap: 2vmin;
-  justify-items: center;
-  align-items: center;
+.carousel-indicators [data-bs-target]{
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 100%;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
 }
 
-.cards-outer-container {
-  overflow: hidden;
-  background-color: #222;
-  display: flex;
-  align-items: center;
+.carousel-indicators .active{
+  background-color: var(--primary-color) !important;
 }
 
-/* img {
-  z-index: 1;
-  grid-column: span 2;
-  max-width: 100%;
-  margin-bottom: -52%;
-  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  transition: all .25s;
+.carousel-caption {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 85vh !important;
 }
-img:nth-child(7n + 1) {
-  grid-column: 2 / span 2;
-} */
+
+.slider-head{
+font-size: 80px;
+text-shadow: 0px 0px 5px rgba(39, 39, 39, 0.75);
+
+}
+
+.slider-text{
+font-size: 35px;
+font-weight: 400 !important;
+color: #ffffff;
+}
+
 
 /* ------------------------------Section About Coaching Studio---------------------- */
 
 .custom-card {
   background-color: #ffffff;
-  /* background: url(/images/about-card.png); */
-  background-size: cover;
-  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
   border: none !important;
   width: auto;
@@ -237,7 +241,8 @@ img:nth-child(7n + 1) {
 
 .green-leaf-img {
   width: auto;
-  margin-top: -22px;
+  bottom: 60px;
+  position: absolute;
 }
 
 
@@ -248,10 +253,8 @@ img:nth-child(7n + 1) {
 }
 
 .blue-flower-right {
-  opacity: 0.5;
-  transform: rotate(120deg);
-  margin-right: -60%;
-  margin-top: 30px;
+  margin-top: 40px;
+  margin-right: -38%;
 }
 
 /* --------------------- Section Program Works-------------------- */
@@ -263,11 +266,11 @@ img:nth-child(7n + 1) {
   margin-bottom: 20px;
 }
 
-.card-radius{
-border-radius: 29px;
+.card-radius {
+  border-radius: 29px;
 }
 
-.padding-t-5{
+.padding-t-5 {
   padding-top: 40px !important;
   padding-bottom: 20px !important;
 }
@@ -275,62 +278,12 @@ border-radius: 29px;
 /* -----------------------Section Our Latest News------------------- */
 
 /* <!-- ----------------------------Our Latest News------------------------- --> */
-.card-img-top{
+.card-img-top {
   border-top-left-radius: 29px;
   border-top-right-radius: 29px;
 }
-/* -----------------------------Popup Card-------------------------- */
 
-/* .card {
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.card img {
-  max-width: 100%;
-  height: auto;
-}
-
-.popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); 
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-content {
-  width: 70%;
-  max-width: 600px; /
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-.popup-content img {
-  max-width: 100%;
-  height: 500px;
-  margin-bottom: 15px;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-} */
-
+/* -----------------------------Section Appointment Booking and  Contact Us--------------------------- */
 
 #contact-info .custom-card i.fas {
   font-size: 60px;
@@ -346,7 +299,7 @@ border-radius: 29px;
 
 #contact-form input[type="text"],
 textarea,
-input[type="number"]{
+input[type="number"] {
   margin-bottom: 15px;
   border: none;
   background: #FFFFFF;
@@ -370,78 +323,316 @@ input[type="number"]{
   padding-bottom: 16px !important;
 }
 
-
-#sec-contact{
+/* -------------Contact Form---------- */
+#sec-contact {
   height: 70vh;
-  }
-  
-  .contact-sec-pink{
-    width: 75%;
-    padding: 5% 15%;
-    border-radius: 25px;
-    position: relative;
-    margin-top: -15%;
-    background-image: url(/images/contact-form-bg.png);
-    background-size: cover;
-  
-  }
-  
-  #contact-form-b input[type="text"],
-  textarea,
-  input[type="number"]
-  {
-    margin-bottom: 20px;
-    border: none;
-    background: #FFFFFF;
-    border: none;
-    border-radius: 15px;
-    height: 70px;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0px 0px 10px rgba(71, 71, 71, 0.75);
-  }
-  
-  #contact-form-b textarea {
-    height: 120px !important;
-    padding-top: 20px;
+}
+
+.contact-sec-pink {
+  width: 75%;
+  padding: 5% 15%;
+  border-radius: 25px;
+  position: relative;
+  margin-top: -15%;
+  background-image: url(/images/contact-form-bg.png);
+  background-size: cover;
+
+}
+
+#contact-form-b input[type="text"],
+textarea,
+input[type="number"] {
+  margin-bottom: 20px;
+  border: none;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 15px;
+  height: 70px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0px 0px 10px rgba(71, 71, 71, 0.75);
+}
+
+#contact-form-b textarea {
+  height: 120px !important;
+  padding-top: 20px;
+}
+
+
+/* --------------------- CODE to be added in maria's file---------------------- */
+/* Add Bootstrap styles */
+/* ... */
+
+/* Custom styles for diamond-shaped cards */
+.diamond-card {
+  width: 360px;
+  background-color: white;
+  height: 360px;
+  border-radius: 38px;
+  padding: 28px;
+  margin: 10px;
+  z-index: 1;
+  position: relative;
+  transform: rotate(45deg);
+  margin: 1rem;
+  background-size: cover;
+  box-shadow: 0px 0px 20px rgba(227, 154, 128, 0.5);
+  border: none !important;
+}
+
+.diamond-card:before {
+  /* content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #ffffff transparent;
+  z-index: -1; */
+}
+
+.diamond-card {}
+
+.diamond-card .diamond-card-inner {
+  transform: rotate(-45deg);
+  padding: 1rem;
+}
+
+.diamond-card .card-icon {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+/* -----------------------------Popup Card-------------------------- */
+
+.see-more-button {
+  font-size: 16px !important;
+  text-transform: capitalize !important;
+  font-weight: 500 !important;
+  padding: 10px 28px !important;
+}
+
+.popup-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.popup-content {
+  margin-top: 5%;
+  width: 80%;
+  height: 85vh;
+  background-color: var(--primary-color);
+  padding: 60px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  overflow: auto;
+}
+
+.popup-content img {
+  max-width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tertiary-color);
+}
+
+/* -----------Appointment Calender Datepicker-------------- */
+
+.datepicker.dropdown-menu {
+  display: block;
+  margin-top: 17px !important;
+  border-radius: 15px !important;
+  border: none;
+  box-shadow: 0px 0px 5px rgba(119, 119, 119, 0.75) !important;
+  padding-top: 40px;
+}
+
+.datepicker td,
+.datepicker th {
+  width: 45px !important;
+  height: 28px !important;
+}
+
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover.active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active:hover:active {
+  background-image: none !important;
+  background-color: #e49b80;
+  border-radius: 100%;
+}
+
+.datepicker-dropdown:before {
+  display: none !important;
+}
+
+.datepicker-dropdown:after {
+  display: none !important;
+}
+
+#select_date {
+  border: none;
+  border-radius: 15px;
+  height: 60px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0px 0px 5px rgba(119, 119, 119, 0.75);
+}
+
+
+/* -----------------------Footer---------------------- */
+.footer-icon {
+  background: #ffffff;
+  color: var(--primary-color);
+  padding: 10px;
+  font-size: 32px;
+  border-radius: 100%;
+  margin-right:10px;
+}
+
+
+.text-copyright {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.footer-text {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
+}
+
+.info-text{
+font-size: 23px;
+}
+
+.info-text a {
+  text-decoration: none !important;
+  color: #000000 !important;
+}
+/* -------------------------Page - Shop---------------------- */
+
+#sec-shop {
+  background-color: #ffc600;
+  height: 86vh;
+}
+
+.shop-head {
+  font-size: 56px;
+  line-height: 66px;
+  color: #000000;
+}
+
+.btn-black {
+  background-color: #020202;
+  font-family: 'Jost';
+  font-size: 25px;
+  color: #ffffff;
+  padding: 16px 40px !important;
+  font-weight: 400;
+}
+
+.shop-para {
+  font-size: 20px;
+  margin-top: 50px;
+  font-weight: 500;
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  #sec-shop {
+    height: 100%;
+    padding: 40px 20px;
   }
 
-  #contact-info .custom-card i.fas {
-    font-size: 60px;
-    /* Adjust the font size value as desired */
-    color: #ffffff;
+  .btn-black {
+    font-size: 20px !important;
+    padding: 12px 36px !important;
   }
-  
-  #contact-info .custom-card a.contact-info-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    font-weight: normal;
+
+  .shop-head {
+    font-size: 30px !important;
+    line-height: 40px;
   }
-  
-  #contact-form input[type="text"],
-  textarea,
-  input[type="number"]{
-    margin-bottom: 15px;
-    border: none;
-    background: #FFFFFF;
-    border: none;
-    border-radius: 15px;
-    height: 60px;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0px 0px 5px rgba(119, 119, 119, 0.75);
+
+  .shop-para {
+    margin-top: 0px;
   }
-  
-  #contact-form textarea {
-    height: 120px !important;
-    padding-top: 20px;
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .shop-head {
+    font-size: 40px;
   }
-  
-  .btn-green-bg {
-    width: 250px !important;
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
+
+  #sec-shop {
+    height: 100%;
+    padding: 40px;
   }
-  
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {}
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {}
