@@ -1,3 +1,6 @@
+
+// ---------------------------Our news section popup-------------------
+
 document.addEventListener('DOMContentLoaded', () => {
     const seeMoreButtons = document.querySelectorAll('.see-more-button');
     const popup = document.getElementById('popup');
@@ -30,3 +33,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
