@@ -4,36 +4,35 @@
 }
 
 body {
-  font-family: 'Jost';
+  font-family: "Jost";
   overflow-x: hidden;
 }
 
 @font-face {
-  font-family: 'Baskerville Regular';
-  src: url('/fonts/Baskervville-Regular.ttf') format('ttf'),
-    url('/fonts/Baskervville-Italic.ttf') format('ttf');
+  font-family: "Baskerville Regular";
+  src: url("/fonts/Baskervville-Regular.ttf") format("ttf"),
+    url("/fonts/Baskervville-Italic.ttf") format("ttf");
 
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Jost';
-  src: url('/fonts/Jost/Jost-Light.ttf') format('ttf'),
-  url('/fonts/Jost/Jost-Bold.ttf'), format('ttf'),
-  url('/fonts/Jost/Jost-Medium.ttf'), format('ttf');
-
+  font-family: "Jost";
+  src: url("/fonts/Jost/Jost-Light.ttf") format("ttf"),
+    url("/fonts/Jost/Jost-Bold.ttf"), format("ttf"),
+    url("/fonts/Jost/Jost-Medium.ttf"), format("ttf");
 }
 
 body {
-  font-family: 'Jost', 'sans-serif';
+  font-family: "Jost", "sans-serif";
 }
 
 :root {
   --primary-color: #e49b80;
   --secondary-color: #d8de96;
   --tertiary-color: #a1ccda;
-  --section-bg-color: #F3F9FD;
+  --section-bg-color: #f3f9fd;
   --heading-black: #1b1b1b;
 }
 
@@ -48,7 +47,7 @@ body {
 h1 {
   font-size: 80px;
   line-height: 96px;
-  font-family: 'Baskerville Regular';
+  font-family: "Baskerville Regular";
 }
 
 h2 {
@@ -56,7 +55,7 @@ h2 {
   font-size: 40px;
   line-height: 48px;
   color: #000000;
-  font-family: 'Baskerville Regular';
+  font-family: "Baskerville Regular";
 }
 
 p,
@@ -74,7 +73,7 @@ li {
   font-weight: 500;
   padding: 10px 18px !important;
   line-height: 1.45;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 12px;
@@ -99,7 +98,6 @@ li {
 
 /* ----------------Navbar--------------------- */
 
-
 .navbar-btn i {
   font-size: 11px;
   text-decoration: none;
@@ -116,7 +114,6 @@ li {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-
 #neubar .nav-item {
   margin: auto 4px;
 }
@@ -125,11 +122,10 @@ li {
   color: #000000;
   font-size: 24px;
   margin-bottom: 0px;
-  font-family: 'Baskerville Regular'
+  font-family: "Baskerville Regular";
 }
 
 #neubar a :hover {
-
   color: var(--tertiary-color) !important;
 }
 
@@ -144,22 +140,21 @@ li {
 
 .btn-yellow:hover {
   background-color: var(--secondary-color);
-  box-shadow: 0 4px 9px 0 rgba(0, 0, 0, .4), 0 4px 9px 0 rgba(255, 211, 11, .6) !important;
+  box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.4),
+    0 4px 9px 0 rgba(255, 211, 11, 0.6) !important;
 
   color: #ffffff !important;
-
 }
-
 
 /* ----------------------------Hero Slider Section------------------------- */
 #carouselExampleCaptions {
 }
 
-.carousel-item{
+.carousel-item {
   height: 85vh;
 }
 
-.carousel-indicators [data-bs-target]{
+.carousel-indicators [data-bs-target] {
   width: 18px !important;
   height: 18px !important;
   border-radius: 100%;
@@ -167,7 +162,7 @@ li {
   opacity: 1 !important;
 }
 
-.carousel-indicators .active{
+.carousel-indicators .active {
   background-color: var(--primary-color) !important;
 }
 
@@ -179,18 +174,16 @@ li {
   height: 85vh !important;
 }
 
-.slider-head{
-font-size: 80px;
-text-shadow: 0px 0px 5px rgba(39, 39, 39, 0.75);
-
+.slider-head {
+  font-size: 80px;
+  text-shadow: 0px 0px 5px rgba(39, 39, 39, 0.75);
 }
 
-.slider-text{
-font-size: 35px;
-font-weight: 400 !important;
-color: #ffffff;
+.slider-text {
+  font-size: 35px;
+  font-weight: 400 !important;
+  color: #ffffff;
 }
-
 
 /* ------------------------------Section About Coaching Studio---------------------- */
 
@@ -244,7 +237,6 @@ color: #ffffff;
   bottom: 60px;
   position: absolute;
 }
-
 
 /* ------------------------Section Gateway---------------------- */
 
@@ -302,7 +294,7 @@ textarea,
 input[type="number"] {
   margin-bottom: 15px;
   border: none;
-  background: #FFFFFF;
+  background: #ffffff;
   border: none;
   border-radius: 15px;
   height: 60px;
@@ -336,7 +328,6 @@ input[type="number"] {
   margin-top: -15%;
   background-image: url("{{ url_for('static', filename='images/contact-form-bg.png') }}");
   background-size: cover;
-
 }
 
 #contact-form-b input[type="text"],
@@ -344,7 +335,7 @@ textarea,
 input[type="number"] {
   margin-bottom: 20px;
   border: none;
-  background: #FFFFFF;
+  background: #ffffff;
   border: none;
   border-radius: 15px;
   height: 70px;
@@ -359,16 +350,15 @@ input[type="number"] {
   padding-top: 20px;
 }
 
-
 /* --------------------- CODE to be added in maria's file---------------------- */
 /* Add Bootstrap styles */
 /* ... */
 
 /* Custom styles for diamond-shaped cards */
 .diamond-card {
-  width: 360px;
+  width: 330px;
   background-color: white;
-  height: 360px;
+  height: 330px;
   border-radius: 38px;
   padding: 28px;
   margin: 10px;
@@ -393,7 +383,8 @@ input[type="number"] {
   z-index: -1; */
 }
 
-.diamond-card {}
+.diamond-card {
+}
 
 .diamond-card .diamond-card-inner {
   transform: rotate(-45deg);
@@ -403,9 +394,9 @@ input[type="number"] {
 .diamond-card .card-icon {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
+  margin-top: -40px;
 }
-
 
 /* -----------------------------Popup Card-------------------------- */
 
@@ -523,6 +514,10 @@ input[type="number"] {
 .datepicker-dropdown:after {
   display: none !important;
 }
+.datepicker-dropdown {
+  /* top: 1380.73px !important; */
+  left: 430px !important;
+}
 
 #select_date {
   border: none;
@@ -533,7 +528,16 @@ input[type="number"] {
   padding-right: 20px;
   box-shadow: 0px 0px 5px rgba(119, 119, 119, 0.75);
 }
-
+.custom-dropdown {
+  font-size: 12px;
+}
+.custom-dropdown .datepicker-days {
+  width: 445px !important;
+  height: 289px !important;
+}
+.custom-dropdown .datepicker-days table {
+  margin: 10px 49px !important;
+}
 
 /* -----------------------Footer---------------------- */
 .footer-icon {
@@ -542,9 +546,8 @@ input[type="number"] {
   padding: 10px;
   font-size: 32px;
   border-radius: 100%;
-  margin-right:10px;
+  margin-right: 10px;
 }
-
 
 .text-copyright {
   font-size: 13px;
@@ -558,8 +561,8 @@ input[type="number"] {
   font-weight: 400;
 }
 
-.info-text{
-font-size: 23px;
+.info-text {
+  font-size: 23px;
 }
 
 .info-text a {
@@ -581,7 +584,7 @@ font-size: 23px;
 
 .btn-black {
   background-color: #020202;
-  font-family: 'Jost';
+  font-family: "Jost";
   font-size: 25px;
   color: #ffffff;
   padding: 16px 40px !important;
@@ -596,12 +599,11 @@ font-size: 23px;
 
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-
-  h2{
+  h2 {
     font-size: 25px;
   }
 
-  p{
+  p {
     font-size: 17px;
     line-height: 20px;
   }
@@ -625,38 +627,43 @@ font-size: 23px;
     margin-top: 0px;
   }
 
-  .carousel-item{
+  .carousel-item {
     height: 100%;
   }
 
-  .slider-head{
+  .slider-head {
     font-size: 40px;
     line-height: 45px;
   }
 
-  .section-padding-tb{
+  .section-padding-tb {
     padding: 40px 20px !important;
-      }
+  }
 }
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
-
-  h1, h2, h3, h4, h5, h6, p{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
     text-align: center;
   }
 
-  h2{
+  h2 {
     font-size: 35px;
   }
 
-  p{
+  p {
     font-size: 20px;
     line-height: 27px;
   }
 
-  .section-padding-tb{
-padding: 40px !important;
+  .section-padding-tb {
+    padding: 40px !important;
   }
   .shop-head {
     font-size: 40px;
@@ -673,40 +680,56 @@ padding: 40px !important;
 
   #sec-mission .row .col-md-6,
   #sec-mission .row .col-md-6 .px-4 {
-    padding-left: 0px  !important;
+    padding-left: 0px !important;
     padding-right: 0px !important;
-
   }
 
-  #sec-mission{
+  #sec-mission {
     padding-bottom: 0px !important;
   }
 
-  .divider-pink{
+  .divider-pink {
     display: none;
+  }
+}
+@media screen and (min-width: 980px) {
+  body {
+    zoom: 0.92;
   }
 }
 
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
-
-  .carousel-item{
+  .carousel-item {
     height: 70vh;
   }
 
-  .slider-head{
+  .slider-head {
     font-size: 50px;
     line-height: 65px;
   }
 
-  .slider-text{
+  .slider-text {
     font-size: 28px;
   }
-
 }
 
 /* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {}
+@media (max-width: 1199.98px) {
+}
 
 /* X-Large devices (large desktops, less than 1400px) */
-@media (max-width: 1399.98px) {}
+@media (max-width: 1399.98px) {
+}
+
+
+/* ------------------Ahsan's Classes--------- */
+.second-m-top {
+  margin-top: -65px;
+}
+ .left-8 {
+    left:8vw;
+}
+ .right-8 {
+  right:8vw;
+}
