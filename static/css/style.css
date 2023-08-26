@@ -317,7 +317,7 @@ input[type="number"] {
 
 /* -------------Contact Form---------- */
 #sec-contact {
-  height: 70vh;
+  height: 76vh;
 }
 
 .contact-sec-pink {
@@ -326,7 +326,7 @@ input[type="number"] {
   border-radius: 25px;
   position: relative;
   margin-top: -15%;
-  background-image: url("{{ url_for('static', filename='images/contact-form-bg.png') }}");
+  background-image: url('../images/contact-form-bg.png');
   background-size: cover;
 }
 
@@ -409,7 +409,7 @@ input[type="number"] {
 
 .popup-card img {
   max-width: 100%;
-  height: auto;
+  min-height: 250px;
 }
 
 .popup {
@@ -643,6 +643,9 @@ input[type="number"] {
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+  body {
+   width: 107vh;
+  }
   h1,
   h2,
   h3,
@@ -663,7 +666,7 @@ input[type="number"] {
   }
 
   .section-padding-tb {
-    padding: 40px !important;
+    padding: 5px !important;
   }
   .shop-head {
     font-size: 40px;
@@ -689,6 +692,9 @@ input[type="number"] {
   }
 
   .divider-pink {
+    display: none;
+  }
+  .datepicker-dropdown {
     display: none;
   }
 }

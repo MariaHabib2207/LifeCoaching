@@ -2,7 +2,6 @@
 // ---------------------------Our news section popup-------------------
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Event listner')
     const seeMoreButtons = document.querySelectorAll('.see-more-button');
     const popup = document.getElementById('popup');
     const popupImage = document.getElementById('popupImage');

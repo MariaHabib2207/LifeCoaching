@@ -69,7 +69,6 @@
       crossorigin="anonymous"></script>
 
     <!-- ---------NAVBAR------------ -->
-
     <div class="nav-container img-z-index">
       <nav class="navbar navbar-expand-sm navbar-light" id="neubar">
         <div class="container-fluid px-5">
@@ -257,15 +256,15 @@
     <section id="book-appointment" class="text-center section-padding-tb">
       <h2 class="text-center mb-5">Book Your Appointment Now</h2>
 
-      <div class="col-md-3 d-flex justify-content-start align-items-center">
+      <!-- <div class="col-md-3 d-flex justify-content-start align-items-center">
         <div>
           <img
             class="w-auto"
             src="
-            divider-pink.png"
+             {{url_for('static', filename= 'images/divider-pink.png')}}"
             alt />
         </div>
-      </div>
+      </div> -->
 
       <div class="container d-flex align-items-center justify-content-center">
         <div class="row goals-sec-pink bg-pink">
@@ -945,7 +944,7 @@
           },
         });
         $input.data("datepicker").hide = function () {};
-        $input.datepicker("show");
+        // $input.datepicker("show");
         // $input.css('left', '-9999px');
         $(".datepicker").addClass("custom-dropdown");
       });

@@ -11,6 +11,7 @@ app.config['MAIL_USERNAME'] = 'mariahabib2219@gmail.com'
 app.config['MAIL_PASSWORD'] = 'sarkaar2207?'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 mail = Mail(app)
 
 # Define a route and a view function
