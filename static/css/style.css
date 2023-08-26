@@ -325,7 +325,7 @@ input[type="number"] {
   padding: 5% 15%;
   border-radius: 25px;
   position: relative;
-  margin-top: -15%;
+  margin-top: -18%;
   background-image: url('../images/contact-form-bg.png');
   background-size: cover;
 }
@@ -639,6 +639,14 @@ input[type="number"] {
   .section-padding-tb {
     padding: 40px 20px !important;
   }
+
+  #program-works .custom-card{
+    margin-top: 0px !important;
+    margin-bottom: 60px;
+  }
+  .contact-sec-pink{
+    margin-top: -25% !important;
+  }
 }
 
 /* Small devices (landscape phones, less than 768px) */
@@ -666,7 +674,7 @@ input[type="number"] {
   }
 
   .section-padding-tb {
-    padding: 5px !important;
+    padding: 60px 40px !important;
   }
   .shop-head {
     font-size: 40px;
@@ -697,10 +705,50 @@ input[type="number"] {
   .datepicker-dropdown {
     display: none;
   }
+
+  .pink-flower-left, .blue-flower-right{
+    display: none;
+  }
+
+  #program-works .custom-card{
+margin-top: 60px;
+  }
+
+  #latest-news .card-body{
+    text-align: center !important;
+  }
+
+  #latest-news .custom-card {
+margin-bottom: 55px;
+  }
+
+  .contact-sec-pink{
+    width: 100%;
+    padding: 8%;
+    margin-top: -35%;
+  }
+
+  .number-icon{
+    left: calc(50% - 11%);
+  }
+
+  .goals-sec-pink{
+    width: 100%;
+  }
+
+  #goals> .container{
+    display: block !important;
+    max-width: 100%;
+  }
+
+  .green-leaf-img{
+    bottom: 40px;
+    left: 30px;
+  }
 }
 @media screen and (min-width: 980px) {
   body {
-    zoom: 0.92;
+    /* zoom: 0.92; */
   }
 }
 
