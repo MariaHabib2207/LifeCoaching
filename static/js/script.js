@@ -34,3 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+const header = document.querySelector(".page-header");
+const toggleClass = "is-sticky";
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.scrollY;
+  console.log(currentScroll); 
+  if (currentScroll > 100) {
+    header.classList.add(toggleClass);
+  } else {
+    header.classList.remove(toggleClass);
+  }
+});

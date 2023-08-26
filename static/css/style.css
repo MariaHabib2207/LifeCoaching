@@ -516,7 +516,10 @@ input[type="number"] {
 }
 .datepicker-dropdown {
   /* top: 1380.73px !important; */
-  left: 430px !important;
+  left: 0px !important;
+  top: 0px !important;
+  position: relative;
+  width: 450px;
 }
 
 #select_date {
@@ -532,11 +535,31 @@ input[type="number"] {
   font-size: 12px;
 }
 .custom-dropdown .datepicker-days {
-  width: 445px !important;
-  height: 289px !important;
+  /* width: 445px !important;
+  height: 289px !important; */
 }
 .custom-dropdown .datepicker-days table {
-  margin: 10px 49px !important;
+  /* margin: 9px 45px !important; */
+  width: 100%;
+}
+.custom-dropdown .datepicker-months table {
+  /* margin: 9px 45px !important; */
+  width: 100%;
+}
+.custom-dropdown .datepicker-years table {
+  /* margin: 9px 45px !important; */
+  width: 100%;
+}
+.custom-dropdown .datepicker-decades table {
+  /* margin: 9px 45px !important; */
+  width: 100%;
+}
+.custom-dropdown .table-condensed table {
+  /* margin: 9px 45px !important; */
+  width: 100%;
+}
+.custom-dropdown .datepicker-days table thead tr:nth-child(2){
+  background: #d8de96;
 }
 
 /* -----------------------Footer---------------------- */
@@ -694,10 +717,25 @@ input[type="number"] {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
-
+  .datepicker-dropdown { 
+    width: auto;
+  }
   #sec-mission {
     padding-bottom: 0px !important;
   }
+  .second-m-top {
+    margin-top: auto !important;
+  }
+  .left-8 {
+    left:auto !important;
+  }
+ .right-8 {
+  right:auto !important;
+  }
+  .mm-b {
+    margin-bottom: 80px;
+  }
+  .margin-bottom: 80px;
 
   .divider-pink {
     display: none;
@@ -750,6 +788,7 @@ margin-bottom: 55px;
   body {
     /* zoom: 0.92; */
   }
+  
 }
 
 /* Medium devices (tablets, less than 992px) */
@@ -779,7 +818,7 @@ margin-bottom: 55px;
 
 /* ------------------Ahsan's Classes--------- */
 .second-m-top {
-  margin-top: -65px;
+  margin-top: -88px;
 }
  .left-8 {
     left:8vw;
@@ -787,3 +826,22 @@ margin-bottom: 55px;
  .right-8 {
   right:8vw;
 }
+  /* ----------Header--------------- */
+.page-header.is-sticky {
+  position: fixed;
+    width: 100vw;
+    z-index: 10000;
+    transition: top 0.5s ease-in-out;
+    animation-name: stickySlideDown;
+  }
+@keyframes stickySlideDown {
+  0% {
+      opacity: 0.7;
+      transform: translateY(-100%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
