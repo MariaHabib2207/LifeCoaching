@@ -61,7 +61,7 @@ function animation(claslist) {
         if (triggerPosition < threshold) {
             slideWrapper.classList.add('active');
         } else {
-            slideWrapper.classList.remove('active');
+            // slideWrapper.classList.remove('active');
         }
     });
   }

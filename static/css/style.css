@@ -147,9 +147,6 @@ li {
 }
 
 /* ----------------------------Hero Slider Section------------------------- */
-#carouselExampleCaptions {
-}
-
 .carousel-item {
   height: 85vh;
 }
@@ -382,10 +379,6 @@ input[type="number"] {
   border-color: transparent transparent #ffffff transparent;
   z-index: -1; */
 }
-
-.diamond-card {
-}
-
 .diamond-card .diamond-card-inner {
   transform: rotate(-45deg);
   padding: 1rem;
@@ -519,7 +512,7 @@ input[type="number"] {
   left: 0px !important;
   top: 0px !important;
   position: relative;
-  width: 450px;
+  width: 100%;
 }
 
 #select_date {
@@ -534,13 +527,10 @@ input[type="number"] {
 .custom-dropdown {
   font-size: 12px;
 }
-.custom-dropdown .datepicker-days {
-  /* width: 445px !important;
-  height: 289px !important; */
-}
 .custom-dropdown .datepicker-days table {
   /* margin: 9px 45px !important; */
   width: 100%;
+  font-size: 24px;
 }
 .custom-dropdown .datepicker-months table {
   /* margin: 9px 45px !important; */
@@ -788,9 +778,7 @@ margin-bottom: 55px;
   }
 }
 @media screen and (min-width: 980px) {
-  body {
-    /* zoom: 0.92; */
-  }
+  
   
 }
 
