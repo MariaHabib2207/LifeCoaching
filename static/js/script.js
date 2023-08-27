@@ -36,14 +36,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 const header = document.querySelector(".page-header");
-const toggleClass = "is-sticky";
+let toggleClass = "is-sticky";
+let inactive = "inactive";
 
 window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
-  console.log(currentScroll); 
   if (currentScroll > 100) {
     header.classList.add(toggleClass);
+    header.classList.remove(inactive);
   } else {
+    header.classList.add(inactive);
     header.classList.remove(toggleClass);
   }
+  animation('.slide-wraper-right')
+  animation('.slide-wraper-left')
+  animation('.wraper-animated')
 });
+
+function animation(claslist) {
+    let slideWrappers = document.querySelectorAll(claslist);
+    let threshold = 100; // Adjust this threshold as needed
+    slideWrappers.forEach(slideWrapper => {
+        let triggerPosition = slideWrapper.getBoundingClientRect().top;
+        if (triggerPosition < threshold) {
+            slideWrapper.classList.add('active');
+        } else {
+            slideWrapper.classList.remove('active');
+        }
+    });
+  }
