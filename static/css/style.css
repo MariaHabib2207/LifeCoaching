@@ -783,6 +783,9 @@ margin-bottom: 55px;
     bottom: 40px;
     left: 30px;
   }
+  .date-container {
+    margin-bottom: 16px;
+  }
 }
 @media screen and (min-width: 980px) {
   body {
@@ -826,22 +829,64 @@ margin-bottom: 55px;
  .right-8 {
   right:8vw;
 }
-  /* ----------Header--------------- */
+
+/* ---------Animation Script ------------------ */
+@media screen and (min-width: 980px) {
+.right-slide-text {
+  position: relative;
+  right: -50vw;
+  transition: 1s;
+}
+.slide-left-img {
+  position: relative;
+  left: -50vw;
+  transition: 1s;
+}
+.slide-top {
+  position: relative;
+  top: -10vw;
+  opacity: 0;
+  transition: 1s;
+}
+.green-leaf-img {
+  width: 50px;
+}
+.green-circle-img {
+  width: 130px;
+}
+.wraper-animated.active .green-leaf-img {
+  transition: 1s;
+  width: 100px;
+}
+.wraper-animated.active .green-circle-img {
+  transition: 1s;
+  width: 150px;
+}
+.slide-wraper-right.active .right-slide-text {
+  transition: 1s;
+  right: 0;
+} 
+.slide-wraper-left.active .slide-left-img {
+  transition: 1s;
+  left: 0;
+} 
+.wraper-animated.active .slide-top {
+  transition: 1s;
+  top: 0;
+  opacity: 1;
+  /* transform: translateY(0) */
+}
+.page-header.inactive{
+  position: relative;
+  top: -10vw;
+}
+
 .page-header.is-sticky {
-  position: fixed;
+    transition: 1s;
+    top: 0vw;
+    position: fixed;
     width: 100vw;
     z-index: 10000;
-    transition: top 0.5s ease-in-out;
-    animation-name: stickySlideDown;
-  }
-@keyframes stickySlideDown {
-  0% {
-      opacity: 0.7;
-      transform: translateY(-100%);
-  }
-  100% {
-      opacity: 1;
-      transform: translateY(0);
   }
 }
 
