@@ -38,16 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
 const header = document.querySelector(".page-header");
 let toggleClass = "is-sticky";
 let inactive = "inactive";
+let dNone = "d-none";
 
 window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
-  if (currentScroll > 100) {
-    header.classList.add(toggleClass);
-    header.classList.remove(inactive);
-  } else {
+  console.log(currentScroll)
+  if (currentScroll > 200) {
+      header.classList.add(toggleClass);
+      header.classList.remove(inactive);
+      header.classList.remove(dNone);
+  } else if(currentScroll > 100 && currentScroll < 199 ){
     header.classList.add(inactive);
     header.classList.remove(toggleClass);
-  }
+    header.classList.remove(dNone);
+  } else if(currentScroll<99 ) {
+      header.classList.remove(inactive);
+      header.classList.remove(toggleClass);
+      header.classList.add(dNone);
+    //   header.classList.add(dNone);
+  } 
   animation('.slide-wraper-right')
   animation('.slide-wraper-left')
   animation('.wraper-animated')
