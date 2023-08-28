@@ -54,7 +54,7 @@ window.addEventListener("scroll", () => {
   } else if(currentScroll<99 ) {
       header.classList.remove(inactive);
       header.classList.remove(toggleClass);
-      header.classList.add(dNone);
+    //   header.classList.add(dNone);
     //   header.classList.add(dNone);
   } 
   animation('.slide-wraper-right')

@@ -830,6 +830,16 @@ margin-bottom: 55px;
   left: -50vw;
   transition: 1s;
 }
+.animate-right-img {
+  position: relative;
+  right: -50vw;
+  transition: 1s;
+}
+.animate-left-img {
+  position: relative;
+  left: -50vw;
+  transition: 1s;
+}
 .slide-top {
   position: relative;
   top: -10vw;
@@ -864,6 +874,19 @@ margin-bottom: 55px;
   opacity: 1;
   /* transform: translateY(0) */
 }
+.wraper-animated.active .animate-left-img {
+  transition: 1s;
+  left: 0;
+  
+}
+.wraper-animated.active .animate-left-img {
+  transition: 1s;
+  left: 0;
+}
+.wraper-animated.active .animate-right-img {
+  transition: 1s;
+  right: 0;
+}
 .page-header.inactive{
   position: relative;
   top: -10vw;
@@ -880,7 +903,7 @@ margin-bottom: 55px;
     top: 0vw;
     position: fixed;
     width: 100vw;
-    z-index: 10000;
+    z-index: 1000;
     opacity: 1;
   }
 }

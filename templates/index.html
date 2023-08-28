@@ -70,7 +70,7 @@
       crossorigin="anonymous"></script>
 
     <!-- ---------NAVBAR------------ -->
-    <div class="nav-container page-header img-z-index d-none">
+    <div class="nav-container page-header img-z-index">
       <nav class="navbar navbar-expand-sm navbar-light " id="neubar">
         <div class="container-fluid px-5">
           <a id="logo" href="index.html">
@@ -545,11 +545,11 @@
 
     <!-- -----------------------------Section Gateway (finalized)------------------------ -->
 
-    <section id="sec-gateway" class="section-padding-tb mt-3 text-center">
+    <section id="sec-gateway" class="section-padding-tb mt-3 text-center wraper-animated">
       <div
         class="container-fluid d-flex align-items-center justify-content-center">
         <div class="row">
-          <div class="col-md-2 p-0">
+          <div class="col-md-2 p-0 animate-left-img">
             <img
               class="pink-flower-left w-100"
               src="{{url_for('static', filename= 'images/flower-pink.png')}}"
@@ -573,7 +573,7 @@
             </p>
           </div>
 
-          <div class="col-md-2 p-0 align-self-end">
+          <div class="col-md-2 p-0 align-self-end animate-right-img">
             <img
               class="blue-flower-right"
               src="{{url_for('static', filename= 'images/flower-blue.png')}}"
