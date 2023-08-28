@@ -867,14 +867,21 @@ margin-bottom: 55px;
 .page-header.inactive{
   position: relative;
   top: -10vw;
+  opacity: 0;
+  /* transition: top 1s ease,  opacity 1s ease; */
+}
+.d-none {
+  display: none;
 }
 
 .page-header.is-sticky {
+
     transition: 1s;
     top: 0vw;
     position: fixed;
     width: 100vw;
     z-index: 10000;
+    opacity: 1;
   }
 }
 
