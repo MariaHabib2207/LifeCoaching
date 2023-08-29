@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect,  url_for
 import requests
 from flask_mail import Mail, Message
 import stripe
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from datetime import datetime
+
+
 
 # Create the Flask app instance
 app = Flask(__name__)
@@ -15,38 +18,28 @@ app.config['MAIL_PORT'] = 587
 app.config['MAIL_USERNAME'] = 'mariahabib2219@gmail.com'
 app.config['MAIL_PASSWORD'] = 'jdUq7VgnB2fcTJhS'
 app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
 stripe.api_key = 'sk_test_51Nhx76L1PTlx4hpyJFwk2JxUkQdXXOTpIiEjkY2bOirQaAAISoBxIjszf0C8hyNH4BIwC1dEhUN4O9dukA7wE1TN00cMWvhPR3'
 YOUR_DOMAIN = 'http://localhost:5000'
 app.secret_key = 'your_secret_key_here'
 
-# Define a route and a view function
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
+##### appointment class ####################
+
+class Appointment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    full_name = db.Column(db.String)
+    email = db.Column(db.String)
+    status = db.Column(db.String)
+    payment_status = db.Column(db.String)
+    date =  db.Column(db.DateTime)
 
 
-@app.route('/checkout', methods=['POST'])
-def checkout():
-    email= request.form['email']
 
-    response = requests.post(
-        'https://api.mailgun.net/v3/sandboxce97a1b98496416d9f26ad2772e878ff.mailgun.org/messages',
-        auth=("api", "3e2df77fa300f4e6a5c090d66663f14c-f0e50a42-307e6b08"),
-        data={
-            "from": "Excited User <mariahabib2219@gmail.com>",
-            "to": email,
-            "subject": "Contact",
-            "text": f"Your appointment has been booked"
-        },
-        verify=False
-        )
-        
-    if response.status_code == 200:
-            flash("Email Sent")
-    else:
-            flash("Email Sending Failed")
+
+###########send mail function ####################
+@app.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
     try:
         checkout_session = stripe.checkout.Session.create(
             line_items=[
@@ -63,48 +56,124 @@ def checkout():
     except Exception as e:
         return str(e)
 
-
-
     return redirect(checkout_session.url, code=303)
+
+###########send mail function ####################
+def send_mail(method, email, full_name, message, subject):
+    msg = Message(subject, sender='mariahabib2219@gmail.com', recipients=[email])
+    msg.body = message
+    mail.send(msg)
+    
+    if method == "checkout":
+        # Call the create_checkout_session function after sending the email
+        create_checkout_session()
+
+
+# Route and view function for booking an appointment
+@app.route('/create_appointment', methods=['POST'])
+def create_appointment():
+    full_name = request.form['full_name']
+    email = request.form['email']
+    date_str = request.form['date']
+    if date_str:
+        date = datetime.strptime(date_str, '%d / %B / %Y')
+    else:
+        date = datetime.now()
+
+    new_appointment = Appointment(
+        full_name=full_name,
+        email=email,
+        status="Pending",
+        payment_status="Unpaid",
+        date=date
+    )
+
+    db.session.add(new_appointment)
+    db.session.commit()
+
+    # Send email to user
+    message = f"{full_name} Your appointment has been booked for {date}"
+    subject = "Appointment Booked"
+    method = "checkout"
+    send_mail(method, email, full_name, message, subject)
+    return create_checkout_session()
+
+
+
+
+##### edit  appointment and admin view ####################
+
+@app.route('/edit_appointment/<int:appointment_id>', methods=['GET', 'POST'])
+def edit_appointment(appointment_id):
+    appointment = Appointment.query.get(appointment_id)
+
+    if request.method == 'POST':
+        appointment.full_name = request.form['full_name']
+        appointment.email = request.form['email']
+        appointment.status = request.form['appointment_status']
+        appointment.payment_status = request.form['appointment_payment_status']
+        
+        db.session.commit()
+        
+        return redirect(url_for('admin_view'))
+    
+    return render_template('edit_appointment.html', appointment=appointment)
+
+@app.route('/admin_view', methods=['GET', 'POST'])
+def admin_view():
+    appointments = Appointment.query.all()
+    if request.method == 'POST':
+        # Handle delete and update actions
+        if request.form['action'] == 'delete':
+            appointment_id = int(request.form['appointment_id'])
+            appointment = Appointment.query.get(appointment_id)
+            if appointment:
+                db.session.delete(appointment)
+                db.session.commit()
+        # Handle other actions like update
+        return redirect(url_for('admin_view'))
+    return render_template('admin_view.html', appointments=appointments)
+
+
+
+
+
+##### rendering main index page ####################
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
+
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
+
+
+
+
 
 
 # Define a route and view function for sending email
-@app.route('/send-mail', methods=['POST'])
-def send_mail():
+
+@app.route('/contact_us', methods=['POST'])
+def contact_us():
+    method = "contact"
     full_name = request.form['full_name']
-    message = request.form['address']
-    msg = Message('Hello from the other side!', sender =   'mariahabib2219@gmail.com', recipients = ['mariahabib2219@gmail.com'])
-    msg.body = "hey, sending out email from flask!!!"
+    email = request.form['email']
+    admin_email = "mariahabib2219@gmail.com"
+    user_message = request.form['message']  # Corrected the key to 'message'
+    for_message = f"Message from {email}, {user_message}"  # Corrected the message formatting
+    subject = "Contact Us"
+    msg = Message(subject, sender=email, recipients=[admin_email])
+    msg.body = for_message
     mail.send(msg)
-    try:
-        response = requests.post(
-            'https://api.mailgun.net/v3/sandboxce97a1b98496416d9f26ad2772e878ff.mailgun.org/messages',
-            auth=("api", "3e2df77fa300f4e6a5c090d66663f14c-f0e50a42-307e6b08"),
-            data={
-                "from": "Excited User <mariahabib2219@gmail.com>",
-                "to": ["mariahabib2219@gmail.com"],
-                "subject": "Contact",
-                "text": f"Email form: {full_name}, Message - {message}"
-            },
-            verify=False
-        )
-        
-        if response.status_code == 200:
-            flash("Email Sent")
+    return hello_world('/')
 
-    except Exception as e:
-        flash("An error occurred while sending the email")
-    
-    return render_template('index.html')
 
-@app.route('/book_appointment', methods=['POST'])
-def book_appointment():
- 
-    return redirect('/checkout')
- 
+
+
       
    ## redirect to checkout functionheckout
 
 # Run the app
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

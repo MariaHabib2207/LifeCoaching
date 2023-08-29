@@ -111,7 +111,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="btn btn-custom bg-green btn-hover-green" href="#">Store</a>
+                <a class="btn btn-custom bg-green btn-hover-green" href="{{url_for ('shop')}}">Store</a>
               </li>
             </ul>
           </div>
@@ -281,7 +281,7 @@
         <div class="row goals-sec-pink bg-pink">
           <div class="col-md-12">
             <form
-              action="{{ url_for('checkout') }}"
+              action="{{ url_for('create_appointment') }}"
               method="post"
               id="contact-form">
             <div class="row contact-cont pt-0">
@@ -795,7 +795,7 @@
       <div class="row contact-sec-pink bg-pink">
         <div class="col-md-12">
           <form
-            action="{{ url_for('send_mail') }}"
+            action="{{ url_for('contact_us') }}"
             method="post"
             id="contact-form-b">
             <div class="row">
@@ -814,7 +814,7 @@
                 <div class="form-group">
                   <input
                     type="text"
-                    name="username"
+                    name="email"
                     required="required"
                     placeholder="Email" />
                 </div>
@@ -835,7 +835,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <textarea
-                    name="address"
+                    name="message"
                     placeholder="Write your message..."></textarea>
                 </div>
               </div>
