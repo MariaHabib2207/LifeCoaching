@@ -68,6 +68,7 @@ li {
 
 .btn-custom {
   display: inline-block;
+  width: 180px;
   margin-bottom: 0;
   font-size: 22px !important;
   font-weight: 500;
@@ -243,7 +244,7 @@ li {
 
 .blue-flower-right {
   margin-top: 40px;
-  margin-right: -38%;
+  margin-right: -45%;
 }
 
 /* --------------------- Section Program Works-------------------- */
@@ -273,6 +274,11 @@ li {
 }
 
 /* -----------------------------Section Appointment Booking and  Contact Us--------------------------- */
+#book-appointment .btn-green-bg:hover{
+  background-color: #ffffff;
+  border: 2px solid var(--secondary-color);
+}
+
 
 #contact-info .custom-card i.fas {
   font-size: 60px;
@@ -368,6 +374,9 @@ input[type="number"] {
   border: none !important;
 }
 
+.diamond-card:hover{
+
+}
 .diamond-card:before {
   /* content: "";
   position: absolute;

@@ -26,6 +26,9 @@ app.secret_key = 'your_secret_key_here'
 def hello_world():
     return render_template('index.html')
 
+    @app.route('/shop')
+    def shop():
+        return render_template('shop.html')
 
 @app.route('/checkout', methods=['POST'])
 def checkout():
