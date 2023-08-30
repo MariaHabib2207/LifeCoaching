@@ -149,8 +149,8 @@
                             <div class="form-group">
                               <label for="address">Payment Status:</label>
                               <select name="payment_status">
-                                <option value="pending" {% if appointment.status == 'pending' %}selected{% endif %}>Pending</option>
-                                <option value="confirmed" {% if appointment.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                                <option value="pending" {% if appointment.payment_status == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="confirmed" {% if appointment.payment_status == 'confirmed' %}selected{% endif %}>Confirmed</option>
                             </select>
                           </div>
                         </div>
@@ -163,7 +163,6 @@
                                  type="hidden"
                                  name="date"
                                  id="select_date"
-                                 required="required"
                                  class="selecteShipDate"
                                  placeholder="Pick Appointment Date" />
                              <!-- </div> -->
