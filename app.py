@@ -34,9 +34,9 @@ class Appointment(db.Model):
     payment_status = db.Column(db.String)
     date =  db.Column(db.DateTime)
 
-    @app.route('/shop')
-    def shop():
-        return render_template('shop.html')
+    # @app.route('/shop')
+    # def shop():
+    #     return render_template('shop.html')
 
 
 

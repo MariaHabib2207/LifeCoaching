@@ -488,6 +488,8 @@ input[type="number"] {
   border: none;
   box-shadow: 0px 0px 5px rgba(119, 119, 119, 0.75) !important;
   padding-top: 40px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .datepicker td,
@@ -539,7 +541,8 @@ input[type="number"] {
 .custom-dropdown .datepicker-days table {
   /* margin: 9px 45px !important; */
   width: 100%;
-  font-size: 24px;
+  font-size: 20px;
+  color: #454545;
 }
 .custom-dropdown .datepicker-months table {
   /* margin: 9px 45px !important; */
@@ -558,7 +561,9 @@ input[type="number"] {
   width: 100%;
 }
 .custom-dropdown .datepicker-days table thead tr:nth-child(2){
-  background: #d8de96;
+  border-radius: 0px !important;
+    height: 50px !important;
+    background: #d8de96;
 }
 
 /* -----------------------Footer---------------------- */
