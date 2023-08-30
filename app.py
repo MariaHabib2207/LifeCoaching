@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect,  url_for
+from flask import Flask, render_template, request, flash, redirect,  url_for,session
 import requests
 from flask_mail import Mail, Message
 import stripe
@@ -110,8 +110,8 @@ def edit_appointment(appointment_id):
     if request.method == 'POST':
         appointment.full_name = request.form['full_name']
         appointment.email = request.form['email']
-        appointment.status = request.form['appointment_status']
-        appointment.payment_status = request.form['appointment_payment_status']
+        appointment.status = request.form['status']
+        appointment.payment_status = request.form['payment_status']
         
         db.session.commit()
         
@@ -121,7 +121,11 @@ def edit_appointment(appointment_id):
 
 @app.route('/admin_view', methods=['GET', 'POST'])
 def admin_view():
+    if 'admin_authenticated' not in session or not session['admin_authenticated']:
+        return redirect(url_for('login'))
+
     appointments = Appointment.query.all()
+
     if request.method == 'POST':
         # Handle delete and update actions
         if request.form['action'] == 'delete':
@@ -132,9 +136,28 @@ def admin_view():
                 db.session.commit()
         # Handle other actions like update
         return redirect(url_for('admin_view'))
+
     return render_template('admin_view.html', appointments=appointments)
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if 'admin_authenticated' in session and session['admin_authenticated']:
+        return redirect(url_for('admin_view'))
+
+    if request.method == 'POST':
+        # Perform authentication check (replace this with your actual authentication logic)
+        username = request.form['username']
+        password = request.form['password']
+
+        if username == 'admin' and password == '123456':
+            session['admin_authenticated'] = True
+            return redirect(url_for('admin_view'))
+        else:
+            error = True
+            return render_template('login.html', error=error)
+
+    return render_template('login.html')  # Create the login template
 
 
 
