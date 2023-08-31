@@ -15,8 +15,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 app.config['MAIL_SERVER']='smtp-relay.brevo.com'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'mariahabib2219@gmail.com'
-app.config['MAIL_PASSWORD'] = 'jdUq7VgnB2fcTJhS'
+app.config['MAIL_USERNAME'] = 'info@coachingstudiony.com'
+app.config['MAIL_PASSWORD'] = 'XqDg9E2zWw70ZKrC'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
@@ -63,7 +63,7 @@ def create_checkout_session():
 
 ###########send mail function ####################
 def send_mail(method, email, full_name, message, subject):
-    msg = Message(subject, sender='mariahabib2219@gmail.com', recipients=[email])
+    msg = Message(subject, sender='info@coachingstudiony.com', recipients=[email])
     msg.body = message
     mail.send(msg)
     
@@ -185,14 +185,14 @@ def contact_us():
     method = "contact"
     full_name = request.form['full_name']
     email = request.form['email']
-    admin_email = "mariahabib2219@gmail.com"
+    admin_email = "info@coachingstudiony.com"
     user_message = request.form['message']  # Corrected the key to 'message'
     for_message = f"Message from {email}, {user_message}"  # Corrected the message formatting
     subject = "Contact Us"
     msg = Message(subject, sender=email, recipients=[admin_email])
     msg.body = for_message
     mail.send(msg)
-    return hello_world('/')
+    return hello_world()
 
 
 
