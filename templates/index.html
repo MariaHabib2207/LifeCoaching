@@ -57,7 +57,7 @@
     <nav class="navbar navbar-expand-sm navbar-light " id="neubar">
       <div class="container-fluid px-5">
         <a id="logo" href="{{url_for ('hello_world')}}">
-          <img src="{{ url_for('static', filename='images/coaching-logo.png') }}" alt="Logo" />
+          <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" />
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -75,13 +75,14 @@
               <a class="nav-link" href="{{url_for ('hello_world')}}#book-appointment">Book Appointment</a>
             </li>
 
-            
+
             <li class="nav-item">
               <a class="nav-link" href="{{url_for ('hello_world')}}#sec-about">About</a>
             </li>
 
             <li class="nav-item px-2">
-              <a class="btn btn-custom bg-pink btn-hover-pink" href="{{url_for ('hello_world')}}#sec-contact">Contact</a>
+              <a class="btn btn-custom bg-pink btn-hover-pink"
+                href="{{url_for ('hello_world')}}#sec-contact">Contact</a>
             </li>
 
             <li class="nav-item px-2">
@@ -205,15 +206,17 @@
 
     <div class="row mb-5">
       <div class="col-md-4  justify-content-start align-items-center text-center">
-        <img class="w-auto" src="
-             {{url_for('static', filename= 'images/divider-pink.png')}}" alt />
+        <!-- <img class="w-auto" src="
+             {{url_for('static', filename= 'images/divider-pink.png')}}" alt /> -->
       </div>
 
-      <div class="col-md-4"><h2 class="text-center">Book Your Appointment Now</h2></div>
+      <div class="col-md-4">
+        <h2 class="text-center">Book Your Appointment Now</h2>
+      </div>
 
       <div class="col-md-4">
-        <img class="w-auto" src="
-             {{url_for('static', filename= 'images/divider-pink.png')}}" alt />
+        <!-- <img class="w-auto" src="
+             {{url_for('static', filename= 'images/divider-pink.png')}}" alt /> -->
       </div>
     </div>
 
@@ -283,22 +286,24 @@
             </div>
           </form>
         </div>
+
+     <div style="position: relative;"> <img class="appoint-leaf-img" src="/static/images/appoint-leave.png" alt=""></div>  
       </div>
     </div>
   </section>
   <!-- --------------------------Section About------------------------ -->
 
-  <section id="sec-about" class="bg-green section-padding-tb">
-    <div class=" wraper-animated">
-    <div class="slide-top">
-      <h2 class="text-center">About The Coaching Studio NY</h2>
-      <p class="text-center">
-        First steps on a transformational journey to a relaxed state of mind and
-        happy life.
-      </p>
-    </div>
+  <section id="sec-about" class="bg-green section-padding-tb  wraper-animated">
+    <div class="">
+      <div class="slide-top">
+        <h2 class="text-center">About The Coaching Studio NY</h2>
+        <p class="text-center">
+          First steps on a transformational journey to a relaxed state of mind and
+          happy life.
+        </p>
+      </div>
 
-  </div>
+    </div>
 
     <div class="container-fluid mt-5 pt-5">
       <div class="row">
@@ -421,17 +426,20 @@
         </div>
 
         <div class="col-md-10 px-4">
-          <h2 class="mb-3 slide-top">You're entitled to reach your goals!</h2>
 
-          <p>
-            Let’s picture a scenario together where you're no longer letting
-            fear, other people's viewpoints, or any kind of inner critic get
-            in the way of your aspirations; instead, you wake up every morning
-            inspired and enthusiastic, ready to take on the world.<br />
-            That sounds great, but how do you get there?<br />
-            The Coaching Studio NY is the solution.<br />
-            You just need to reach for the stars.
-          </p>
+          <div class="slide-top">
+            <h2 class="mb-3">You're entitled to reach your goals!</h2>
+
+            <p>
+              Let’s picture a scenario together where you're no longer letting
+              fear, other people's viewpoints, or any kind of inner critic get
+              in the way of your aspirations; instead, you wake up every morning
+              inspired and enthusiastic, ready to take on the world.<br />
+              That sounds great, but how do you get there?<br />
+              The Coaching Studio NY is the solution.<br />
+              You just need to reach for the stars.
+            </p>
+          </div>
         </div>
 
         <div class="col-md-1"></div>
@@ -483,20 +491,16 @@
 
   <!-- ----------------------------Section Program Works (finalized)--------------------- -->
 
-  <section id="program-works" class="bg-green section-padding-tb wraper-animated active">
+  <section id="program-works" class="bg-green section-padding-tb wraper-animated">
 
-    <div class="container">
-
-      <div class="">
-        <div class="slide-top">
+    <div class="container slide-top">
+        <div class="">
           <h2 class="text-center">How The Coaching Studio Program Works</h2>
           <p class="text-center">
             Feel the transforming power of the coaching program as you put your
             ideas into action <br> and make positive changes in your life.
           </p> <br>
         </div>
-    
-      </div>
 
       <!-- <div class="wraper-animated active">
 
@@ -591,10 +595,10 @@
 
   <!-- ----------------------------Our Latest News------------------------- -->
 
-  <section class="section-padding-tb" id="latest-news">
+  <section class="section-padding-tb  wraper-animated" id="latest-news">
     <div class="container mt-4">
 
-      <div class="text-center mb-4">
+      <div class="text-center mb-4 slide-top">
         <h2>Our Latest</h2>
       </div>
       <div class="row mt-5">
@@ -603,7 +607,8 @@
 
             <div class="bg-image hover-zoom">
 
-              <img src="{{url_for('static', filename= 'images/latest-news-1.jpg')}}" class="card-img-top hover-zoom" alt="Image 1" />
+              <img src="{{url_for('static', filename= 'images/latest-news-1.jpg')}}" class="card-img-top hover-zoom"
+                alt="Image 1" />
 
             </div>
 
@@ -681,7 +686,9 @@
   <!-- -------------------Life Coaching Code------------------- -->
   <!-- ---------------------------Section Contact Us------------------ -->
 
-  <section id="sec-contact" class="text-center bg-green section-padding-tb">
+  <section id="sec-contact" class="text-center bg-green section-padding-tb  wraper-animated">
+
+    <div class="slide-top">
     <h2 class="text-center mb-5">Contact Us</h2>
     <p class="text-center">
       Your journey is important to us, and we can't wait to hear from you.
@@ -691,6 +698,7 @@
       that will lead towards development,<br />
       transformation, and empowerment together.
     </p>
+  </div>
   </section>
 
   <div class="container d-flex align-items-center justify-content-center">
@@ -783,8 +791,8 @@
           <div class="col-md-2"></div>
 
           <div class="col-md-8 text-center px-5">
-            <div class="mb-3">
-              <img src="{{url_for('static', filename= 'images/footer-logo.png')}}" alt />
+            <div class="mb-3 text-center">
+              <img class="w-50" src="{{url_for('static', filename= 'images/footer-logo.svg')}}" alt />
             </div>
 
             <p class="footer-text">
@@ -820,13 +828,12 @@
   <!-- --------------------Appointment booking datepicker calender------------------- -->
 
   <script>
+    var dateToday = new Date();
     $(document).ready(function () {
       $input = $("#select_date");
       $input.datepicker({
         format: "dd / MM / yyyy",
         orientation: "auto",
-        //   containerClass: "custom-dropdown",
-        //   container: $input
         container: ".date-container",
         pickerPosition: {
           open: "bottom",
@@ -834,49 +841,74 @@
           horizontal: "right", // Adjust the horizontal position
           offset: 12, // Offset by 12 pixels to the right
         },
+        startDate: new Date(), // Set the start date to today
+        todayHighlight: true,
+        initialDate: new Date(),
+        minDate: dateToday,
       });
       $input.data("datepicker").hide = function () { };
       $input.datepicker("show");
+      $input.val(getFormattedDate(new Date()));
+
+      $(".datepicker .prev").removeClass("disabled");
+      $(".datepicker .prev").css('background', '#d8de96');
+      $(".datepicker .today").addClass('active');
       $(".datepicker").addClass("custom-dropdown");
     });
+
+    function getFormattedDate(date) {
+  var day = date.getDate();
+  var monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  var month = monthNames[date.getMonth()];
+  var year = date.getFullYear();
+
+  return (
+    (day < 10 ? "0" : "") + day + " / " +
+    month + " / " +
+    year
+  );
+}
   </script>
 
 
-<!-- --------------------Sliding Animation---------------------- -->
+  <!-- --------------------Sliding Animation---------------------- -->
 
-<script>
-  const cards = document.querySelectorAll('.sliding-card');
-  const windowHeight = window.innerHeight;
-  const delayBetweenCards = 1000; // Adjust as needed (in milliseconds)
+  <script>
+    const cards = document.querySelectorAll('.sliding-card');
+    const windowHeight = window.innerHeight;
+    const delayBetweenCards = 1000; // Adjust as needed (in milliseconds)
 
-  // Function to check if an element is in the viewport
-  function isInViewport(element) {
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
       const rect = element.getBoundingClientRect();
       return (
-          rect.top >= 0 &&
-          rect.top <= windowHeight
+        rect.top >= 0 &&
+        rect.top <= windowHeight
       );
-  }
+    }
 
-  // Function to add animation class to cards on scroll with delays
-  function animateCardsOnScroll() {
+    // Function to add animation class to cards on scroll with delays
+    function animateCardsOnScroll() {
       let delay = 0;
       cards.forEach(card => {
-          if (isInViewport(card)) {
-              setTimeout(() => {
-                  card.classList.add('card-visible');
-              }, delay);
-              delay += delayBetweenCards;
-          }
+        if (isInViewport(card)) {
+          setTimeout(() => {
+            card.classList.add('card-visible');
+          }, delay);
+          delay += delayBetweenCards;
+        }
       });
-  }
+    }
 
-  // Initial animation on page load
-  animateCardsOnScroll();
+    // Initial animation on page load
+    animateCardsOnScroll();
 
-  // Event listener for scrolling
-  window.addEventListener('scroll', animateCardsOnScroll);
-</script>
+    // Event listener for scrolling
+    window.addEventListener('scroll', animateCardsOnScroll);
+  </script>
 </body>
 
 </html>

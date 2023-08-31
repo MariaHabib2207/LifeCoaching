@@ -357,6 +357,11 @@ li {
   border: 2px solid var(--secondary-color);
 }
 
+.appoint-leaf-img{
+  position: absolute;
+  bottom: -18px;
+    left: 20px;
+}
 
 #contact-info .custom-card i.fas {
   font-size: 60px;
@@ -696,19 +701,45 @@ font-weight: 500;
   color: #000000;
 }
 
+@keyframes shop-slide-top {
+  from {
+      transform: translateY(-100%);
+  }
+  to {
+      transform: translateY(0);
+  }
+}
+
+/* Apply the slide-top animation to the heading */
+.shop-head.shop-slide-top {
+  animation: slide-top 5s ease; /* Adjust the animation duration as needed */
+}
+
 .btn-black {
   background-color: #020202;
   font-family: "Jost";
-  font-size: 25px;
+  font-size: 26px;
+  width: 250px !important;
   color: #ffffff;
-  padding: 16px 40px !important;
-  font-weight: 400;
+  padding: 21px 35px !important;
+  font-weight: 500;
+  border: 2px solid #020202;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.btn-black:hover {
+  background-color: #ffffff;
+color: #020202;
+border: 2px solid #020202;
+font-weight: 500;
+
 }
 
 .shop-para {
-  font-size: 20px;
+  font-size: 16px;
   margin-top: 50px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* X-Small devices (portrait phones, less than 576px) */
