@@ -861,7 +861,7 @@ margin-bottom: 55px;
   width: 150px;
 }
 .slide-wraper-right.active .right-slide-text {
-  transition: 1s;
+  transition: 0.5s;
   right: 0;
 } 
 .slide-wraper-left.active .slide-left-img {
@@ -899,7 +899,7 @@ margin-bottom: 55px;
 
 .page-header.is-sticky {
 
-    transition: 1s;
+    transition: 0.5s;
     top: 0vw;
     position: fixed;
     width: 100vw;

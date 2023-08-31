@@ -50,7 +50,8 @@
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
-        <link rel="stylesheet" href="https://floridakoshervillas.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.5.1">
+      <link rel="stylesheet"
+        href="https://floridakoshervillas.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.5.1">
 
       <link
         rel="stylesheet"
@@ -93,7 +94,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href>Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
 
               <li class="nav-item">
@@ -111,7 +112,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="btn btn-custom bg-green btn-hover-green" href="#">Store</a>
+                <a class="btn btn-custom bg-green btn-hover-green" href="/shop">Store</a>
               </li>
             </ul>
           </div>
@@ -235,21 +236,23 @@
             <div class="px-4">
               <h2>My Mission</h2>
               <div class="right-slide-text">
-              <p>
-                Life coaching is the best option for you if you want to achieve
-                your goals and perform at your best! Are you feeling stuck and
-                want to make changes? Coaching inspires people to make positive
-                changes in their life and helps you reach your goals.
-              </p>
-              <br />
+                <p>
+                  Life coaching is the best option for you if you want to
+                  achieve
+                  your goals and perform at your best! Are you feeling stuck and
+                  want to make changes? Coaching inspires people to make
+                  positive
+                  changes in their life and helps you reach your goals.
+                </p>
+                <br />
 
-              <p >
-                Coaching foster a culture of growth, resiliency, and
-                authenticity. We are dedicated to serving as a beacon of hope
-                for those seeking to rewrite their tales and find success that
-                lasts.
-              </p>
-            </div>
+                <p>
+                  Coaching foster a culture of growth, resiliency, and
+                  authenticity. We are dedicated to serving as a beacon of hope
+                  for those seeking to rewrite their tales and find success that
+                  lasts.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -258,16 +261,16 @@
     <!-- ---------------------------Section Book Appointment------------------ -->
 
     <section id="book-appointment" class="text-center section-padding-tb">
-      
 
-      <div class="col-md-8 offset-2 d-flex justify-content-start align-items-center text-center">
+      <div
+        class="col-md-8 offset-2 d-flex justify-content-start align-items-center text-center">
         <div>
           <img class="w-auto"
             src="
              {{url_for('static', filename= 'images/divider-pink.png')}}"
             alt />
         </div>
-        
+
         <h2 class="text-center mb-5">Book Your Appointment Now</h2>
         <div>
           <img class="w-auto"
@@ -284,7 +287,7 @@
               action="{{ url_for('checkout') }}"
               method="post"
               id="contact-form">
-            <div class="row contact-cont pt-0">
+              <div class="row contact-cont pt-0">
                 <div class="col-md-5">
                   <ul>
                     {% with messages = get_flashed_messages() %} {% if messages
@@ -341,16 +344,16 @@
                 </div>
 
                 <div class="col-md-7">
-                   <div class="container date-container">
+                  <div class="container date-container">
                     <!-- <div class="col-md-6 offset-2"> -->
-                      <div class="form-group">
-                        <input
-                          type="hidden"
-                          name="date"
-                          id="select_date"
-                          required="required"
-                          class="selecteShipDate"
-                          placeholder="Pick Appointment Date" />
+                    <div class="form-group">
+                      <input
+                        type="hidden"
+                        name="date"
+                        id="select_date"
+                        required="required"
+                        class="selecteShipDate"
+                        placeholder="Pick Appointment Date" />
                       <!-- </div> -->
                     </div>
                   </div>
@@ -372,14 +375,15 @@
     </section>
     <!-- --------------------------Section About------------------------ -->
 
-    <section id="sec-about" class="bg-green section-padding-tb wraper-animated">
-      <div class="slide-top">
-      <h2 class="text-center">About The Coaching Studio NY</h2>
-      <p class="text-center">
-        First steps on a transformational journey to a relaxed state of mind and
-        happy life.
-      </p>
-    </div>
+    <section id="sec-about" class="bg-green section-padding-tb">
+      <div class="wraper-animated">
+        <h2 class="text-center">About The Coaching Studio NY</h2>
+        <p class="text-center slide-top">
+          First steps on a transformational journey to a relaxed state of mind
+          and
+          happy life.
+        </p>
+      </div>
 
       <div class="container-fluid mt-5 pt-5">
         <div class="row">
@@ -545,7 +549,8 @@
 
     <!-- -----------------------------Section Gateway (finalized)------------------------ -->
 
-    <section id="sec-gateway" class="section-padding-tb mt-3 text-center wraper-animated">
+    <section id="sec-gateway"
+      class="section-padding-tb mt-3 text-center wraper-animated">
       <div
         class="container-fluid d-flex align-items-center justify-content-center">
         <div class="row">
@@ -590,13 +595,15 @@
 
     <!-- ----------------------------Section Program Works (finalized)--------------------- -->
 
-    <section id="program-works" class="bg-green section-padding-tb">
-      <div class="container">
+    <section id="program-works" class="bg-green section-padding-tb wraper-animated">
+      <div class="container ">
+        <div class="slide-top">
         <h2 class="text-center mb-3">How The Coaching Studio Program Works</h2>
-        <p class="text-center">
+        <p class="text-center ">
           Feel the transforming power of the coaching program as you put your
           ideas into action and make positive changes in your life.
         </p>
+      </div>
 
         <div class="row mt-5">
           <div class="col-md-4">
@@ -940,13 +947,12 @@
     <!-- --------------------Appointment booking datepicker calender------------------- -->
 
     <script>
+      var dateToday = new Date();
       $(document).ready(function () {
         $input = $("#select_date");
         $input.datepicker({
           format: "dd / MM / yyyy",
           orientation: "auto",
-          //   containerClass: "custom-dropdown",
-          //   container: $input
           container: ".date-container",
           pickerPosition: {
             open: "bottom",
@@ -954,11 +960,31 @@
             horizontal: "right", // Adjust the horizontal position
             offset: 12, // Offset by 12 pixels to the right
           },
+          startDate: new Date(), // Set the start date to today
+          todayHighlight: true, 
+          initialDate: new Date(),
+          minDate: dateToday,
         });
         $input.data("datepicker").hide = function () {};
         $input.datepicker("show");
+        $input.val(getFormattedDate(new Date()));
+
+        $(".datepicker .prev").removeClass("disabled");
+        $(".datepicker .prev").css('background','#d8de96');
+        $(".datepicker .today").addClass('active');
         $(".datepicker").addClass("custom-dropdown");
       });
+      function getFormattedDate(date) {
+  var day = date.getDate();
+  var month = date.getMonth() + 1; // Months are zero-indexed
+  var year = date.getFullYear();
+
+  return (
+    (day < 10 ? "0" : "") + day + "/" +
+    (month < 10 ? "0" : "") + month + "/" +
+    year
+  );
+}
     </script>
   </body>
 </html>

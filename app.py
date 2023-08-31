@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 
 # Create the Flask app instance
 app = Flask(__name__)
+app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///appointments.db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -25,6 +26,10 @@ app.secret_key = 'your_secret_key_here'
 @app.route('/')
 def hello_world():
     return render_template('index.html')
+
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
 
 
 @app.route('/checkout', methods=['POST'])
