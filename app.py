@@ -10,6 +10,7 @@ from datetime import datetime
 
 # Create the Flask app instance
 app = Flask(__name__)
+app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///appointments.db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -37,6 +38,10 @@ class Appointment(db.Model):
     # @app.route('/shop')
     # def shop():
     #     return render_template('shop.html')
+
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
 
 
 

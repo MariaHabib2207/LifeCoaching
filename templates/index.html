@@ -10,7 +10,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Coaching Studio</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>The Coaching Studio</title>
+
+      <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous" />
+
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+        crossorigin="anonymous" />
+
+      <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        href="https://fonts.googleapis.com/css?family=Lexend Deca"
+        rel="stylesheet" />
+      <script
+        src="https://kit.fontawesome.com/a076d05399.js"
+        crossorigin="anonymous"></script>
+
+      <!-- ----------Datepicker bootstrap 5 library----------- -->
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+      <!-- -----  libraries for slider---- -->
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
+      <link rel="stylesheet"
+        href="https://floridakoshervillas.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.5.1">
+
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}" />
+    </head>
+  </head>
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
@@ -29,67 +84,56 @@
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
 
-    <!-- -----  libraries for slider---- -->
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
-    <link rel="stylesheet"
-      href="https://floridakoshervillas.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.5.1">
+    <!-- ---------NAVBAR------------ -->
+    <div class="nav-container page-header img-z-index">
+      <nav class="navbar navbar-expand-sm navbar-light " id="neubar">
+        <div class="container-fluid px-5">
+          <a id="logo" href="index.html">
+            <img
+              src="{{ url_for('static', filename='images/coaching-logo.png') }}"
+              alt="Logo" />
+          </a>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-  </head>
-</head>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-<body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
+              <li class="nav-item">
+                <a class="nav-link" href>Book Appointment</a>
+              </li>
 
-  <!-- ---------NAVBAR------------ -->
-  <div class="nav-container page-header img-z-index">
-    <nav class="navbar navbar-expand-sm navbar-light " id="neubar">
-      <div class="container-fluid px-5">
-        <a id="logo" href="{{url_for ('hello_world')}}">
-          <img src="{{ url_for('static', filename='images/coaching-logo.png') }}" alt="Logo" />
-        </a>
+              <li class="nav-item">
+                <a class="nav-link" href>About</a>
+              </li>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+              <li class="nav-item">
+                <a
+                  class="btn btn-custom bg-pink btn-hover-pink"
+                  href="login.html">Contact</a>
+              </li>
 
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{url_for ('hello_world')}}">Home</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for ('hello_world')}}#book-appointment">Book Appointment</a>
-            </li>
-
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for ('hello_world')}}#sec-about">About</a>
-            </li>
-
-            <li class="nav-item px-2">
-              <a class="btn btn-custom bg-pink btn-hover-pink" href="{{url_for ('hello_world')}}#sec-contact">Contact</a>
-            </li>
-
-            <li class="nav-item px-2">
-
-              <a class="btn btn-custom bg-green btn-hover-green" href="{{url_for ('shop')}}">Store</a>
-
-            </li>
-          </ul>
+              <li class="nav-item">
+                <a class="btn btn-custom bg-green btn-hover-green" href="/shop">Store</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
@@ -177,21 +221,24 @@
           <div class="px-4">
             <div class="right-slide-text">
               <h2>My Mission</h2>
+              <div class="right-slide-text">
+                <p>
+                  Life coaching is the best option for you if you want to
+                  achieve
+                  your goals and perform at your best! Are you feeling stuck and
+                  want to make changes? Coaching inspires people to make
+                  positive
+                  changes in their life and helps you reach your goals.
+                </p>
+                <br />
 
-              <p>
-                Life coaching is the best option for you if you want to achieve
-                your goals and perform at your best! Are you feeling stuck and
-                want to make changes? Coaching inspires people to make positive
-                changes in their life and helps you reach your goals.
-              </p>
-              <br />
-
-              <p>
-                Coaching foster a culture of growth, resiliency, and
-                authenticity. We are dedicated to serving as a beacon of hope
-                for those seeking to rewrite their tales and find success that
-                lasts.
-              </p>
+                <p>
+                  Coaching foster a culture of growth, resiliency, and
+                  authenticity. We are dedicated to serving as a beacon of hope
+                  for those seeking to rewrite their tales and find success that
+                  lasts.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -199,41 +246,51 @@
     </div>
   </section>
   <!-- ---------------------------Section Book Appointment------------------ -->
+    <section id="book-appointment" class="text-center section-padding-tb">
 
-  <section id="book-appointment" class="text-center section-padding-tb">
+      <div
+        class="col-md-8 offset-2 d-flex justify-content-start align-items-center text-center">
+        <div>
+          <img class="w-auto"
+            src="
+             {{url_for('static', filename= 'images/divider-pink.png')}}"
+            alt />
+        </div>
 
-
-    <div class="row mb-5">
-      <div class="col-md-4  justify-content-start align-items-center text-center">
-        <img class="w-auto" src="
-             {{url_for('static', filename= 'images/divider-pink.png')}}" alt />
+        <h2 class="text-center mb-5">Book Your Appointment Now</h2>
+        <div>
+          <img class="w-auto"
+            src="
+             {{url_for('static', filename= 'images/divider-pink.png')}}"
+            alt />
+        </div>
       </div>
 
-      <div class="col-md-4"><h2 class="text-center">Book Your Appointment Now</h2></div>
+      <div class="container d-flex align-items-center justify-content-center">
+        <div class="row goals-sec-pink bg-pink">
+          <div class="col-md-12">
+            <form
+              action="{{ url_for('checkout') }}"
+              method="post"
+              id="contact-form">
+              <div class="row contact-cont pt-0">
+                <div class="col-md-5">
+                  <ul>
+                    {% with messages = get_flashed_messages() %} {% if messages
+                    %} {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %} {% endif %} {% endwith %}
+                  </ul>
 
-      <div class="col-md-4">
-        <img class="w-auto" src="
-             {{url_for('static', filename= 'images/divider-pink.png')}}" alt />
-      </div>
-    </div>
-
-    <div class="container d-flex align-items-center justify-content-center">
-      <div class="row goals-sec-pink bg-pink">
-        <div class="col-md-12">
-          <form action="{{ url_for('create_appointment') }}" method="post" id="contact-form">
-            <div class="row contact-cont pt-0">
-              <div class="col-md-5">
-                <ul>
-                  {% with messages = get_flashed_messages() %} {% if messages
-                  %} {% for message in messages %}
-                  <li>{{ message }}</li>
-                  {% endfor %} {% endif %} {% endwith %}
-                </ul>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input type="text" name="full_name" required="required" placeholder="Full Name" />
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          name="full_name"
+                          required="required"
+                          placeholder="Full Name" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -263,13 +320,20 @@
                 </div>
               </div>
 
-              <div class="col-md-7">
-                <div class="container date-container">
-                  <!-- <div class="col-md-6 offset-2"> -->
-                  <div class="form-group">
-                    <input type="hidden" name="date" id="select_date" required="required" class="selecteShipDate"
-                      placeholder="Pick Appointment Date" />
-                    <!-- </div> -->
+                <div class="col-md-7">
+                  <div class="container date-container">
+                    <!-- <div class="col-md-6 offset-2"> -->
+                    <div class="form-group">
+                      <input
+                        type="hidden"
+                        name="date"
+                        id="select_date"
+                        required="required"
+                        class="selecteShipDate"
+                        placeholder="Pick Appointment Date" />
+                      <!-- </div> -->
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -288,15 +352,15 @@
   </section>
   <!-- --------------------------Section About------------------------ -->
 
-  <section id="sec-about" class="bg-green section-padding-tb">
-    <div class=" wraper-animated">
-    <div class="slide-top">
-      <h2 class="text-center">About The Coaching Studio NY</h2>
-      <p class="text-center">
-        First steps on a transformational journey to a relaxed state of mind and
-        happy life.
-      </p>
-    </div>
+    <section id="sec-about" class="bg-green section-padding-tb">
+      <div class="wraper-animated">
+        <h2 class="text-center">About The Coaching Studio NY</h2>
+        <p class="text-center slide-top">
+          First steps on a transformational journey to a relaxed state of mind
+          and
+          happy life.
+        </p>
+      </div>
 
   </div>
 
@@ -445,12 +509,18 @@
 
   <!-- -----------------------------Section Gateway (finalized)------------------------ -->
 
-  <section id="sec-gateway" class="section-padding-tb mt-3 text-center wraper-animated">
-    <div class="container-fluid d-flex align-items-center justify-content-center">
-      <div class="row">
-        <div class="col-md-2 p-0 animate-left-img">
-          <img class="pink-flower-left w-100" src="{{url_for('static', filename= 'images/flower-pink.png')}}" alt />
-        </div>
+    <section id="sec-gateway"
+      class="section-padding-tb mt-3 text-center wraper-animated">
+      <div
+        class="container-fluid d-flex align-items-center justify-content-center">
+        <div class="row">
+          <div class="col-md-2 p-0 animate-left-img">
+            <img
+              class="pink-flower-left w-100"
+              src="{{url_for('static', filename= 'images/flower-pink.png')}}"
+              alt />
+          </div>
+
 
         <div class="col-md-8 px-5 slide-top">
           <h2 class="mb-3">A Gateway To Personal And Professional Growth</h2>
@@ -497,6 +567,29 @@
         </div>
     
       </div>
+    </section>
+
+    <!-- ----------------------------Section Program Works (finalized)--------------------- -->
+
+    <section id="program-works" class="bg-green section-padding-tb wraper-animated">
+      <div class="container ">
+        <div class="slide-top">
+        <h2 class="text-center mb-3">How The Coaching Studio Program Works</h2>
+        <p class="text-center ">
+          Feel the transforming power of the coaching program as you put your
+          ideas into action and make positive changes in your life.
+        </p>
+      </div>
+
+        <div class="row mt-5">
+          <div class="col-md-4">
+            <div class="card custom-card card-radius text-center p-2">
+              <div>
+                <img
+                  src="{{url_for('static', filename= 'images/number-one.png')}}"
+                  alt="vision"
+                  class="number-icon px-2" />
+              </div>
 
       <!-- <div class="wraper-animated active">
 
@@ -879,4 +972,60 @@
 </script>
 </body>
 
+
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      var baseUrl = "{{ request.scheme }}://{{ request.host }}{{ url_for('static', filename='') }}";
+    </script>
+
+    <!-- ---------------------Scripts---------------------- -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- --------------------Appointment booking datepicker calender------------------- -->
+
+    <script>
+      var dateToday = new Date();
+      $(document).ready(function () {
+        $input = $("#select_date");
+        $input.datepicker({
+          format: "dd / MM / yyyy",
+          orientation: "auto",
+          container: ".date-container",
+          pickerPosition: {
+            open: "bottom",
+            vertical: "bottom",
+            horizontal: "right", // Adjust the horizontal position
+            offset: 12, // Offset by 12 pixels to the right
+          },
+          startDate: new Date(), // Set the start date to today
+          todayHighlight: true, 
+          initialDate: new Date(),
+          minDate: dateToday,
+        });
+        $input.data("datepicker").hide = function () {};
+        $input.datepicker("show");
+        $input.val(getFormattedDate(new Date()));
+
+        $(".datepicker .prev").removeClass("disabled");
+        $(".datepicker .prev").css('background','#d8de96');
+        $(".datepicker .today").addClass('active');
+        $(".datepicker").addClass("custom-dropdown");
+      });
+      function getFormattedDate(date) {
+  var day = date.getDate();
+  var month = date.getMonth() + 1; // Months are zero-indexed
+  var year = date.getFullYear();
+
+  return (
+    (day < 10 ? "0" : "") + day + "/" +
+    (month < 10 ? "0" : "") + month + "/" +
+    year
+  );
+}
+    </script>
+  </body>
 </html>

@@ -42,7 +42,6 @@ let dNone = "d-none";
 
 window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
-  console.log(currentScroll)
   if (currentScroll > 200) {
       header.classList.add(toggleClass);
       header.classList.remove(inactive);
