@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin View</title>
+    <!-- Add your CSS and other head content here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .delete_button {
+            background-color: red !important;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin View</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Appointment Date</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Payment Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.id }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.full_name }}</td>
+                <td>{{ appointment.email }}</td>
+                <td>
+                    <select name="appointment_status">
+                        <option value="pending" {% if appointment.status == 'pending' %}selected{% endif %}>Pending</option>
+                        <option value="confirmed" {% if appointment.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                        <option value="cancelled" {% if appointment.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                    </select>
+                </td>
+                <td>{{ appointment.payment_status }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('admin_view') }}">
+                        <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                        <input type="hidden" name="appointment_date" value="{{ appointment.date }}">
+                        <input type="hidden" name="appointment_email" value="{{ appointment.email }}">
+                        <input type="hidden" name="appointment_status" value="{{ appointment.status }}">
+                        <input type="hidden" name="appointment_payment_status" value="{{ appointment.payment_status }}">
+                        <button type="submit" id="delete_button" name="action" value="delete" style="background-color: #ff0000; color: #fff;">Delete</button>
+
+
+                    </form>
+                    <form method="GET" action="{{ url_for('edit_appointment', appointment_id=appointment.id) }}">
+                      <button type="submit">Edit</button>
+                  </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('create_appointment') }}">Create Appointment</a>
+</body>
+</html>

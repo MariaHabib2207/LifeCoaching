@@ -50,7 +50,7 @@
 
             <div class="container-fluid px-5">
 
-                <a id="logo" href="index.html"><img src="images/coaching-logo.png" /> </a>
+                <a id="logo" href="{{url_for ('hello_world')}}"><img src="images/coaching-logo.png" /> </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -66,24 +66,24 @@
 
                         <li class="nav-item">
 
-                            <a class="nav-link  active" aria-current="page" href="">Home</a>
+                            <a class="nav-link  active" aria-current="page" href="{{url_for ('hello_world')}}">Home</a>
 
                         </li>
 
                         <li class="nav-item">
 
-                            <a class="nav-link " href="">Book Appointment</a>
+                            <a class="nav-link " href="{{url_for ('hello_world')}}#book-appointment">Book Appointment</a>
                         </li>
 
                         <li class="nav-item">
 
-                            <a class="nav-link" href="">About</a>
+                            <a class="nav-link" href="{{url_for ('hello_world')}}#sec-about">About</a>
 
                         </li>
 
                         <li class="nav-item">
 
-                            <a class="btn btn-custom bg-pink btn-hover-pink" href="login.html">Contact</a>
+                            <a class="btn btn-custom bg-pink btn-hover-pink" href="{{url_for ('hello_world')}}#sec-contact">Contact</a>
 
                         </li>
 

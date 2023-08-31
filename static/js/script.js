@@ -73,3 +73,28 @@ function animation(claslist) {
         }
     });
   }
+
+
+//   ------------------How program works cards sliding one by one---------------
+
+// const cards = document.querySelectorAll('.sliding-card');
+// const windowHeight = window.innerHeight;
+
+// function handleScroll() {
+//   cards.forEach((card, index) => {
+//     const cardRect = card.getBoundingClientRect();
+//     const cardMiddle = cardRect.top + cardRect.height / 2;
+
+//     if (cardMiddle < windowHeight / 2) {
+//       card.classList.add('active');
+//     } else {
+//       card.classList.remove('active');
+//     }
+//   });
+// }
+
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('resize', handleScroll);
+
+// Trigger the initial check in case some cards are already in the viewport on page load.
+handleScroll();
