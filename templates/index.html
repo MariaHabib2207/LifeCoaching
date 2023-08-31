@@ -112,7 +112,7 @@
     </div>
 
     <div class="carousel-inner h-100">
-      <div class="carousel-item active">
+      <div class="carousel-item active zoominheader">
         <img src="{{url_for('static', filename= 'images/slider-img-1.jpg')}}" class="w-100" alt="..." />
 
         <div class="carousel-caption">
@@ -124,7 +124,7 @@
         </div>
       </div>
 
-      <div class="carousel-item">
+      <div class="carousel-item zoominheader">
         <img src="{{url_for('static', filename= 'images/tree-img-2.jpg')}}" class="w-100" alt="..." />
 
         <div class="carousel-caption">
@@ -136,7 +136,7 @@
         </div>
       </div>
 
-      <div class="carousel-item">
+      <div class="carousel-item zoominheader">
         <img src="{{url_for('static', filename= 'images/cozy-sofa.jpg')}}" class="w-100" alt="..." />
 
         <div class="carousel-caption">
@@ -274,7 +274,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row mt-4">
               <div class="col-md-12">
                 <button type="submit" class="btn btn-custom bg-green btn-green-bg">
                   Book Now
@@ -591,7 +591,7 @@
 
   <!-- ----------------------------Our Latest News------------------------- -->
 
-  <section class="section-padding-tb">
+  <section class="section-padding-tb" id="latest-news">
     <div class="container mt-4">
 
       <div class="text-center mb-4">
@@ -600,7 +600,12 @@
       <div class="row mt-5">
         <div class="col-md-4 px-4">
           <div class="card popup-card card-radius custom-card">
-            <img src="{{url_for('static', filename= 'images/latest-news-1.jpg')}}" class="card-img-top" alt="Image 1" />
+
+            <div class="bg-image hover-zoom">
+
+              <img src="{{url_for('static', filename= 'images/latest-news-1.jpg')}}" class="card-img-top hover-zoom" alt="Image 1" />
+
+            </div>
 
             <div class="card-body px-4 py-5">
               <h5 class="card-title">Does life Coaching work?</h5>
@@ -677,18 +682,7 @@
   <!-- ---------------------------Section Contact Us------------------ -->
 
   <section id="sec-contact" class="text-center bg-green section-padding-tb">
-
-    <div class="wraper-animated active">
-    <div class="slide-top">
-      <h2 class="text-center">About The Coaching Studio NY</h2>
-      <p class="text-center">
-        First steps on a transformational journey to a relaxed state of mind and
-        happy life.
-      </p>
-    </div>
-
-  </div>
-    <!-- <h2 class="text-center mb-5">Contact Us</h2>
+    <h2 class="text-center mb-5">Contact Us</h2>
     <p class="text-center">
       Your journey is important to us, and we can't wait to hear from you.
     </p>
@@ -696,7 +690,7 @@
       Want to contact us or need additional details? Let's have a discussion
       that will lead towards development,<br />
       transformation, and empowerment together.
-    </p> -->
+    </p>
   </section>
 
   <div class="container d-flex align-items-center justify-content-center">
@@ -846,6 +840,43 @@
       $(".datepicker").addClass("custom-dropdown");
     });
   </script>
+
+
+<!-- --------------------Sliding Animation---------------------- -->
+
+<script>
+  const cards = document.querySelectorAll('.sliding-card');
+  const windowHeight = window.innerHeight;
+  const delayBetweenCards = 1000; // Adjust as needed (in milliseconds)
+
+  // Function to check if an element is in the viewport
+  function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+          rect.top >= 0 &&
+          rect.top <= windowHeight
+      );
+  }
+
+  // Function to add animation class to cards on scroll with delays
+  function animateCardsOnScroll() {
+      let delay = 0;
+      cards.forEach(card => {
+          if (isInViewport(card)) {
+              setTimeout(() => {
+                  card.classList.add('card-visible');
+              }, delay);
+              delay += delayBetweenCards;
+          }
+      });
+  }
+
+  // Initial animation on page load
+  animateCardsOnScroll();
+
+  // Event listener for scrolling
+  window.addEventListener('scroll', animateCardsOnScroll);
+</script>
 </body>
 
 </html>

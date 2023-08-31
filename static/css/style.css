@@ -116,6 +116,7 @@ li {
 
 #neubar .nav-item {
   margin: auto 4px;
+  position: relative;
 }
 
 #neubar .nav-item a {
@@ -127,9 +128,9 @@ li {
   font-family: "Baskerville Regular";
 }
 
-#neubar .nav-item a:hover{
+/* #neubar .nav-item a:hover{
   border-bottom: 2px solid var(--primary-color);
-}
+} */
 
 #neubar a :hover {
   color: var(--tertiary-color) !important;
@@ -152,6 +153,28 @@ li {
   color: #ffffff !important;
 }
 
+
+#neubar .nav-link {
+  position: relative;
+  overflow: hidden; 
+}
+
+/* Create the divider line (pseudo-element) */
+#neubar .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px; 
+  background-color: var(--primary-color);
+  transition: left 0.3s ease; 
+}
+
+/* Apply the effect on hover */
+#neubar .nav-link:hover::before {
+  left: 0; 
+}
 /* ----------------------------Hero Slider Section------------------------- */
 .carousel-item {
   height: 85vh;
@@ -187,6 +210,27 @@ li {
   font-weight: 300 !important;
   color: #ffffff;
 }
+
+
+/* Apply the animation to the carousel items with the "zoominheader" class */
+.carousel-item.zoominheader img {
+  animation: zoomin 8s infinite; /* Adjust the animation duration as needed */
+  transform-origin: center center; /* Set the zoom-in origin to the center */
+}
+
+
+@keyframes zoomin {
+  0% {
+      transform: scale(1); /* Start with no zoom (normal size) */
+  }
+  50% {
+      transform: scale(1.05); /* Zoom in slightly at 50% of the animation */
+  }
+  100% {
+      transform: scale(1); /* Return to normal size at the end of the animation */
+  }
+}
+
 
 /* ------------------------------Section About Coaching Studio---------------------- */
 
@@ -289,9 +333,22 @@ li {
 /* -----------------------Section Our Latest News------------------- */
 
 /* <!-- ----------------------------Our Latest News------------------------- --> */
+
+#latest-news .custom-card{
+  overflow: hidden; /* Hide any overflow to keep the image within boundaries */
+
+}
 .card-img-top {
   border-top-left-radius: 29px;
   border-top-right-radius: 29px;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+  transform-origin: center center; /* Set the transform origin to the center */
+
+}
+
+.card-img-top:hover {
+  transform: scale(1.1); /* Increase the scale for zooming in (1.2 = 120%) */
 }
 
 /* -----------------------------Section Appointment Booking and  Contact Us--------------------------- */
@@ -948,6 +1005,80 @@ margin-bottom: 55px;
     width: 100vw;
     z-index: 1000;
     opacity: 1;
+  }
+}
+
+/* Existing card styles */
+.slide-anim {
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100px); /* Start the cards above the viewport */
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Animation for sliding and fading in */
+@keyframes slide-and-fade-in {
+  0% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Cards that will be animated */
+.card.slide-anim {
+  opacity: 0;
+}
+
+.card.card-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  animation: slide-and-fade-in 0.5s ease forwards;
+}
+
+/* Individual delays for each card */
+.card.slide-anim:nth-child(2) {
+  animation-delay: 1s; /* 1 second delay for the second card */
+}
+
+.card.slide-anim:nth-child(3) {
+  animation-delay: 2s; /* 2 seconds delay for the third card */
+}
+/* -----------img on hover------------ */
+/* <div class="bg-image hover-zoom">
+  <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/053.webp" class="w-100" />
+</div> */
+
+
+
+/* -----------------Diamond Cards hover------------------------ */
+
+.diamond-card:hover {
+  box-shadow: 0 0 12px 0 #888;
+  overflow: hidden;
+  padding: 30px;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(91deg, var(--primary-color), var(--secondary-color), var(--tertiary-color));
+  animation: 4s infinite gradient;
+  background-size: 400% 400%;
+
+}
+
+@keyframes gradient {
+
+  0%,
+  100% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
   }
 }
 
