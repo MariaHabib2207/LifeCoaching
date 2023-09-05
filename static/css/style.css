@@ -1000,7 +1000,7 @@ margin-bottom: 55px;
   left: 0;
 } 
 .wraper-animated.active .slide-top {
-  transition: 0.3s;
+  transition: 1.5s;
   top: 0;
   opacity: 1;
   /* transform: translateY(0) */
@@ -1065,11 +1065,15 @@ margin-bottom: 55px;
 .card.slide-anim {
   opacity: 0;
 }
+.card.sliding-card {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
 
 .card.card-visible {
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
   opacity: 1;
-  animation: slide-and-fade-in 0.5s ease forwards;
 }
 
 /* Individual delays for each card */
@@ -1112,4 +1116,26 @@ margin-bottom: 55px;
     background-position: 100% 50%;
   }
 }
+
+.timepop-content {
+  margin-top: 5%;
+  width: 25%;
+  height: 44vh;
+  background-color: #ffffff;
+  padding: 60px;
+  border-radius: 22px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  overflow: auto;
+}
+.popup-footer {
+  margin: 16px 0px;
+}
+#timepicker {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  background: #ffffff;
+}
+
 

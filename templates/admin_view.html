@@ -86,7 +86,7 @@
             {% for appointment in appointments %}
             <tr>
                 <td>{{ appointment.id }}</td>
-                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.date.strftime('%Y-%m-%d %I:%M %p') }}</td>
                 <td>{{ appointment.full_name }}</td>
                 <td>{{ appointment.email }}</td>
                 <td>

@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const seeMoreButtons = document.querySelectorAll('.see-more-button');
     const popup = document.getElementById('popup');
+    const timePickerModal = document.getElementById('timePickerModal');
     const popupImage = document.getElementById('popupImage');
     const popupTitle = document.getElementById('popupTitle');
     const popupDescription = document.getElementById('popupDescription');
@@ -42,7 +43,6 @@ let dNone = "d-none";
 
 window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
-  console.log(currentScroll)
   if (currentScroll > 200) {
       header.classList.add(toggleClass);
       header.classList.remove(inactive);
@@ -64,7 +64,7 @@ window.addEventListener("scroll", () => {
 
 function animation(claslist) {
     let slideWrappers = document.querySelectorAll(claslist);
-    let threshold = 200; // Adjust this threshold as needed
+    let threshold = 500; // Adjust this threshold as needed
     slideWrappers.forEach(slideWrapper => {
         let triggerPosition = slideWrapper.getBoundingClientRect().top;
         if (triggerPosition < threshold) {
@@ -94,8 +94,8 @@ function animation(claslist) {
 //   });
 // }
 
-window.addEventListener('scroll', handleScroll);
-window.addEventListener('resize', handleScroll);
+// window.addEventListener('scroll', handleScroll);
+// window.addEventListener('resize', handleScroll);
 
 // Trigger the initial check in case some cards are already in the viewport on page load.
-handleScroll();
+// handleScroll();

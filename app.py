@@ -78,11 +78,13 @@ def create_appointment():
     full_name = request.form['full_name']
     email = request.form['email']
     date_str = request.form['date']
+    time_str = request.form['time']
+    date_str=date_str+' '+time_str
     if date_str:
-        date = datetime.strptime(date_str, '%d / %B / %Y')
+        date = datetime.strptime(date_str, '%d / %B / %Y %I:%M %p')
     else:
         date = datetime.now()
-
+    # date= date.strftime('%d/%m/%Y %I:%M %p')
     new_appointment = Appointment(
         full_name=full_name,
         email=email,
@@ -98,7 +100,7 @@ def create_appointment():
     message = f"{full_name} Your appointment has been booked for {date}"
     subject = "Appointment Booked"
     method = "checkout"
-    send_mail(method, email, full_name, message, subject)
+    # send_mail(method, email, full_name, message, subject)
     return create_checkout_session()
 
 

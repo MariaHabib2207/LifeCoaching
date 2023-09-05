@@ -38,6 +38,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
     <link rel="stylesheet"
       href="https://floridakoshervillas.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.5.1">
+        <!-- Include bootstrap-timepicker CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   </head>
@@ -270,8 +272,8 @@
                 <div class="container date-container">
                   <!-- <div class="col-md-6 offset-2"> -->
                   <div class="form-group">
-                    <input type="hidden" name="date" id="select_date" required="required" class="selecteShipDate"
-                      placeholder="Pick Appointment Date" />
+                    <input type="hidden" name="date" id="select_date" required="required" class="selecteShipDate" placeholder="Pick Appointment Date" />
+                    <input type="hidden" name="time" id="select_time" value="12:00 PM"/>
                     <!-- </div> -->
                   </div>
                 </div>
@@ -519,7 +521,7 @@
 
       <div class="row mt-5">
         <div class="col-md-4">
-          <div class="card sliding-card custom-card card-radius text-center p-4 card-hover active">
+          <div class="card sliding-card custom-card card-radius text-center p-4 card-hover ">
             <div>
               <img src="{{url_for('static', filename= 'images/number-one.png')}}" alt="vision"
                 class="number-icon px-2" />
@@ -567,7 +569,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="sliding-card custom-card card-radius text-center p-4 card-hover">
+          <div class="card sliding-card custom-card card-radius text-center p-4 card-hover">
             <div>
               <img src="{{url_for('static', filename= 'images/number-three.png')}}" alt="vision"
                 class="number-icon px-2" />
@@ -756,6 +758,33 @@
       </div>
     </div>
   </div>
+  <div id="timePickerModal" class="popup" style="display: none">
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="timepop-content">
+        <span class="close" id="closeTimepicker">&times;</span>
+        <div class="bg-green">
+          <h5 class="modal-title" id="exampleModalLabel">Pick a Time</h5>
+        </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <label for="timepicker" style="visibility: hidden;">Select a Time:</label>
+                <div class="input-group bootstrap-timepicker timepicker">
+                    <input id="timepicker" type="text" class="form-control input-small">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+            <div class="popup-footer">
+            <button type="button" class="btn  btn-secondary" id="close">Close</button>
+            <button type="button" class="btn  bg-green" id="save_time">Save Time</button>
+          </div>
+        </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      </div>
+    </div>
+  </div>
 
   <!-- -----------------Footer (finalized)----------------- -->
   <section class="bg-pink" style="margin-top: 80px">
@@ -817,6 +846,7 @@
         </div>
       </div>
     </footer>
+  
   </div>
   <script>
     var baseUrl = "{{ request.scheme }}://{{ request.host }}{{ url_for('static', filename='') }}";
@@ -824,6 +854,8 @@
 
   <!-- ---------------------Scripts---------------------- -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+
 
   <!-- --------------------Appointment booking datepicker calender------------------- -->
 
@@ -854,9 +886,27 @@
       $(".datepicker .prev").css('background', '#d8de96');
       $(".datepicker .today").addClass('active');
       $(".datepicker").addClass("custom-dropdown");
+      $input.on("changeDate", function (e) {
+        let timePickerModal = document.getElementById('timePickerModal');
+        let iniTime=$('#select_time').val()
+        $('#timepicker').val(iniTime)
+        timePickerModal.style.display = 'block';
+        $('#save_time').on('click', function(){
+          let timepicker= $('#timepicker').val()
+          $('#select_time').val(timepicker)
+          timePickerModal.style.display = 'none';
+        })
+        $('.close').on('click',function(){
+          timePickerModal.style.display = 'none';
+            
+          })
+        $('#close').on('click',function(){
+          timePickerModal.style.display = 'none';
+            
+          })
+      })
     });
-
-    function getFormattedDate(date) {
+ function getFormattedDate(date) {
   var day = date.getDate();
   var monthNames = [
     "January", "February", "March", "April", "May", "June",
@@ -892,13 +942,13 @@
 
     // Function to add animation class to cards on scroll with delays
     function animateCardsOnScroll() {
-      let delay = 0;
-      cards.forEach(card => {
+      let delay = 1000;
+      cards.forEach((card,index) => {
         if (isInViewport(card)) {
           setTimeout(() => {
             card.classList.add('card-visible');
-          }, delay);
-          delay += delayBetweenCards;
+          },  delay * (index + 1)-500);
+          // delay += delayBetweenCards;
         }
       });
     }
@@ -908,6 +958,9 @@
 
     // Event listener for scrolling
     window.addEventListener('scroll', animateCardsOnScroll);
+    $(document).ready(function(){
+            $('#timepicker').timepicker();
+      });
   </script>
 </body>
 
