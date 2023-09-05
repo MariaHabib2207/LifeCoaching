@@ -100,7 +100,7 @@ def create_appointment():
     message = f"{full_name} Your appointment has been booked for {date}"
     subject = "Appointment Booked"
     method = "checkout"
-    # send_mail(method, email, full_name, message, subject)
+    send_mail(method, email, full_name, message, subject)
     return create_checkout_session()
 
 
