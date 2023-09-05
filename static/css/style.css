@@ -168,7 +168,7 @@ li {
   width: 100%;
   height: 2px; 
   background-color: var(--primary-color);
-  transition: left 0.3s ease; 
+  transition: left 0.8s ease; 
 }
 
 /* Apply the effect on hover */
@@ -399,6 +399,7 @@ input[type="number"] {
   width: 300px !important;
   padding-top: 16px !important;
   padding-bottom: 16px !important;
+  border: 2px solid var(--secondary-color);
 }
 
 /* -------------Contact Form---------- */
@@ -992,11 +993,11 @@ margin-bottom: 55px;
   width: 150px;
 }
 .slide-wraper-right.active .right-slide-text {
-  transition: 0.5s;
+  transition: 2s;
   right: 0;
 } 
 .slide-wraper-left.active .slide-left-img {
-  transition: 0.5s;
+  transition: 2s;
   left: 0;
 } 
 .wraper-animated.active .slide-top {
@@ -1006,16 +1007,16 @@ margin-bottom: 55px;
   /* transform: translateY(0) */
 }
 .wraper-animated.active .animate-left-img {
-  transition: 0.5s;
+  transition: 0.8s;
   left: 0;
   
 }
 .wraper-animated.active .animate-left-img {
-  transition: 0.5s;
+  transition: 1.5s;
   left: 0;
 }
 .wraper-animated.active .animate-right-img {
-  transition: 0.5s;
+  transition: 1.5s;
   right: 0;
 }
 .page-header.inactive{

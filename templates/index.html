@@ -202,6 +202,7 @@
     </div>
   </section>
   <!-- ---------------------------Section Book Appointment------------------ -->
+  
 
   <section id="book-appointment" class="text-center section-padding-tb">
 
@@ -947,7 +948,7 @@
         if (isInViewport(card)) {
           setTimeout(() => {
             card.classList.add('card-visible');
-          },  delay * (index + 1)-500);
+          },  delay * (index + 1)-1000);
           // delay += delayBetweenCards;
         }
       });
