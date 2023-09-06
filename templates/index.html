@@ -140,7 +140,7 @@
       </div>
 
       <div class="carousel-item zoominheader">
-        <img src="{{url_for('static', filename= 'images/cozy-sofa.jpg')}}" class="w-100" alt="..." />
+        <img src="{{url_for('static', filename= 'images/hero-img-3-sofa.jpg')}}" class="w-100" alt="..." />
 
         <div class="carousel-caption">
           <h1 class="slider-head">Crafting The Best You</h1>
@@ -204,7 +204,7 @@
   <!-- ---------------------------Section Book Appointment------------------ -->
   
 
-  <section id="book-appointment" class="text-center section-padding-tb">
+  <section id="book-appointment" class="text-center section-padding-tb scroll-section">
 
 
     <div class="row mb-5">
@@ -296,7 +296,7 @@
   </section>
   <!-- --------------------------Section About------------------------ -->
 
-  <section id="sec-about" class="bg-green section-padding-tb  wraper-animated">
+  <section id="sec-about" class="bg-green section-padding-tb  wraper-animated scroll-section">
     <div class="">
       <div class="slide-top">
         <h2 class="text-center">About The Coaching Studio NY</h2>
@@ -689,7 +689,7 @@
   <!-- -------------------Life Coaching Code------------------- -->
   <!-- ---------------------------Section Contact Us------------------ -->
 
-  <section id="sec-contact" class="text-center bg-green section-padding-tb  wraper-animated">
+  <section id="sec-contact" class="text-center bg-green section-padding-tb  wraper-animated scroll-section">
 
     <div class="slide-top">
     <h2 class="text-center mb-5">Contact Us</h2>
@@ -943,12 +943,12 @@
 
     // Function to add animation class to cards on scroll with delays
     function animateCardsOnScroll() {
-      let delay = 1000;
+      let delay = 1600;
       cards.forEach((card,index) => {
         if (isInViewport(card)) {
           setTimeout(() => {
             card.classList.add('card-visible');
-          },  delay * (index + 1)-1000);
+          },  delay * (index + 1)-500);
           // delay += delayBetweenCards;
         }
       });
@@ -962,6 +962,34 @@
     $(document).ready(function(){
             $('#timepicker').timepicker();
       });
+  </script>
+
+  <!-- -------------------Navbar Scrolling------------------ -->
+<script>
+
+  $(document).ready(function() {
+      // Smooth scrolling for navigation links
+      $('a.nav-link').on('click', function(event) {
+          if (this.hash !== "") {
+              event.preventDefault();
+  
+              var hash = this.hash;
+              var offset = $(hash).offset().top;
+  
+              // Adjust for fixed navbar height
+              var navbarHeight = $('#neubar').outerHeight();
+              offset -= navbarHeight;
+  
+              $('html, body').animate({
+                  scrollTop: offset
+              }, 800, function(){
+                  window.location.hash = hash;
+              });
+          }
+      });
+  });
+  
+  
   </script>
 </body>
 
