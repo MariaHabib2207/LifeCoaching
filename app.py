@@ -41,6 +41,31 @@ class Appointment(db.Model):
 
 
 ###########send mail function ####################
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    payload = request.data
+    event = None
+
+    try:
+        event = stripe.Event.construct_from(
+            json.loads(payload), stripe.api_key
+        )
+    except ValueError as e:
+        # Invalid payload
+        return jsonify({'error': str(e)}), 400
+
+    # Handle the specific event type you're interested in
+    if event.type == 'checkout.session.completed':
+        # Payment was successful
+        session = event.data.object
+        # You can now update your database or perform other actions here
+
+    return jsonify({'status': 'success'}), 200
+
+
+
+
+
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     try:
@@ -54,6 +79,11 @@ def create_checkout_session():
             mode='payment',
             success_url=YOUR_DOMAIN + '/success.html',
             cancel_url=YOUR_DOMAIN + '/cancel.html',
+            payment_intent_data={
+                'metadata': {
+                    'webhook_endpoint': 'http://coachingstudiony.com/'
+                }
+            }
         )
 
     except Exception as e:
@@ -97,7 +127,7 @@ def create_appointment():
     db.session.commit()
 
     # Send email to user
-    message = f"{full_name} Your appointment has been booked for {date}"
+    message = f"Hi {full_name}\n\nYour appointment with The Coaching Studio has been booked for {date}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
     subject = "Appointment Booked"
     method = "checkout"
     send_mail(method, email, full_name, message, subject)
