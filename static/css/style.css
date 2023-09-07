@@ -225,8 +225,8 @@ html {
 
 /* Apply the animation to the carousel items with the "zoominheader" class */
 .carousel-item.zoominheader img {
-  animation: zoomin 8s infinite; /* Adjust the animation duration as needed */
-  transform-origin: center center; /* Set the zoom-in origin to the center */
+  animation: zoomin 14s infinite;
+  transform-origin: center center;
 }
 
 
@@ -1131,8 +1131,8 @@ margin-bottom: 55px;
 
 .timepop-content {
   margin-top: 5%;
-  width: 25%;
-  height: 44vh;
+  max-width: 50%;
+  min-height: 50vh;
   background-color: #ffffff;
   padding: 60px;
   border-radius: 22px;
@@ -1149,3 +1149,27 @@ margin-bottom: 55px;
   border-radius: 15px;
   background: #ffffff;
 }
+
+/* ------------------Time Slots-------------------- */
+.time-slots p {
+  font-size: 12px;
+  height: 100%;
+  margin: 5px;
+}
+.time-slots .time-block {
+  border: 1px solid;
+  margin: 9px;
+}
+.time-block.disabled {
+  background-color: #c2bfbf;
+  color: #ffffff;
+} 
+.time-block.active {
+  background-color: var(--secondary-color) !important;
+  color: #ffffff;
+} 
+.time-block.enabled {
+  cursor: pointer;
+  background-color: #a1ccda;
+  color: #ffffff;
+} 

@@ -76,26 +76,35 @@ function animation(claslist) {
   }
 
 
-//   ------------------How program works cards sliding one by one---------------
-
-// const cards = document.querySelectorAll('.sliding-card');
-// const windowHeight = window.innerHeight;
-
-// function handleScroll() {
-//   cards.forEach((card, index) => {
-//     const cardRect = card.getBoundingClientRect();
-//     const cardMiddle = cardRect.top + cardRect.height / 2;
-
-//     if (cardMiddle < windowHeight / 2) {
-//       card.classList.add('active');
-//     } else {
-//       card.classList.remove('active');
-//     }
-//   });
-// }
-
-// window.addEventListener('scroll', handleScroll);
-// window.addEventListener('resize', handleScroll);
-
-// Trigger the initial check in case some cards are already in the viewport on page load.
-// handleScroll();
+//   ------------Time Selection---------------------
+$('.time-block').on('click', function(){
+    let timePickerModal = document.getElementById('timePickerModal');
+    if ($(this).hasClass('enabled')) {
+        var hiddenInput = $(this).find('input[type="hidden"]');
+        var time = hiddenInput.val();
+        // $(this).addClass('active');
+        alert(time);
+        $('#select_time').val(time)
+        timePickerModal.style.display = 'none';
+        // removeActiveSlot()
+    }
+})
+function setActiveSlot() {
+    let timeBlocks=document.querySelectorAll('.time-block');
+    let iniTime=$('#select_time').val()
+    timeBlocks.forEach(timeBlock => { 
+        var hiddenInput = timeBlock.querySelector('input[type="hidden"]');
+        if(iniTime == hiddenInput.value) {
+            console.log(hiddenInput.value)
+            timeBlock.classList.add('active');
+        }
+    })
+}
+function removeActiveSlot() {
+    let timeBlocks=document.querySelectorAll('.time-block');
+    timeBlocks.forEach(timeBlock => { 
+        
+        timeBlock.classList.remove('active');
+        
+    })
+}

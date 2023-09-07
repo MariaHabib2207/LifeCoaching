@@ -767,17 +767,78 @@
           <h5 class="modal-title" id="exampleModalLabel">Pick a Time</h5>
         </div>
           <div class="modal-body">
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="timepicker" style="visibility: hidden;">Select a Time:</label>
                 <div class="input-group bootstrap-timepicker timepicker">
                     <input id="timepicker" type="text" class="form-control input-small">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
+            </div> -->
+            <div class="time-slots">
+            <div class="row">
+              <div class="col-sm-2 disabled time-block">
+                <input type="hidden" value="9:00 AM">
+                <p>9:00 AM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="10:00 AM">
+                <p>10:00 AM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="11:00 AM">
+                <p>11:00 AM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="12:00 AM">
+                <p>12:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="1:00 AM">
+                <p>1:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="2:00 AM">
+                <p>2:00 PM</p>
+              </div>
+              <div class="col-sm-2 disabled time-block">
+                <input type="hidden" value="3:00 AM">
+                <p>3:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="4:00 AM">
+                <p>4:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="5:00 AM">
+                <p>5:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="6:00 AM">
+                <p>6:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="7:00 AM">
+                <p>7:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="8:00 AM">
+                <p>8:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="9:00 AM">
+                <p>9:00 PM</p>
+              </div>
+              <div class="col-sm-2 enabled time-block">
+                <input type="hidden" value="10:00 AM">
+                <p>10:00 PM</p>
+              </div>
             </div>
-            <div class="popup-footer">
+          </div>
+            
+            <!-- <div class="popup-footer">
             <button type="button" class="btn  btn-secondary" id="close">Close</button>
             <button type="button" class="btn  bg-green" id="save_time">Save Time</button>
-          </div>
+          </div> -->
         </div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -889,6 +950,7 @@
       $(".datepicker").addClass("custom-dropdown");
       $input.on("changeDate", function (e) {
         let timePickerModal = document.getElementById('timePickerModal');
+        setActiveSlot();
         let iniTime=$('#select_time').val()
         $('#timepicker').val(iniTime)
         timePickerModal.style.display = 'block';
