@@ -225,7 +225,7 @@ html {
 
 /* Apply the animation to the carousel items with the "zoominheader" class */
 .carousel-item.zoominheader img {
-  animation: zoomin 14s infinite;
+  animation: zoomin 15s infinite;
   transform-origin: center center;
 }
 
