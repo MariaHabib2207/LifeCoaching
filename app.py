@@ -42,7 +42,7 @@ class Appointment(db.Model):
 class BookedSlot(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     appointment_id = db.Column(db.Integer, db.ForeignKey('appointment.id'))
-    booking_time = db.Column(db.DateTime, default=datetime.utcnow)
+    booking_time = db.Column(db.String)
     user_email = db.Column(db.String(100))
     status = db.Column(db.String(20), default='pending')
 
@@ -129,9 +129,21 @@ def create_appointment():
         status="Pending",
         payment_status="Unpaid",
         date=date,
-        start_time=start_time 
+        start_time=start_time
     )
+
+
+
     db.session.add(new_appointment)
+    db.session.commit()
+
+    booked_slot = BookedSlot(
+        appointment_id=new_appointment.id,
+        booking_time=start_time,
+        user_email=email,
+        status="booked"
+    )
+    db.session.add(booked_slot) 
     db.session.commit()
 
     message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
@@ -165,6 +177,7 @@ def admin_view():
         return redirect(url_for('login'))
 
     appointments = Appointment.query.all()
+    booked_slots = BookedSlot.query.all()
 
     if request.method == 'POST':
         # Handle delete and update actions
@@ -177,7 +190,7 @@ def admin_view():
         # Handle other actions like update
         return redirect(url_for('admin_view'))
 
-    return render_template('admin_view.html', appointments=appointments)
+    return render_template('admin_view.html', appointments=appointments , booked_slots= booked_slots)
 
 
 @app.route('/login', methods=['GET', 'POST'])

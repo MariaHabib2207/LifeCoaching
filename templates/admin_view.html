@@ -62,57 +62,138 @@
             text-align: center;
             margin-top: 20px;
         }
+
+        /* Tab styles */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .tab-button.active {
+            background-color: #343a40;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <h1>Admin View</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Appointment Date</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Payment Status</th>
-                <th>Time</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for appointment in appointments %}
-            <tr>
-                <td>{{ appointment.id }}</td>
-                <td>{{ appointment.date.strftime('%Y-%m-%d %I:%M %p') }}</td>
-                <td>{{ appointment.full_name }}</td>
-                <td>{{ appointment.email }}</td>
-                <td>
-                    <select name="appointment_status">
-                        <option value="pending" {% if appointment.status == 'pending' %}selected{% endif %}>Pending</option>
-                        <option value="confirmed" {% if appointment.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
-                        <option value="cancelled" {% if appointment.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
-                    </select>
-                </td>
-                <td>{{ appointment.payment_status }}</td>
-                <td>{{ appointment.start_time }}</td>
-                <td>
-                    <form method="POST" action="{{ url_for('admin_view') }}">
-                        <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
-                        <input type="hidden" name="appointment_date" value="{{ appointment.date }}">
-                        <input type="hidden" name="appointment_email" value="{{ appointment.email }}">
-                        <input type="hidden" name="appointment_status" value="{{ appointment.status }}">
-                        <input type="hidden" name="appointment_payment_status" value="{{ appointment.payment_status }}">
-                        <input type="hidden" name="appointment_payment_status" value="{{ appointment.start_time }}">
-                        <button type="submit" id="delete_button" name="action" value="delete" class="delete_button">Delete</button>
-                    </form>
-                    <form method="GET" action="{{ url_for('edit_appointment', appointment_id=appointment.id) }}">
-                        <button type="submit">Edit</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+    <!-- Tabs -->
+    <div class="tab-container">
+        <button class="tab-button active" onclick="showTab('appointments')">Appointments</button>
+        <button class="tab-button" onclick="showTab('bookedSlots')">Booked Slots</button>
+    </div>
+
+    <!-- Appointments Table -->
+    <div class="tab-content active" id="appointmentsTab">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Appointment Date</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Payment Status</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.id }}</td>
+                    <td>{{ appointment.date.strftime('%Y-%m-%d %I:%M %p') }}</td>
+                    <td>{{ appointment.full_name }}</td>
+                    <td>{{ appointment.email }}</td>
+                    <td>
+                        <select name="appointment_status">
+                            <option value="pending" {% if appointment.status == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="confirmed" {% if appointment.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                            <option value="cancelled" {% if appointment.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                        </select>
+                    </td>
+                    <td>{{ appointment.payment_status }}</td>
+                    <td>{{ appointment.start_time }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('admin_view') }}">
+                            <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                            <input type="hidden" name="appointment_date" value="{{ appointment.date }}">
+                            <input type="hidden" name="appointment_email" value="{{ appointment.email }}">
+                            <input type="hidden" name="appointment_status" value="{{ appointment.status }}">
+                            <input type="hidden" name="appointment_payment_status" value="{{ appointment.payment_status }}">
+                            <input type="hidden" name="appointment_payment_status" value="{{ appointment.start_time }}">
+                            <button type="submit" id="delete_button" name="action" value="delete" class="delete_button">Delete</button>
+                        </form>
+                        <form method="GET" action="{{ url_for('edit_appointment', appointment_id=appointment.id) }}">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Booked Slots Table -->
+    <div class="tab-content" id="bookedSlotsTab">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Appointment ID</th>
+                    <th>Booking Time</th>
+                    <th>User Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for slot in booked_slots %}
+                <tr>
+                    <td>{{ slot.id }}</td>
+                    <td>{{ slot.appointment_id }}</td>
+                    <td>{{ slot.booking_time }}</td>
+                    <td>{{ slot.user_email }}</td>
+                    <td>{{ slot.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
     <a href="{{ url_for('create_appointment') }}">Create Appointment</a>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabContents.forEach(tabContent => tabContent.classList.remove('active'));
+
+            const selectedTab = document.getElementById(tabName + 'Tab');
+            const selectedButton = document.querySelector(`.${tabName}`);
+
+            selectedTab.classList.add('active');
+            selectedButton.classList.add('active');
+        }
+    </script>
 </body>
 </html>
