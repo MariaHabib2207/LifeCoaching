@@ -114,6 +114,30 @@
             background-color: #343a40;
             color: #fff;
         }
+        /* --------------Time Slots------------------ */
+        /* ------------------Time Slots-------------------- */
+.time-slots p {
+  font-size: 12px;
+  height: 100%;
+  margin: 4px 13px;
+}
+.time-slots .time-block {
+  border: 1px solid;
+  margin: 9px;
+}
+.time-block.disabled {
+  background-color: #94a8b7;
+  color: #000000;
+} 
+.time-block.active {
+  background-color: var(--secondary-color) !important;
+  color: #000000;
+} 
+.time-block.enabled {
+  cursor: pointer;
+  background-color: #3acfff;
+  color: #000000;
+} 
     </style>
 </head>
 
@@ -181,17 +205,85 @@
                                     <!-- </div> -->
                                 </div>
                             </div>
+                            <!-- <div style="height: 23pc;"></div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit">Save Changes</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7 offset-5">
+                                <div class="time-slots" style="margin-top: -7pc;">
+                                    <div class="row">
+                                      <div class="col-sm-3 disabled time-block">
+                                        <input type="hidden" value="9:00 AM">
+                                        <p>9:00 AM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="10:00 AM">
+                                        <p>10:00 AM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="11:00 AM">
+                                        <p>11:00 AM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="12:00 AM">
+                                        <p>12:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="1:00 AM">
+                                        <p>1:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="2:00 AM">
+                                        <p>2:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 disabled time-block">
+                                        <input type="hidden" value="3:00 AM">
+                                        <p>3:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="4:00 AM">
+                                        <p>4:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="5:00 AM">
+                                        <p>5:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="6:00 AM">
+                                        <p>6:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="7:00 AM">
+                                        <p>7:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="8:00 AM">
+                                        <p>8:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="9:00 AM">
+                                        <p>9:00 PM</p>
+                                      </div>
+                                      <div class="col-sm-3 enabled time-block">
+                                        <input type="hidden" value="10:00 AM">
+                                        <p>10:00 PM</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="submit">Save Changes</button>
-                        </div>
-                    </div>
+                   
                 </form>
             </div>
         </div>
     </section>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <!-- Add your additional HTML, CSS, and scripts as needed -->
 </body>
 <script>

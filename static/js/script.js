@@ -95,7 +95,6 @@ function setActiveSlot() {
     timeBlocks.forEach(timeBlock => { 
         var hiddenInput = timeBlock.querySelector('input[type="hidden"]');
         if(iniTime == hiddenInput.value) {
-            console.log(hiddenInput.value)
             timeBlock.classList.add('active');
         }
     })
