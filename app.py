@@ -5,6 +5,9 @@ import stripe
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from datetime import datetime
+from datetime import datetime
+from dateutil import parser
+
 
 
 
@@ -32,11 +35,16 @@ class Appointment(db.Model):
     email = db.Column(db.String)
     status = db.Column(db.String)
     payment_status = db.Column(db.String)
-    date =  db.Column(db.DateTime)
+    date = db.Column(db.DateTime)
+    start_time = db.Column(db.String)  # Change the type to String
+    end_time = db.Column(db.String)  
 
-    # @app.route('/shop')
-    # def shop():
-    #     return render_template('shop.html')
+class BookedSlot(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    appointment_id = db.Column(db.Integer, db.ForeignKey('appointment.id'))
+    booking_time = db.Column(db.DateTime, default=datetime.utcnow)
+    user_email = db.Column(db.String(100))
+    status = db.Column(db.String(20), default='pending')
 
 
 
@@ -108,8 +116,8 @@ def create_appointment():
     full_name = request.form['full_name']
     email = request.form['email']
     date_str = request.form['date']
-    time_str = request.form['time']
-    date_str=date_str+' '+time_str
+    start_time = request.form['time']
+    date_str=date_str+' '+start_time
     if date_str:
         date = datetime.strptime(date_str, '%d / %B / %Y %I:%M %p')
     else:
@@ -120,21 +128,18 @@ def create_appointment():
         email=email,
         status="Pending",
         payment_status="Unpaid",
-        date=date
+        date=date,
+        start_time=start_time 
     )
-
     db.session.add(new_appointment)
     db.session.commit()
 
-    # Send email to user
-    message = f"Hi {full_name}\n\nYour appointment with The Coaching Studio has been booked for {date}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
+    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
     subject = "Appointment Booked"
     method = "checkout"
     send_mail(method, email, full_name, message, subject)
+
     return create_checkout_session()
-
-
-
 
 ##### edit  appointment and admin view ####################
 

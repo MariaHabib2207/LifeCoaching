@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Admin View</title>
-    <!-- Add your CSS and other head content here -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,7 +22,7 @@
             border-collapse: collapse;
             width: 80%;
             background-color: #fff;
-            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
         }
 
         th, td {
@@ -54,9 +53,6 @@
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #0056b3;
-        }
         .delete_button {
             background-color: red !important;
         }
@@ -79,6 +75,7 @@
                 <th>Email</th>
                 <th>Status</th>
                 <th>Payment Status</th>
+                <th>Time</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -97,6 +94,7 @@
                     </select>
                 </td>
                 <td>{{ appointment.payment_status }}</td>
+                <td>{{ appointment.start_time }}</td>
                 <td>
                     <form method="POST" action="{{ url_for('admin_view') }}">
                         <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
@@ -104,13 +102,12 @@
                         <input type="hidden" name="appointment_email" value="{{ appointment.email }}">
                         <input type="hidden" name="appointment_status" value="{{ appointment.status }}">
                         <input type="hidden" name="appointment_payment_status" value="{{ appointment.payment_status }}">
-                        <button type="submit" id="delete_button" name="action" value="delete" style="background-color: #ff0000; color: #fff;">Delete</button>
-
-
+                        <input type="hidden" name="appointment_payment_status" value="{{ appointment.start_time }}">
+                        <button type="submit" id="delete_button" name="action" value="delete" class="delete_button">Delete</button>
                     </form>
                     <form method="GET" action="{{ url_for('edit_appointment', appointment_id=appointment.id) }}">
-                      <button type="submit">Edit</button>
-                  </form>
+                        <button type="submit">Edit</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
