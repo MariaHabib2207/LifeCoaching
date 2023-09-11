@@ -99,7 +99,9 @@
     <div class="tab-container">
         <button class="tab-button active" onclick="showTab('appointments')">Appointments</button>
         <button class="tab-button" onclick="showTab('bookedSlots')">Booked Slots</button>
+        <button class="tab-button" onclick="showTab('unavailableSlots')">Unavailable Slots</button>
     </div>
+    <a href="{{ url_for('add_unavailable') }}">Set Unavailable Slot</a>
 
     <!-- Appointments Table -->
     <div class="tab-content active" id="appointmentsTab">
@@ -150,6 +152,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        <a href="{{ url_for('create_appointment') }}">Create Appointment</a>
     </div>
 
     <!-- Booked Slots Table -->
@@ -160,17 +163,17 @@
                     <th>ID</th>
                     <th>Appointment ID</th>
                     <th>Booking Time</th>
-                    <th>User Email</th>
+                    <th>Booking Date</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                {% for slot in booked_slots %}
+                {% for slot, appointment in booked_slots  if slot.status == "booked" %}
                 <tr>
                     <td>{{ slot.id }}</td>
                     <td>{{ slot.appointment_id }}</td>
                     <td>{{ slot.booking_time }}</td>
-                    <td>{{ slot.user_email }}</td>
+                    <td>{{ appointment.date }}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
@@ -178,7 +181,32 @@
         </table>
     </div>
 
-    <a href="{{ url_for('create_appointment') }}">Create Appointment</a>
+    <!-- Unavailable Slots Table -->
+    <div class="tab-content" id="unavailableSlotsTab">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Appointment ID</th>
+                    <th>Booking Time</th>
+                    <th>Booking Date</th>
+                    <th>User Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for slot, appointment in booked_slots if slot.status == "unavailable" %}
+                <tr>
+                    <td>{{ slot.id }}</td>
+                    <td>{{ slot.booking_time }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ slot.user_email }}</td>
+                    <td>{{ slot.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     <script>
         function showTab(tabName) {

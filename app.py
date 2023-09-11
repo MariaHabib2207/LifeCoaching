@@ -44,8 +44,9 @@ class BookedSlot(db.Model):
     appointment_id = db.Column(db.Integer, db.ForeignKey('appointment.id'))
     booking_time = db.Column(db.String)
     user_email = db.Column(db.String(100))
-    status = db.Column(db.String(20), default='pending')
-
+    status = db.Column(db.String(20), default='pending') 
+    ##  flag for availablitity slot
+    flag =db.Column((db.String), default="False")
 
 
 ###########send mail function ####################
@@ -141,7 +142,8 @@ def create_appointment():
         appointment_id=new_appointment.id,
         booking_time=start_time,
         user_email=email,
-        status="booked"
+        status="booked",
+        flag = "False"
     )
     db.session.add(booked_slot) 
     db.session.commit()
@@ -177,7 +179,8 @@ def admin_view():
         return redirect(url_for('login'))
 
     appointments = Appointment.query.all()
-    booked_slots = BookedSlot.query.all()
+    booked_slots = db.session.query(BookedSlot, Appointment).join(Appointment).all()
+    availability_slots = [slot for slot, _ in booked_slots if slot.status == "unavailable"]
 
     if request.method == 'POST':
         # Handle delete and update actions
@@ -190,7 +193,47 @@ def admin_view():
         # Handle other actions like update
         return redirect(url_for('admin_view'))
 
-    return render_template('admin_view.html', appointments=appointments , booked_slots= booked_slots)
+    return render_template('admin_view.html', appointments=appointments , booked_slots= booked_slots ,availability_slots=availability_slots )
+
+@app.route('/create_unavailability_slot', methods=['POST'])
+def create_unavailability_slot():
+    print(request.form)
+    date_str = request.form['date']
+    start_time = request.form['time']
+    date_str=date_str+' '+start_time
+    if date_str:
+        date = datetime.strptime(date_str, '%d / %B / %Y %I:%M %p')
+    else:
+        date = datetime.now()
+    new_appointment = Appointment(
+        status="Pending",
+        payment_status="Unpaid",
+        date=date,
+        start_time=start_time,
+    )
+
+
+
+    db.session.add(new_appointment)
+    db.session.commit()
+
+    booked_slot = BookedSlot(
+        appointment_id=new_appointment.id,
+        booking_time=start_time,
+        status="unavailable",
+        flag = "True"
+    )
+    db.session.add(booked_slot) 
+    db.session.commit()
+
+    return redirect(url_for('admin_view'))
+
+
+
+@app.route('/add_unavailable', methods=['GET', 'POST'])
+def add_unavailable():
+    return render_template('unavailable_slots.html')
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -210,7 +253,7 @@ def login():
             error = True
             return render_template('login.html', error=error)
 
-    return render_template('login.html')  # Create the login template
+    return render_template('login.html')  # tte the login template
 
 
 
