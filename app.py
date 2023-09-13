@@ -120,9 +120,8 @@ def create_appointment():
     email = request.form['email']
     date_str = request.form['date']
     start_time = request.form['time']
-    date_str=date_str+' '+start_time
     if date_str:
-        date = datetime.strptime(date_str, '%d / %B / %Y %I:%M %p')
+        date = datetime.strptime(date_str, '%d / %B / %Y')
     else:
         date = datetime.now()
     # date= date.strftime('%d/%m/%Y %I:%M %p')
@@ -202,9 +201,8 @@ def create_unavailability_slot():
     print(request.form)
     date_str = request.form['date']
     start_time = request.form['time']
-    date_str=date_str+' '+start_time
     if date_str:
-        date = datetime.strptime(date_str, '%d / %B / %Y %I:%M %p')
+        date = datetime.strptime(date_str, '%d / %B / %Y ')
     else:
         date = datetime.now()
     new_appointment = Appointment(
