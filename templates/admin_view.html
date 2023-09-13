@@ -122,7 +122,7 @@
                 {% for appointment in appointments %}
                 <tr>
                     <td>{{ appointment.id }}</td>
-                    <td>{{ appointment.date.strftime('%Y-%m-%d').split(" ")[0]}}</td>
+                    <td>{{ appointment.date}}</td>
                     <td>{{ appointment.full_name }}</td>
                     <td>{{ appointment.email }}</td>
                     <td>
@@ -173,7 +173,7 @@
                     <td>{{ slot.id }}</td>
                     <td>{{ slot.appointment_id }}</td>
                     <td>{{ slot.booking_time }}</td>
-                    <td>{{ appointment.date.strftime('%Y-%m-%d').split(" ")[0]}}</td>
+                    <td>{{ appointment.date}}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
@@ -197,7 +197,7 @@
                 <tr>
                     <td>{{ slot.id }}</td>
                     <td>{{ slot.booking_time.split(" ")[0]}}</td>
-                    <td>{{ appointment.date.strftime('%Y-%m-%d').split(" ")[0]}}</td>
+                    <td>{{ appointment.date}}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
