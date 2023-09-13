@@ -37,7 +37,7 @@ class Appointment(db.Model):
     email = db.Column(db.String)
     status = db.Column(db.String)
     payment_status = db.Column(db.String)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.String)
     start_time = db.Column(db.String)  # Change the type to String
     end_time = db.Column(db.String)  
 
@@ -78,7 +78,7 @@ def webhook():
 
 
 @app.route('/create-checkout-session', methods=['POST'])
-def create_checkout_session():
+def create_checkout_session(method, email, full_name, message, subject):
     try:
         checkout_session = stripe.checkout.Session.create(
             line_items=[
@@ -88,7 +88,7 @@ def create_checkout_session():
                 },
             ],
             mode='payment',
-            success_url=YOUR_DOMAIN + '/success.html',
+            success_url="http://coachingstudiony.com/" + '/success.html',
             cancel_url=YOUR_DOMAIN + '/cancel.html',
             payment_intent_data={
                 'metadata': {
@@ -96,6 +96,7 @@ def create_checkout_session():
                 }
             }
         )
+        send_mail(method=method, email=email, full_name=full_name, message=message, subject=subject)
 
     except Exception as e:
         return str(e)
@@ -108,9 +109,9 @@ def send_mail(method, email, full_name, message, subject):
     msg.body = message
     mail.send(msg)
     
-    if method == "checkout":
-        # Call the create_checkout_session function after sending the email
-        create_checkout_session()
+@app.route('/success', methods=['GET', 'POST'])
+def success():
+    return render_template('success.html')
 
 
 # Route and view function for booking an appointment
@@ -120,41 +121,47 @@ def create_appointment():
     email = request.form['email']
     date_str = request.form['date']
     start_time = request.form['time']
+
+    # Check if date_str is provided; if not, use the current date and time
     if date_str:
         date = datetime.strptime(date_str, '%d / %B / %Y')
     else:
         date = datetime.now()
-    # date= date.strftime('%d/%m/%Y %I:%M %p')
+
+    # Create a new Appointment record
     new_appointment = Appointment(
         full_name=full_name,
         email=email,
         status="Pending",
         payment_status="Unpaid",
-        date=date,
+        date=date_str,
         start_time=start_time
     )
 
-
-
+    # Add and commit the new appointment to the database
     db.session.add(new_appointment)
     db.session.commit()
 
+    # Create a new BookedSlot record
     booked_slot = BookedSlot(
         appointment_id=new_appointment.id,
         booking_time=start_time,
         user_email=email,
         status="booked",
-        flag = "False"
+        flag=False  # Use False without quotes for a boolean value
     )
-    db.session.add(booked_slot) 
+
+    # Add and commit the booked slot to the database
+    db.session.add(booked_slot)
     db.session.commit()
 
+    # Compose email message
     message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
     subject = "Appointment Booked"
     method = "checkout"
-    send_mail(method, email, full_name, message, subject)
 
-    return create_checkout_session()
+        # Call the create_checkout_session function with the correct parameters
+    return create_checkout_session(method=method, email=email, full_name=full_name, message=message, subject=subject)
 
 ##### edit  appointment and admin view ####################
 
