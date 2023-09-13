@@ -179,59 +179,59 @@
                             <div class="col-md-7 offset-5">
                                 <div class="time-slots" style="margin-top: 17pc;">
                                     <div class="row">
-                                      <div class="col-sm-3 disabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="9:00 AM">
                                         <p>9:00 AM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="10:00 AM">
                                         <p>10:00 AM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="11:00 AM">
                                         <p>11:00 AM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="12:00 AM">
                                         <p>12:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="1:00 AM">
                                         <p>1:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="2:00 AM">
                                         <p>2:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 disabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="3:00 AM">
                                         <p>3:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="4:00 AM">
                                         <p>4:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="5:00 AM">
                                         <p>5:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="6:00 AM">
                                         <p>6:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="7:00 AM">
                                         <p>7:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="8:00 AM">
                                         <p>8:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="9:00 AM">
                                         <p>9:00 PM</p>
                                       </div>
-                                      <div class="col-sm-3 enabled time-block">
+                                      <div class="col-sm-3 time-slot">
                                         <input type="hidden" value="10:00 AM">
                                         <p>10:00 PM</p>
                                       </div>
@@ -246,14 +246,34 @@
             </div>
         </div>
     </section>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script>
+
+        function disableTimeSlots() {
+                const bookedSlots = jsonData.booked_slots.map(slot => slot.booking_time);
+                const unavailableSlots = jsonData.unavailable_slots.map(slot => slot.booking_time);
+
+                $(".time-slot").each(function () {
+                    const timeSlot = $(this).find("input").val();
+
+                    if (bookedSlots.includes(timeSlot)) {
+                        // Disable booked slots
+                        $(this).addClass("disabled");
+                    } else if (unavailableSlots.includes(timeSlot)) {
+                        // Disable unavailable slots
+                        $(this).addClass("disabled");
+                    } else {
+                        // Enable other slots
+                        $(this).addClass("enabled");
+                        
+                    }
+                });
+            }
         $(document).ready(function () {
             $input = $("#select_date");
             $input.datepicker({
                 format: "dd / MM / yyyy",
                 orientation: "auto",
-                //   containerClass: "custom-dropdown",
+//   containerClass: "custom-dropdown",
                 //   container: $input
                 container: ".date-container",
                 pickerPosition: {
@@ -266,9 +286,46 @@
             $input.data("datepicker").hide = function () { };
             $input.datepicker("show");
             $(".datepicker").addClass("custom-dropdown");
+            $input.on('changeDate', function (e) {
+                const selectedDate = e.format();
+                console.log('Selected Date:', selectedDate);
+                debugger
+                // Create a JavaScript Date object
+                debugger
+                fetch(`/api/slots?date=${selectedDate}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // Handle the fetched data
+                        const bookedSlots = data.booked_slots;
+                        const unavailableSlots = data.unavailable_slots;
+                        
+                        // Display booked slots
+                        console.log('Booked Slots:');
+                        bookedSlots.forEach((slot) => {
+                            console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
+                        });
+                        
+                        // Display unavailable slots
+                        console.log('Unavailable Slots:');
+                        unavailableSlots.forEach((slot) => {
+                            console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
+                        });
+                        disableTimeSlots()
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching data:', error);
+                    });
+            });
+    
+            const initialSelectedDate = $input.val();
+            console.log('Initial Selected Date:', initialSelectedDate);
         });
     </script>
     
-    <!-- Add your additional HTML, CSS, and scripts as needed -->
+
+
+
+  
+
 </body>
 </html>

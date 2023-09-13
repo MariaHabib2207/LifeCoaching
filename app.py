@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect,  url_for,session
+from flask import Flask, render_template, request, flash, redirect,  url_for,session, jsonify
 import requests
 from flask_mail import Mail, Message
 import stripe
@@ -7,6 +7,8 @@ from flask_migrate import Migrate
 from datetime import datetime
 from datetime import datetime
 from dateutil import parser
+import pdb
+
 
 
 
@@ -206,7 +208,7 @@ def create_unavailability_slot():
     else:
         date = datetime.now()
     new_appointment = Appointment(
-        status="Pending",
+        status="Unavailable",
         payment_status="Unpaid",
         date=date,
         start_time=start_time,
@@ -279,8 +281,8 @@ def contact_us():
     full_name = request.form['full_name']
     email = request.form['email']
     admin_email = "info@coachingstudiony.com"
-    user_message = request.form['message']  # Corrected the key to 'message'
-    for_message = f"Message from {email}, {user_message}"  # Corrected the message formatting
+    user_message = request.form['message'] 
+    for_message = f"Message from {email}, {user_message}"
     subject = "Contact Us"
     msg = Message(subject, sender=email, recipients=[admin_email])
     msg.body = for_message
@@ -288,10 +290,20 @@ def contact_us():
     return hello_world()
 
 
+###### api to fetch slots 
+@app.route('/api/slots', methods=['GET'])
+def get_slots():
+    selected_date = request.args.get('date')  
+    selected_date = datetime.strptime(selected_date, '%d / %B / %Y')
+    booked_slots = Appointment.query.filter_by(date=selected_date).all()
+    unavailable_slots = Appointment.query.filter_by(date=selected_date, status='unavailable').all()
 
-
+    # Convert the records to a list of dictionaries
+    booked_slots_list = [{'id': slot.id, 'booking_time': slot.start_time, 'status': slot.status} for slot in booked_slots]
+    unavailable_slots_list = [{'id': slot.id, 'booking_time': slot.start_time, 'status': slot.status} for slot in unavailable_slots]
+    return jsonify({'booked_slots': booked_slots_list, 'unavailable_slots': unavailable_slots_list})
       
-   ## redirect to checkout functionheckout
+
 
 # Run the app
 if __name__ == '__main__':

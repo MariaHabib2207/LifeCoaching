@@ -122,7 +122,7 @@
                 {% for appointment in appointments %}
                 <tr>
                     <td>{{ appointment.id }}</td>
-                    <td>{{ appointment.date.strftime('%Y-%m-%d %I:%M %p') }}</td>
+                    <td>{{ appointment.date.strftime('%Y-%m-%d').split(" ")[0]}}</td>
                     <td>{{ appointment.full_name }}</td>
                     <td>{{ appointment.email }}</td>
                     <td>
@@ -173,7 +173,7 @@
                     <td>{{ slot.id }}</td>
                     <td>{{ slot.appointment_id }}</td>
                     <td>{{ slot.booking_time }}</td>
-                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.date.strftime('%Y-%m-%d').split(" ")[0]}}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
@@ -186,11 +186,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Appointment ID</th>
+                    <th>ID</th>>
                     <th>Booking Time</th>
                     <th>Booking Date</th>
-                    <th>User Email</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -198,9 +196,8 @@
                 {% for slot, appointment in booked_slots if slot.status == "unavailable" %}
                 <tr>
                     <td>{{ slot.id }}</td>
-                    <td>{{ slot.booking_time }}</td>
-                    <td>{{ appointment.date }}</td>
-                    <td>{{ slot.user_email }}</td>
+                    <td>{{ slot.booking_time.split(" ")[0]}}</td>
+                    <td>{{ appointment.date.strftime('%Y-%m-%d').split(" ")[0]}}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
