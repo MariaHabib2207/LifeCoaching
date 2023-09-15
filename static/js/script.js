@@ -85,6 +85,7 @@ $('.time-block').on('click', function(){
         // $(this).addClass('active');
         alert(time);
         $('#select_time').val(time)
+        console.log($('#select_time').val())
         timePickerModal.style.display = 'none';
         // removeActiveSlot()
     }

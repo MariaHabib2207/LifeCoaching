@@ -202,6 +202,7 @@
                                 <div class="form-group">
                                     <input type="hidden" name="date" id="select_date" class="selecteShipDate"
                                         placeholder="Pick Appointment Date" />
+                                    <input type="hidden" name="time" id="select_time" value="{{ appointment.start_time }}"/>
                                     <!-- </div> -->
                                 </div>
                             </div>
@@ -283,14 +284,13 @@
             </div>
         </div>
     </section>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script>
-
+        var sDate = "{{ appointment.date}}";
         $(document).ready(function () {
-            $(".time-slot:not(.disabled)").click(function () {
-                const selectedTime = $(this).find("input").val();
-                alert(`Selected Time: ${selectedTime}`);
-            });
+            fetchAppoinment(sDate)
         });
+        
 
         function disableTimeSlots(data) {
                 
@@ -332,9 +332,17 @@
             $input.datepicker("show");
             $(".datepicker").addClass("custom-dropdown");
             $input.on('changeDate', function (e) {
-                const selectedDate = e.format();
+                let selectedDate = e.format();
                 console.log('Selected Date:', selectedDate);
-                fetch(`/api/slots?date=${selectedDate}`)
+                fetchAppoinment(selectedDate)
+            });
+    
+            const initialSelectedDate = $input.val();
+            console.log('Initial Selected Date:', initialSelectedDate);
+        });
+
+        function fetchAppoinment(selectedDate) {
+            fetch(`/api/slots?date=${selectedDate}`)
                     .then((response) => response.json())
                     .then((data) => {
                         // Handle the fetched data
@@ -357,9 +365,5 @@
                     .catch((error) => {
                         console.error('Error fetching data:', error);
                     });
-            });
-    
-            const initialSelectedDate = $input.val();
-            console.log('Initial Selected Date:', initialSelectedDate);
-        });
+        }
     </script>

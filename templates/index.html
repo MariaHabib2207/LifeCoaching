@@ -926,7 +926,8 @@
         
         const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
         const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
-
+        console.log(bookedSlots)
+        console.log(unavailableSlots)
         $(".time-slot").each(function () {
 
             const timeSlot = $(this).find("input").val();
@@ -934,7 +935,7 @@
             if (bookedSlots.includes(timeSlot)) {
                 
                 // Disable booked slots
-                $(this).addClass("time-block disabled");
+                $(this).addClass("disabled");
             } else if (unavailableSlots.includes(timeSlot)) {
                 // Disable unavailable slots
                 $(this).addClass("disabled");
@@ -974,8 +975,6 @@
       $(".datepicker").addClass("custom-dropdown");
       $input.on("changeDate", function (e) {
         let timePickerModal = document.getElementById('timePickerModal');
-
-      
         setActiveSlot();
         let iniTime=$('#select_time').val()
         fetch(`/api/slots?date=${getFormattedDate(e.date)}`)
