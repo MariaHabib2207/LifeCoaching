@@ -1156,11 +1156,18 @@ margin-bottom: 55px;
   height: 100%;
   margin: 5px;
 }
+
+
 .time-slots .time-block {
   border: 1px solid;
   margin: 9px;
 }
 .time-block.disabled {
+  background-color: #c2bfbf;
+  color: #ffffff;
+} 
+
+.time-block-disabled {
   background-color: #c2bfbf;
   color: #ffffff;
 } 
@@ -1173,3 +1180,8 @@ margin-bottom: 55px;
   background-color: #a1ccda;
   color: #ffffff;
 } 
+
+.time-block.enabled:hover {
+  background-color: rgb(28, 191, 28);
+  color: white;
+}

@@ -274,7 +274,7 @@
                   <!-- <div class="col-md-6 offset-2"> -->
                   <div class="form-group">
                     <input type="hidden" name="date" id="select_date" required="required" class="selecteShipDate" placeholder="Pick Appointment Date" />
-                    <input type="hidden" name="time" id="select_time" value="12:00 PM"/>
+<input type="hidden" name="time" id="select_time" value="12:00 PM"/>
                     <!-- </div> -->
                   </div>
                 </div>
@@ -923,48 +923,43 @@
 
   <script>
     function disableTimeSlots(data) {
-        
+        // Reset classes for all time slots
+        $(".time-slot").removeClass("time-block-disabled enabled");
+
         const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
         const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
-        console.log(bookedSlots)
-        console.log(unavailableSlots)
-        $(".time-slot").each(function () {
 
+        $(".time-slot").each(function () {
             const timeSlot = $(this).find("input").val();
 
             if (bookedSlots.includes(timeSlot)) {
-                
-                // Disable booked slots
-                $(this).addClass("disabled");
+                $(this).addClass("time-block-disabled");
             } else if (unavailableSlots.includes(timeSlot)) {
-                // Disable unavailable slots
-                $(this).addClass("disabled");
+                $(this).addClass("time-block-disabled");
             } else {
-                // Enable other slots
                 $(this).addClass("enabled");
-                
             }
         });
     }
-    var dateToday = new Date();
+var dateToday = new Date();
     $(document).ready(function () {
-      $input = $("#select_date");
-      $input.datepicker({
-        format: "dd / MM / yyyy",
-        orientation: "auto",
-        container: ".date-container",
-        pickerPosition: {
-          open: "bottom",
-          vertical: "bottom",
-          horizontal: "right", // Adjust the horizontal position
-          offset: 12, // Offset by 12 pixels to the right
-        },
-        startDate: new Date(), // Set the start date to today
-        todayHighlight: true,
-        initialDate: new Date(),
-        minDate: dateToday,
-      });
-      $input.data("datepicker").hide = function () { };
+            $input = $("#select_date");
+            $input.datepicker({
+                format: "dd / MM / yyyy",
+                orientation: "auto",
+                container: ".date-container",
+                pickerPosition: {
+                    open: "bottom",
+                    vertical: "bottom",
+                    horizontal: "right", // Adjust the horizontal position
+                    offset: 12, // Offset by 12 pixels to the right
+                },
+                startDate: new Date(), // Set the start date to today
+                todayHighlight: true,
+                initialDate: new Date(),
+                minDate: dateToday,
+            });
+$input.data("datepicker").hide = function () { };
       $input.datepicker("show");
       $input.val(getFormattedDate(new Date()));
       var selectedDate =  $input.val(getFormattedDate(new Date()));
@@ -973,10 +968,10 @@
       $(".datepicker .prev").css('background', '#d8de96');
       $(".datepicker .today").addClass('active');
       $(".datepicker").addClass("custom-dropdown");
-      $input.on("changeDate", function (e) {
-        let timePickerModal = document.getElementById('timePickerModal');
-        setActiveSlot();
-        let iniTime=$('#select_time').val()
+            $input.on("changeDate", function (e) {
+let timePickerModal = document.getElementById('timePickerModal');
+                setActiveSlot();
+                let iniTime=$('#select_time').val()
         fetch(`/api/slots?date=${getFormattedDate(e.date)}`)
                     .then((response) => response.json())
                     .then((data) => {
@@ -988,9 +983,9 @@
                         console.log('Booked Slots:');
                         bookedSlots.forEach((slot) => {
                             console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
-                        });
-                        
-                        // Display unavailable slots
+                });
+
+                // Display unavailable slots
                         console.log('Unavailable Slots:');
                         unavailableSlots.forEach((slot) => {
                             console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
@@ -998,8 +993,8 @@
                         disableTimeSlots(data)
                     })
                     .catch((error) => {
-                        console.error('Error fetching data:', error);
-                    });
+                console.error('Error fetching data:', error);
+            });
         $('#timepicker').val(iniTime)
         timePickerModal.style.display = 'block';
         $('#save_time').on('click', function(){
@@ -1018,23 +1013,22 @@
       })
  
     });
- function getFormattedDate(date) {
-  var day = date.getDate();
-  var monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  var month = monthNames[date.getMonth()];
-  var year = date.getFullYear();
+    function getFormattedDate(date) {
+        var day = date.getDate();
+        var monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        var month = monthNames[date.getMonth()];
+        var year = date.getFullYear();
 
-  return (
-    (day < 10 ? "0" : "") + day + " / " +
-    month + " / " +
-    year
-  );
-}
-  </script>
-
+        return (
+            (day < 10 ? "0" : "") + day + " / " +
+            month + " / " +
+            year
+        );
+    }
+</script>
 
   <!-- --------------------Sliding Animation---------------------- -->
 
@@ -1103,5 +1097,12 @@
   
   </script> -->
 </body>
+<style>
+  
+.time-block-disabled {
+  background-color: #c2bfbf;
+  color: #ffffff;
+} 
+</style>
 
 </html>

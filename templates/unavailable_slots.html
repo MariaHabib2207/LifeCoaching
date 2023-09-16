@@ -134,6 +134,18 @@
   background-color: #3acfff;
   color: #000000;
 } 
+.disabled-time-slot {
+  pointer-events: none; 
+  cursor: pointer;
+  background-color: #e90800;
+  color: #fff9f9;
+} 
+.booked-time-slot {
+  pointer-events: none; 
+  cursor: pointer;
+  background-color: #002be9 !important;
+  color: #fff9f9;
+} 
     </style>
 </head>
 
@@ -247,33 +259,29 @@
     <script>
 
         $(document).ready(function () {
-           
+            // Your code here...
         });
 
         function disableTimeSlots(data) {
-                
-                const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
-                const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
+            const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
+            const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
 
-                $(".time-slot").each(function () {
+            $(".time-slot").each(function () {
+                const timeSlot = $(this).find("input").val();
 
-                    const timeSlot = $(this).find("input").val();
+                if (bookedSlots.includes(timeSlot)) {
+                    $(this).addClass("booked-time-slot");
+                } else if (unavailableSlots.includes(timeSlot)) {
+                    $(this).addClass("disabled-time-slot").removeClass("enabled booked-time-slot");
+                } else {
+                    $(this).addClass("enabled").removeClass("booked-time-slot disabled-time-slot");
+                }
+            });
+}
 
-                    if (bookedSlots.includes(timeSlot)) {
-                        
-                        // Disable booked slots
-                        $(this).addClass("time-block disabled");
-                    } else if (unavailableSlots.includes(timeSlot)) {
-                        // Disable unavailable slots
-                        $(this).addClass("disabled");
-                    } else {
-                        // Enable other slots
-                        $(this).addClass("enabled");
-                        
-                    }
-                });
-            }
+    
         $(document).ready(function () {
+            // Initialize datepicker
             $input = $("#select_date");
             $input.datepicker({
                 format: "dd / MM / yyyy",
@@ -282,49 +290,58 @@
                 pickerPosition: {
                     open: "bottom",
                     vertical: "bottom",
-                    horizontal: "right", // Adjust the horizontal position
-                    offset: 12, 
+                    horizontal: "right",
+                    offset: 12,
                 },
             });
             $input.data("datepicker").hide = function () { };
             $input.datepicker("show");
             $(".datepicker").addClass("custom-dropdown");
+    
+            // Add a changeDate event handler to the datepicker
             $input.on('changeDate', function (e) {
                 const selectedDate = e.format();
                 console.log('Selected Date:', selectedDate);
-                fetchAppoinment(selectedDate)
+    
+                // Call fetchAppointment when the date is changed
+                fetchAppointment(selectedDate);
             });
     
+            // Fetch and disable time slots for the initially selected date
             const initialSelectedDate = $input.val();
             console.log('Initial Selected Date:', initialSelectedDate);
-        });
-        function fetchAppoinment(selectedDate) {
-
-            fetch(`/api/slots?date=${selectedDate}`)
+            fetchAppointment(initialSelectedDate);
+    
+            // Fetch appointment data and disable time slots
+            function fetchAppointment(selectedDate) {
+                fetch(`/api/slots?date=${selectedDate}`)
                     .then((response) => response.json())
                     .then((data) => {
                         // Handle the fetched data
                         const bookedSlots = data.booked_slots;
                         const unavailableSlots = data.unavailable_slots;
-                        
+    
                         // Display booked slots
                         console.log('Booked Slots:');
                         bookedSlots.forEach((slot) => {
                             console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
                         });
-                        
+    
                         // Display unavailable slots
                         console.log('Unavailable Slots:');
                         unavailableSlots.forEach((slot) => {
                             console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
                         });
-                        disableTimeSlots(data)
+    
+                        disableTimeSlots(data);
                     })
                     .catch((error) => {
                         console.error('Error fetching data:', error);
                     });
-        }
+            }
+        });
     </script>
+    
     
 
 

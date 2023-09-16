@@ -8,6 +8,7 @@ from datetime import datetime
 from datetime import datetime
 from dateutil import parser
 import pdb
+from sqlalchemy import and_
 
 
 
@@ -121,13 +122,6 @@ def create_appointment():
     email = request.form['email']
     date_str = request.form['date']
     start_time = request.form['time']
-
-    # Check if date_str is provided; if not, use the current date and time
-    if date_str:
-        date = datetime.strptime(date_str, '%d / %B / %Y')
-    else:
-        date = datetime.now()
-
     # Create a new Appointment record
     new_appointment = Appointment(
         full_name=full_name,
@@ -156,7 +150,7 @@ def create_appointment():
     db.session.commit()
 
     # Compose email message
-    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
+    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date_str}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
     subject = "Appointment Booked"
     method = "checkout"
 
@@ -188,7 +182,7 @@ def admin_view():
 
     appointments = Appointment.query.all()
     booked_slots = db.session.query(BookedSlot, Appointment).join(Appointment).all()
-    availability_slots = [slot for slot, _ in booked_slots if slot.status == "unavailable"]
+    availability_slots = [slot for slot, _ in booked_slots if slot.status == "Unavailable"]
 
     if request.method == 'POST':
         # Handle delete and update actions
@@ -206,29 +200,21 @@ def admin_view():
 @app.route('/create_unavailability_slot', methods=['POST'])
 def create_unavailability_slot():
     print(request.form)
-    date_str = request.form['date']
+    date = request.form['date']
     start_time = request.form['time']
-    date_format = '%d / %B / %Y'
-    if date_str:
-        date = datetime.strptime(date_str, date_format)
-    else:
-        date = datetime.now()
     new_appointment = Appointment(
         status="Unavailable",
         payment_status="Unpaid",
         date=date,
         start_time=start_time,
     )
-
-
-
     db.session.add(new_appointment)
     db.session.commit()
 
     booked_slot = BookedSlot(
         appointment_id=new_appointment.id,
         booking_time=start_time,
-        status="unavailable",
+        status="Unavailable",
         flag = "True"
     )
     db.session.add(booked_slot) 
@@ -312,10 +298,17 @@ def contact_us():
 @app.route('/api/slots', methods=['GET'])
 def get_slots():
     selected_date = request.args.get('date')  
-    selected_date = datetime.strptime(selected_date, '%d / %B / %Y')
-    # pdb.set_trace()
-    booked_slots = Appointment.query.filter_by(date=selected_date).all()
-    unavailable_slots = Appointment.query.filter_by(date=selected_date, status='unavailable').all()
+    booked_slots = Appointment.query.filter(
+        Appointment.date == selected_date,
+        Appointment.status != 'Unavailable'
+    ).all()
+
+    unavailable_slots = Appointment.query.filter(
+        and_(
+            Appointment.date == selected_date,
+            Appointment.status == 'Unavailable'
+        )
+    ).all()
 
     # Convert the records to a list of dictionaries
     booked_slots_list = [{'id': slot.id, 'booking_time': slot.start_time, 'status': slot.status} for slot in booked_slots]

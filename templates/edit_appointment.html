@@ -230,47 +230,47 @@
                                         <p>11:00 AM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="12:00 AM">
+                                        <input type="hidden" value="12:00 PM">
                                         <p>12:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="1:00 AM">
+                                        <input type="hidden" value="1:00 PM">
                                         <p>1:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="2:00 AM">
+                                        <input type="hidden" value="2:00 PM">
                                         <p>2:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="3:00 AM">
+                                        <input type="hidden" value="3:00 PM">
                                         <p>3:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="4:00 AM">
+                                        <input type="hidden" value="4:00 PM">
                                         <p>4:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="5:00 AM">
+                                        <input type="hidden" value="5:00 pM">
                                         <p>5:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="6:00 AM">
+                                        <input type="hidden" value="6:00 PM">
                                         <p>6:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="7:00 AM">
+                                        <input type="hidden" value="7:00 PM">
                                         <p>7:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="8:00 AM">
+                                        <input type="hidden" value="8:00 PM">
                                         <p>8:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="9:00 AM">
+                                        <input type="hidden" value="9:00 PM">
                                         <p>9:00 PM</p>
                                       </div>
                                       <div class="col-sm-3 time-slot time-block">
-                                        <input type="hidden" value="10:00 AM">
+                                        <input type="hidden" value="10:00 PM">
                                         <p>10:00 PM</p>
                                       </div>
                                     </div>
@@ -285,85 +285,88 @@
         </div>
     </section>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script>
-        var sDate = "{{ appointment.date}}";
-        $(document).ready(function () {
-            fetchAppoinment(sDate)
-        });
-        
+  <script>
 
-        function disableTimeSlots(data) {
-                
-                const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
-                const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
+    $(document).ready(function () {
+        // Your code here...
+    });
 
-                $(".time-slot").each(function () {
+    function disableTimeSlots(data) {
+        const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
+        const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
 
-                    const timeSlot = $(this).find("input").val();
+        $(".time-slot").each(function () {
+            const timeSlot = $(this).find("input").val();
 
-                    if (bookedSlots.includes(timeSlot)) {
-                        
-                        // Disable booked slots
-                        $(this).addClass("time-block disabled");
-                    } else if (unavailableSlots.includes(timeSlot)) {
-                        // Disable unavailable slots
-                        $(this).addClass("disabled");
-                    } else {
-                        // Enable other slots
-                        $(this).addClass("enabled");
-                        
-                    }
-                });
+            if (bookedSlots.includes(timeSlot)) {
+                $(this).addClass("booked-time-slot");
+            } else if (unavailableSlots.includes(timeSlot)) {
+                $(this).addClass("disabled-time-slot").removeClass("enabled booked-time-slot");
+            } else {
+                $(this).addClass("enabled").removeClass("booked-time-slot disabled-time-slot");
             }
-        $(document).ready(function () {
-            $input = $("#select_date");
-            $input.datepicker({
-                format: "dd / MM / yyyy",
-                orientation: "auto",
-                container: ".date-container",
-                pickerPosition: {
-                    open: "bottom",
-                    vertical: "bottom",
-                    horizontal: "right", // Adjust the horizontal position
-                    offset: 12, 
-                },
-            });
-            $input.data("datepicker").hide = function () { };
-            $input.datepicker("show");
-            $(".datepicker").addClass("custom-dropdown");
-            $input.on('changeDate', function (e) {
-                let selectedDate = e.format();
-                console.log('Selected Date:', selectedDate);
-                fetchAppoinment(selectedDate)
-            });
-    
-            const initialSelectedDate = $input.val();
-            console.log('Initial Selected Date:', initialSelectedDate);
+        });
+}
+
+
+    $(document).ready(function () {
+        // Initialize datepicker
+        $input = $("#select_date");
+        $input.datepicker({
+            format: "dd / MM / yyyy",
+            orientation: "auto",
+            container: ".date-container",
+            pickerPosition: {
+                open: "bottom",
+                vertical: "bottom",
+                horizontal: "right",
+                offset: 12,
+            },
+        });
+        $input.data("datepicker").hide = function () { };
+        $input.datepicker("show");
+        $(".datepicker").addClass("custom-dropdown");
+
+        // Add a changeDate event handler to the datepicker
+        $input.on('changeDate', function (e) {
+            const selectedDate = e.format();
+            console.log('Selected Date:', selectedDate);
+
+            // Call fetchAppointment when the date is changed
+            fetchAppointment(selectedDate);
         });
 
-        function fetchAppoinment(selectedDate) {
+        // Fetch and disable time slots for the initially selected date
+        const initialSelectedDate = $input.val();
+        console.log('Initial Selected Date:', initialSelectedDate);
+        fetchAppointment(initialSelectedDate);
+
+        // Fetch appointment data and disable time slots
+        function fetchAppointment(selectedDate) {
             fetch(`/api/slots?date=${selectedDate}`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        // Handle the fetched data
-                        const bookedSlots = data.booked_slots;
-                        const unavailableSlots = data.unavailable_slots;
-                        
-                        // Display booked slots
-                        console.log('Booked Slots:');
-                        bookedSlots.forEach((slot) => {
-                            console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
-                        });
-                        
-                        // Display unavailable slots
-                        console.log('Unavailable Slots:');
-                        unavailableSlots.forEach((slot) => {
-                            console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
-                        });
-                        disableTimeSlots(data)
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching data:', error);
+                .then((response) => response.json())
+                .then((data) => {
+                    // Handle the fetched data
+                    const bookedSlots = data.booked_slots;
+                    const unavailableSlots = data.unavailable_slots;
+
+                    // Display booked slots
+                    console.log('Booked Slots:');
+                    bookedSlots.forEach((slot) => {
+                        console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
                     });
+
+                    // Display unavailable slots
+                    console.log('Unavailable Slots:');
+                    unavailableSlots.forEach((slot) => {
+                        console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
+                    });
+
+                    disableTimeSlots(data);
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                });
         }
-    </script>
+    });
+</script>
