@@ -237,6 +237,18 @@ def create_unavailability_slot():
     return redirect(url_for('admin_view'))
 
 
+@app.route('/delete_unavailability_slot/<int:slot_id>/<int:appointment_id>', methods=['POST'])
+def delete_unavailability_slot(slot_id, appointment_id):
+    unavailable_slot = BookedSlot.query.get_or_404(slot_id)
+    unavailable_appointment = Appointment.query.get_or_404(appointment_id)
+
+    # Delete the unavailable slot and appointment
+    db.session.delete(unavailable_slot)
+    db.session.delete(unavailable_appointment)
+
+    db.session.commit()
+
+    return redirect(url_for('admin_view'))
 
 @app.route('/add_unavailable', methods=['GET', 'POST'])
 def add_unavailable():

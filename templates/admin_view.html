@@ -203,6 +203,11 @@
                     <td>{{ appointment.date.split(" ")[0]}}</td>
                     <td>{{ slot.booking_time.split(" ")[0]}}</td>
                     <td>{{ slot.status }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_unavailability_slot', slot_id=slot.id, appointment_id =appointment.id) }}" method="post">
+                            <button type="submit" class="btn-danger" style="background-color: red;">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
