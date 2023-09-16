@@ -38,8 +38,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
     <link rel="stylesheet"
       href="https://floridakoshervillas.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.5.1">
-        <!-- Include bootstrap-timepicker CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" rel="stylesheet">
+    <!-- Include bootstrap-timepicker CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css"
+      rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   </head>
@@ -202,7 +203,7 @@
     </div>
   </section>
   <!-- ---------------------------Section Book Appointment------------------ -->
-  
+
 
   <section id="book-appointment" class="text-center section-padding-tb scroll-section">
 
@@ -273,8 +274,9 @@
                 <div class="container date-container">
                   <!-- <div class="col-md-6 offset-2"> -->
                   <div class="form-group">
-                    <input type="hidden" name="date" id="select_date" required="required" class="selecteShipDate" placeholder="Pick Appointment Date" />
-<input type="hidden" name="time" id="select_time" value="12:00 PM"/>
+                    <input type="hidden" name="date" id="select_date" required="required" class="selecteShipDate"
+                      placeholder="Pick Appointment Date" />
+                    <input type="hidden" name="time" id="select_time" value="12:00 PM" />
                     <!-- </div> -->
                   </div>
                 </div>
@@ -290,7 +292,8 @@
           </form>
         </div>
 
-     <div style="position: relative;"> <img class="appoint-leaf-img" src="/static/images/appoint-leave.png" alt=""></div>  
+        <div style="position: relative;"> <img class="appoint-leaf-img" src="/static/images/appoint-leave.png" alt="">
+        </div>
       </div>
     </div>
   </section>
@@ -497,13 +500,13 @@
   <section id="program-works" class="bg-green section-padding-tb wraper-animated">
 
     <div class="container slide-top">
-        <div class="">
-          <h2 class="text-center">How The Coaching Studio Program Works</h2>
-          <p class="text-center">
-            Feel the transforming power of the coaching program as you put your
-            ideas into action <br> and make positive changes in your life.
-          </p> <br>
-        </div>
+      <div class="">
+        <h2 class="text-center">How The Coaching Studio Program Works</h2>
+        <p class="text-center">
+          Feel the transforming power of the coaching program as you put your
+          ideas into action <br> and make positive changes in your life.
+        </p> <br>
+      </div>
 
       <!-- <div class="wraper-animated active">
 
@@ -692,16 +695,16 @@
   <section id="sec-contact" class="text-center bg-green section-padding-tb  wraper-animated scroll-section">
 
     <div class="slide-top">
-    <h2 class="text-center mb-5">Contact Us</h2>
-    <p class="text-center">
-      Your journey is important to us, and we can't wait to hear from you.
-    </p>
-    <p>
-      Want to contact us or need additional details? Let's have a discussion
-      that will lead towards development,<br />
-      transformation, and empowerment together.
-    </p>
-  </div>
+      <h2 class="text-center mb-5">Contact Us</h2>
+      <p class="text-center">
+        Your journey is important to us, and we can't wait to hear from you.
+      </p>
+      <p>
+        Want to contact us or need additional details? Let's have a discussion
+        that will lead towards development,<br />
+        transformation, and empowerment together.
+      </p>
+    </div>
   </section>
 
   <div class="container d-flex align-items-center justify-content-center">
@@ -766,15 +769,15 @@
         <div class="bg-green">
           <h5 class="modal-title" id="exampleModalLabel">Pick a Time</h5>
         </div>
-          <div class="modal-body">
-            <!-- <div class="form-group">
+        <div class="modal-body">
+          <!-- <div class="form-group">
                 <label for="timepicker" style="visibility: hidden;">Select a Time:</label>
                 <div class="input-group bootstrap-timepicker timepicker">
                     <input id="timepicker" type="text" class="form-control input-small">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
             </div> -->
-            <div class="time-slots">
+          <div class="time-slots">
             <div class="row">
               <div class="col-sm-2  time-slot time-block">
                 <input type="hidden" value="9:00 AM">
@@ -834,18 +837,18 @@
               </div>
             </div>
           </div>
-            
-            <!-- <div class="popup-footer">
+
+          <!-- <div class="popup-footer">
             <button type="button" class="btn  btn-secondary" id="close">Close</button>
             <button type="button" class="btn  bg-green" id="save_time">Save Time</button>
           </div> -->
         </div>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- -----------------Footer (finalized)----------------- -->
@@ -908,7 +911,7 @@
         </div>
       </div>
     </footer>
-  
+
   </div>
   <script>
     var baseUrl = "{{ request.scheme }}://{{ request.host }}{{ url_for('static', filename='') }}";
@@ -916,119 +919,120 @@
 
   <!-- ---------------------Scripts---------------------- -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
 
 
   <!-- --------------------Appointment booking datepicker calender------------------- -->
 
   <script>
     function disableTimeSlots(data) {
-        // Reset classes for all time slots
-        $(".time-slot").removeClass("time-block-disabled enabled");
+      // Reset classes for all time slots
+      $(".time-slot").removeClass("time-block-disabled enabled");
 
-        const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
-        const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
+      const bookedSlots = data.booked_slots.map(slot => slot.booking_time);
+      const unavailableSlots = data.unavailable_slots.map(slot => slot.booking_time);
 
-        $(".time-slot").each(function () {
-            const timeSlot = $(this).find("input").val();
+      $(".time-slot").each(function () {
+        const timeSlot = $(this).find("input").val();
 
-            if (bookedSlots.includes(timeSlot)) {
-                $(this).addClass("time-block-disabled");
-            } else if (unavailableSlots.includes(timeSlot)) {
-                $(this).addClass("time-block-disabled");
-            } else {
-                $(this).addClass("enabled");
-            }
-        });
+        if (bookedSlots.includes(timeSlot)) {
+          $(this).addClass("time-block-disabled");
+        } else if (unavailableSlots.includes(timeSlot)) {
+          $(this).addClass("time-block-disabled");
+        } else {
+          $(this).addClass("enabled");
+        }
+      });
     }
-var dateToday = new Date();
+    var dateToday = new Date();
     $(document).ready(function () {
-            $input = $("#select_date");
-            $input.datepicker({
-                format: "dd / MM / yyyy",
-                orientation: "auto",
-                container: ".date-container",
-                pickerPosition: {
-                    open: "bottom",
-                    vertical: "bottom",
-                    horizontal: "right", // Adjust the horizontal position
-                    offset: 12, // Offset by 12 pixels to the right
-                },
-                startDate: new Date(), // Set the start date to today
-                todayHighlight: true,
-                initialDate: new Date(),
-                minDate: dateToday,
-            });
-$input.data("datepicker").hide = function () { };
+      $input = $("#select_date");
+      $input.datepicker({
+        format: "dd / MM / yyyy",
+        orientation: "auto",
+        container: ".date-container",
+        pickerPosition: {
+          open: "bottom",
+          vertical: "bottom",
+          horizontal: "right", // Adjust the horizontal position
+          offset: 12, // Offset by 12 pixels to the right
+        },
+        startDate: new Date(), // Set the start date to today
+        todayHighlight: true,
+        initialDate: new Date(),
+        minDate: dateToday,
+      });
+      $input.data("datepicker").hide = function () { };
       $input.datepicker("show");
       $input.val(getFormattedDate(new Date()));
-      var selectedDate =  $input.val(getFormattedDate(new Date()));
+      var selectedDate = $input.val(getFormattedDate(new Date()));
 
       $(".datepicker .prev").removeClass("disabled");
       $(".datepicker .prev").css('background', '#d8de96');
       $(".datepicker .today").addClass('active');
       $(".datepicker").addClass("custom-dropdown");
-            $input.on("changeDate", function (e) {
-let timePickerModal = document.getElementById('timePickerModal');
-                setActiveSlot();
-                let iniTime=$('#select_time').val()
+      $input.on("changeDate", function (e) {
+        let timePickerModal = document.getElementById('timePickerModal');
+        setActiveSlot();
+        let iniTime = $('#select_time').val()
         fetch(`/api/slots?date=${getFormattedDate(e.date)}`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        // Handle the fetched data
-                        const bookedSlots = data.booked_slots;
-                        const unavailableSlots = data.unavailable_slots;
-                        
-                        // Display booked slots
-                        console.log('Booked Slots:');
-                        bookedSlots.forEach((slot) => {
-                            console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
-                });
+          .then((response) => response.json())
+          .then((data) => {
+            // Handle the fetched data
+            const bookedSlots = data.booked_slots;
+            const unavailableSlots = data.unavailable_slots;
 
-                // Display unavailable slots
-                        console.log('Unavailable Slots:');
-                        unavailableSlots.forEach((slot) => {
-                            console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
-                        });
-                        disableTimeSlots(data)
-                    })
-                    .catch((error) => {
-                console.error('Error fetching data:', error);
+            // Display booked slots
+            console.log('Booked Slots:');
+            bookedSlots.forEach((slot) => {
+              console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
             });
+
+            // Display unavailable slots
+            console.log('Unavailable Slots:');
+            unavailableSlots.forEach((slot) => {
+              console.log(`ID: ${slot.id}, Booking Time: ${slot.booking_time}, Status: ${slot.status}`);
+            });
+            disableTimeSlots(data)
+          })
+          .catch((error) => {
+            console.error('Error fetching data:', error);
+          });
         $('#timepicker').val(iniTime)
         timePickerModal.style.display = 'block';
-        $('#save_time').on('click', function(){
-          let timepicker= $('#timepicker').val()
+        $('#save_time').on('click', function () {
+          let timepicker = $('#timepicker').val()
           $('#select_time').val(timepicker)
           timePickerModal.style.display = 'none';
         })
-        $('.close').on('click',function(){
+        $('.close').on('click', function () {
           timePickerModal.style.display = 'none';
-            
-          })
-        $('#close').on('click',function(){
+
+        })
+        $('#close').on('click', function () {
           timePickerModal.style.display = 'none';
-            
-          })
+
+        })
       })
- 
+
     });
     function getFormattedDate(date) {
-        var day = date.getDate();
-        var monthNames = [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
-        var month = monthNames[date.getMonth()];
-        var year = date.getFullYear();
+      var day = date.getDate();
+      var monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      var month = monthNames[date.getMonth()];
+      var year = date.getFullYear();
 
-        return (
-            (day < 10 ? "0" : "") + day + " / " +
-            month + " / " +
-            year
-        );
+      return (
+        (day < 10 ? "0" : "") + day + " / " +
+        month + " / " +
+        year
+      );
     }
-</script>
+  </script>
 
   <!-- --------------------Sliding Animation---------------------- -->
 
@@ -1049,11 +1053,11 @@ let timePickerModal = document.getElementById('timePickerModal');
     // Function to add animation class to cards on scroll with delays
     function animateCardsOnScroll() {
       let delay = 1000;
-      cards.forEach((card,index) => {
+      cards.forEach((card, index) => {
         if (isInViewport(card)) {
           setTimeout(() => {
             card.classList.add('card-visible');
-          },  delay * (index + 1)-500);
+          }, delay * (index + 1) - 500);
           // delay += delayBetweenCards;
         }
       });
@@ -1064,13 +1068,13 @@ let timePickerModal = document.getElementById('timePickerModal');
 
     // Event listener for scrolling
     window.addEventListener('scroll', animateCardsOnScroll);
-    $(document).ready(function(){
-            $('#timepicker').timepicker();
-      });
+    $(document).ready(function () {
+      $('#timepicker').timepicker();
+    });
   </script>
 
   <!-- -------------------Navbar Scrolling------------------ -->
-<!-- <script>
+  <!-- <script>
 
   $(document).ready(function() {
       // Smooth scrolling for navigation links
@@ -1098,11 +1102,10 @@ let timePickerModal = document.getElementById('timePickerModal');
   </script> -->
 </body>
 <style>
-  
-.time-block-disabled {
-  background-color: #c2bfbf;
-  color: #ffffff;
-} 
+  .time-block-disabled {
+    background-color: #c2bfbf;
+    color: #ffffff;
+  }
 </style>
 
 </html>
