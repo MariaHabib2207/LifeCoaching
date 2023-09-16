@@ -79,7 +79,7 @@ def webhook():
 
 
 @app.route('/create-checkout-session', methods=['POST'])
-def create_checkout_session(method, email, full_name, message, subject):
+def create_checkout_session():
     try:
         checkout_session = stripe.checkout.Session.create(
             line_items=[
@@ -89,16 +89,15 @@ def create_checkout_session(method, email, full_name, message, subject):
                 },
             ],
             mode='payment',
-            success_url="http://coachingstudiony.com/" + '/success.html',
-            cancel_url=YOUR_DOMAIN + '/cancel.html',
+            success_url="http://localhost:5000/success" ,
+            cancel_url="https://coachingstudiony.com/cancel",
             payment_intent_data={
                 'metadata': {
                     'webhook_endpoint': 'http://coachingstudiony.com/'
                 }
             }
         )
-        send_mail(method=method, email=email, full_name=full_name, message=message, subject=subject)
-
+   
     except Exception as e:
         return str(e)
 
@@ -109,11 +108,22 @@ def send_mail(method, email, full_name, message, subject):
     msg = Message(subject, sender='info@coachingstudiony.com', recipients=[email])
     msg.body = message
     mail.send(msg)
+    return  create_checkout_session()
     
 @app.route('/success', methods=['GET', 'POST'])
 def success():
-    return render_template('success.html')
+    last_appointment = Appointment.query.order_by(Appointment.id.desc()).first()
+    if last_appointment:
+        last_appointment.payment_status = "paid"
+        db.session.commit()
+    return render_template('index.html')
+    
 
+
+@app.route('/cancel', methods=['GET', 'POST'])
+def cancel():
+    return render_template('cancel.html')
+    
 
 # Route and view function for booking an appointment
 @app.route('/create_appointment', methods=['POST'])
@@ -153,9 +163,9 @@ def create_appointment():
     message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date_str}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
     subject = "Appointment Booked"
     method = "checkout"
-
         # Call the create_checkout_session function with the correct parameters
-    return create_checkout_session(method=method, email=email, full_name=full_name, message=message, subject=subject)
+    return send_mail(method=method, email=email, full_name=full_name, message=message, subject=subject)
+
 
 ##### edit  appointment and admin view ####################
 
