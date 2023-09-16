@@ -208,8 +208,9 @@ def create_unavailability_slot():
     print(request.form)
     date_str = request.form['date']
     start_time = request.form['time']
+    date_format = '%d / %B / %Y'
     if date_str:
-        date = datetime.strptime(date_str, '%d / %B / %Y ')
+        date = datetime.strptime(date_str, date_format)
     else:
         date = datetime.now()
     new_appointment = Appointment(
