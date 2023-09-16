@@ -301,6 +301,7 @@ def contact_us():
 def get_slots():
     selected_date = request.args.get('date')  
     selected_date = datetime.strptime(selected_date, '%d / %B / %Y')
+    # pdb.set_trace()
     booked_slots = Appointment.query.filter_by(date=selected_date).all()
     unavailable_slots = Appointment.query.filter_by(date=selected_date, status='unavailable').all()
 

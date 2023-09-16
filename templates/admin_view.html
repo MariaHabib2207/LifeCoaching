@@ -110,11 +110,12 @@
                 <tr>
                     <th>ID</th>
                     <th>Appointment Date</th>
+                    <th>Time</th>
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Status</th>
                     <th>Payment Status</th>
-                    <th>Time</th>
+                    
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -122,7 +123,8 @@
                 {% for appointment in appointments %}
                 <tr>
                     <td>{{ appointment.id }}</td>
-                    <td>{{ appointment.date}}</td>
+                    <td>{{ appointment.date.split(" ")[0]}}</td>
+                    <td>{{ appointment.start_time }}</td>
                     <td>{{ appointment.full_name }}</td>
                     <td>{{ appointment.email }}</td>
                     <td>
@@ -133,7 +135,7 @@
                         </select>
                     </td>
                     <td>{{ appointment.payment_status }}</td>
-                    <td>{{ appointment.start_time }}</td>
+                    
                     <td>
                         <form method="POST" action="{{ url_for('admin_view') }}">
                             <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
@@ -161,9 +163,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Appointment ID</th>
-                    <th>Booking Time</th>
+                    <th>User Name</th>
+                    <th>User Email</th>
                     <th>Booking Date</th>
+                    <th>Booking Time</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -171,9 +174,10 @@
                 {% for slot, appointment in booked_slots  if slot.status == "booked" %}
                 <tr>
                     <td>{{ slot.id }}</td>
-                    <td>{{ slot.appointment_id }}</td>
+                    <td>{{ appointment.full_name}}</td>
+                    <td>{{ appointment.email}}</td>
+                    <td>{{ appointment.date.split(" ")[0]}}</td>
                     <td>{{ slot.booking_time }}</td>
-                    <td>{{ appointment.date}}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
@@ -187,8 +191,8 @@
             <thead>
                 <tr>
                     <th>ID</th>>
-                    <th>Booking Time</th>
                     <th>Booking Date</th>
+                    <th>Booking Time</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -196,8 +200,8 @@
                 {% for slot, appointment in booked_slots if slot.status == "unavailable" %}
                 <tr>
                     <td>{{ slot.id }}</td>
-                    <td>{{ slot.booking_time.split(" ")[0]}}</td>
                     <td>{{ appointment.date.split(" ")[0]}}</td>
+                    <td>{{ slot.booking_time.split(" ")[0]}}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
