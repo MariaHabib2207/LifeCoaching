@@ -89,8 +89,8 @@ def create_checkout_session():
                 },
             ],
             mode='payment',
-            success_url="http://localhost:5000/success" ,
-            cancel_url="https://coachingstudiony.com/cancel",
+            success_url="http://coachingstudiony.com/success" ,
+            cancel_url="http://coachingstudiony.com/",
             payment_intent_data={
                 'metadata': {
                     'webhook_endpoint': 'http://coachingstudiony.com/'
