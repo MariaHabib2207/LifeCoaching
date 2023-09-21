@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Admin View</title>
     <style>
@@ -25,7 +26,8 @@
             box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px 15px;
             text-align: left;
         }
@@ -92,6 +94,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Admin View</h1>
 
@@ -115,7 +118,7 @@
                     <th>Email</th>
                     <th>Status</th>
                     <th>Payment Status</th>
-                    
+
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -123,28 +126,33 @@
                 {% for appointment in appointments %}
                 <tr>
                     <td>{{ appointment.id }}</td>
-                    <td>{{ appointment.date.split(" ")[0]}}</td>
-                    <td>{{ appointment.start_time }}</td>
+                    <td>{{ appointment.date}}</td>
+                    <td id="date-cells">{{ appointment.start_time }}</td>
                     <td>{{ appointment.full_name }}</td>
                     <td>{{ appointment.email }}</td>
                     <td>
                         <select name="appointment_status">
-                            <option value="pending" {% if appointment.status == 'pending' %}selected{% endif %}>Pending</option>
-                            <option value="confirmed" {% if appointment.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
-                            <option value="cancelled" {% if appointment.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                            <option value="pending" {% if appointment.status=='pending' %}selected{% endif %}>Pending
+                            </option>
+                            <option value="confirmed" {% if appointment.status=='confirmed' %}selected{% endif %}>
+                                Confirmed</option>
+                            <option value="cancelled" {% if appointment.status=='cancelled' %}selected{% endif %}>
+                                Cancelled</option>
                         </select>
                     </td>
                     <td>{{ appointment.payment_status }}</td>
-                    
+
                     <td>
                         <form method="POST" action="{{ url_for('admin_view') }}">
                             <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
                             <input type="hidden" name="appointment_date" value="{{ appointment.date }}">
                             <input type="hidden" name="appointment_email" value="{{ appointment.email }}">
                             <input type="hidden" name="appointment_status" value="{{ appointment.status }}">
-                            <input type="hidden" name="appointment_payment_status" value="{{ appointment.payment_status }}">
+                            <input type="hidden" name="appointment_payment_status"
+                                value="{{ appointment.payment_status }}">
                             <input type="hidden" name="appointment_payment_status" value="{{ appointment.start_time }}">
-                            <button type="submit" id="delete_button" name="action" value="delete" class="delete_button">Delete</button>
+                            <button type="submit" id="delete_button" name="action" value="delete"
+                                class="delete_button">Delete</button>
                         </form>
                         <form method="GET" action="{{ url_for('edit_appointment', appointment_id=appointment.id) }}">
                             <button type="submit">Edit</button>
@@ -170,13 +178,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for slot, appointment in booked_slots  if slot.status == "booked" %}
+                {% for slot, appointment in booked_slots if slot.status == "booked" %}
                 <tr>
                     <td>{{ slot.id }}</td>
                     <td>{{ appointment.full_name}}</td>
                     <td>{{ appointment.email}}</td>
-                    <td>{{ appointment.date.split(" ")[0]}}</td>
-                    <td>{{ slot.booking_time }}</td>
+                    <td>{{ appointment.date}}</td>
+                    <td id="date-cells">{{ slot.booking_time }}</td>
                     <td>{{ slot.status }}</td>
                 </tr>
                 {% endfor %}
@@ -200,10 +208,12 @@
                 <tr>
                     <td>{{ slot.id }}</td>
                     <td>{{ appointment.date}}</td>
-                    <td>{{ slot.booking_time.split(" ")[0]}}</td>
+                    <td id="date-cells">{{ slot.booking_time}}</td>
                     <td>{{ slot.status }}</td>
                     <td>
-                        <form action="{{ url_for('delete_unavailability_slot', slot_id=slot.id, appointment_id =appointment.id) }}" method="post">
+                        <form
+                            action="{{ url_for('delete_unavailability_slot', slot_id=slot.id, appointment_id =appointment.id) }}"
+                            method="post">
                             <button type="submit" class="btn-danger" style="background-color: red;">Delete</button>
                         </form>
                     </td>
@@ -228,5 +238,22 @@
             selectedButton.classList.add('active');
         }
     </script>
+    <script>
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+
+
+        const dateCells = document.querySelectorAll('.date-cells');
+
+        t
+        dateCells.forEach(function (cell) {
+            const originalDate = cell.textContent.trim();
+            const formattedDate = formatDate(originalDate);
+            cell.textContent = formattedDate;
+        });
+    </script>
 </body>
+
 </html>
