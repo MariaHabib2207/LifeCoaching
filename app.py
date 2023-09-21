@@ -158,11 +158,21 @@ def create_appointment():
     # Add and commit the booked slot to the database
     db.session.add(booked_slot)
     db.session.commit()
+        # Attempt to parse the date string
+    parsed_date = parser.parse(date_str)
+
+    # Format the parsed date in the desired format
+    date_str = parsed_date.strftime("%B %d, %Y")
 
     # Compose email message
-    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date_str}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
+    admin_message =  f"Hi Admin user {full_name} , {email} has booked an appointment with The Coaching Studio  for {date_str} {start_time}"
+    admin_full_name = "CoachingLifeNy"
+    admin_email="info@coachingstudiony.com"
+    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date_str} {start_time}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
     subject = "Appointment Booked"
     method = "checkout"
+    send_mail(method, admin_email, admin_full_name, admin_message, subject)
+
         # Call the create_checkout_session function with the correct parameters
     return send_mail(method=method, email=email, full_name=full_name, message=message, subject=subject)
 
