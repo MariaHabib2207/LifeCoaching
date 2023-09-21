@@ -204,7 +204,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for slot, appointment in booked_slots if slot.status == "unavailable" %}
+                {% for slot, appointment in booked_slots if slot.status == "Unavailable" %}
                 <tr>
                     <td>{{ slot.id }}</td>
                     <td>{{ appointment.date}}</td>
