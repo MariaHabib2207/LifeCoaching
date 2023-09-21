@@ -123,7 +123,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for appointment in appointments %}
+                {% for appointment in appointments if appointment.email %}
                 <tr>
                     <td>{{ appointment.id }}</td>
                     <td>{{ appointment.date}}</td>
