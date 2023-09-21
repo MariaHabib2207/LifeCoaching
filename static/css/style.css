@@ -1182,6 +1182,6 @@ margin-bottom: 55px;
 } 
 
 .time-block.enabled:hover {
-  background-color: rgb(28, 191, 28);
+  background-color: #d4ffc6;
   color: white;
 }
