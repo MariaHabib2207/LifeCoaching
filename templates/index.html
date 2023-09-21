@@ -974,7 +974,6 @@
       $(".datepicker").addClass("custom-dropdown");
       $input.on("changeDate", function (e) {
         let timePickerModal = document.getElementById('timePickerModal');
-        setActiveSlot();
         let iniTime = $('#select_time').val()
         fetch(`/api/slots?date=${getFormattedDate(e.date)}`)
           .then((response) => response.json())
