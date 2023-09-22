@@ -188,10 +188,15 @@ def edit_appointment(appointment_id):
         appointment.email = request.form['email']
         appointment.status = request.form['status']
         appointment.payment_status = request.form['payment_status']
-        
-        db.session.commit()
+        if request.form['date'] and  request.form['time']:
+            appointment.date = request.form['date']
+            appointment.start_time = request.form['time']
+        db.session.commit()           
+        parsed_date = parser.parse(appointment.date)
+        date_str = parsed_date.strftime("%B %d, %Y")
+        # Format the parsed date in the desired format
         subject = "Appointment Updated"
-        message = f"Hi {appointment.full_name},\n\nYour appointment with The Coaching Studio has been updated by our team.\n\n Your appointment status is {appointment.status} and payment status is status {appointment.payment_status} .\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
+        message = f"Hi {appointment.full_name},\n\nYour appointment with The Coaching Studio has been updated by our team .\n\n Your appointment is at {date_str}  {appointment.start_time} \n\n Your appointment status is {appointment.status} and payment status is status {appointment.payment_status} .\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
         msg = Message(subject, sender='info@coachingstudiony.com', recipients=[appointment.email])
         msg.body = message
         mail.send(msg)
