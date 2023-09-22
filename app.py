@@ -330,9 +330,10 @@ def contact_us():
     method = "contact"
     full_name = request.form['full_name']
     email = request.form['email']
+    phone = request.form['phone']
     admin_email = "info@coachingstudiony.com"
     user_message = request.form['message'] 
-    for_message = f"Message from {email}, {user_message}"
+    for_message = f"Name : {full_name} \n\n Email: {email} \n\n Phone: {phone} \n\n Message: {user_message} "
     subject = "Contact Us"
     msg = Message(subject, sender=email, recipients=[admin_email])
     msg.body = for_message
