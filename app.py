@@ -208,6 +208,11 @@ def admin_view():
     appointments = Appointment.query.all()
     booked_slots = db.session.query(BookedSlot, Appointment).join(Appointment).all()
     availability_slots = [slot for slot, _ in booked_slots if slot.status == "Unavailable"]
+    # Sort  by ID in descending order
+    appointments = sorted(appointments, key=lambda x: x.id, reverse=True)
+    booked_slots = sorted(booked_slots, key=lambda x: x[0].id, reverse=True)
+    availability_slots = sorted(availability_slots, key=lambda x: x.id, reverse=True)
+
 
     if request.method == 'POST':
         # Handle delete and update actions
@@ -219,6 +224,7 @@ def admin_view():
                 db.session.commit()
         # Handle other actions like update
         return redirect(url_for('admin_view'))
+    
 
     return render_template('admin_view.html', appointments=appointments , booked_slots= booked_slots ,availability_slots=availability_slots )
 
