@@ -166,12 +166,19 @@ def create_appointment():
 
     # Format the parsed date in the desired format
     date_str = parsed_date.strftime("%B %d, %Y")
+    if  request.form['address']:
+        message = request.form["address"]
+        admin_message =  f"Hi Etsy, \n\n  {full_name} , {email} has booked an appointment with The Coaching Studio NY  for {date_str} {start_time} \n\n with message {message}" 
+    else:
+        admin_message =  f"Hi Etsy, \n\n  {full_name} , {email} has booked an appointment with The Coaching Studio NY  for {date_str} {start_time}"
+
+    
 
     # Compose email message
-    admin_message =  f"Hi Admin user {full_name} , {email} has booked an appointment with The Coaching Studio  for {date_str} {start_time}"
-    admin_full_name = "CoachingLifeNy"
+    
+    admin_full_name = "Coaching Studio NY"
     admin_email="info@coachingstudiony.com"
-    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio has been booked for {date_str} {start_time}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
+    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio NY has been booked for {date_str} {start_time}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
     subject = "Appointment Booked"
     method = "checkout"
     send_mail(method, admin_email, admin_full_name, admin_message, subject)
@@ -199,7 +206,7 @@ def edit_appointment(appointment_id):
         date_str = parsed_date.strftime("%B %d, %Y")
         # Format the parsed date in the desired format
         subject = "Appointment Updated"
-        message = f"Hi {appointment.full_name},\n\nYour appointment with The Coaching Studio has been updated by our team .\n\n Your appointment is at {date_str}  {appointment.start_time} \n\n Your appointment status is {appointment.status} and payment status is status {appointment.payment_status} .\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
+        message = f"Hi {appointment.full_name},\n\nYour appointment with The Coaching Studio NY has been updated by our team .\n\n Your appointment is at {date_str}  {appointment.start_time} \n\n Your appointment status is {appointment.status} and payment status is status {appointment.payment_status} .\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
         msg = Message(subject, sender='info@coachingstudiony.com', recipients=[appointment.email])
         msg.body = message
         mail.send(msg)
