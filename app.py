@@ -36,6 +36,7 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String)
     email = db.Column(db.String)
+    phone = db.Column(db.String)
     status = db.Column(db.String)
     payment_status = db.Column(db.String)
     date = db.Column(db.String)
@@ -132,6 +133,7 @@ def create_appointment():
     email = request.form['email']
     date_str = request.form['date']
     start_time = request.form['time']
+    phone = request.form['phone']
     # Create a new Appointment record
     new_appointment = Appointment(
         full_name=full_name,
@@ -139,7 +141,8 @@ def create_appointment():
         status="Pending",
         payment_status="Unpaid",
         date=date_str,
-        start_time=start_time
+        start_time=start_time,
+        phone = phone
     )
 
     # Add and commit the new appointment to the database
