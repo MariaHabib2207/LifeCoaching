@@ -168,7 +168,7 @@ def create_appointment():
     date_str = parsed_date.strftime("%B %d, %Y")
     if  request.form['address']:
         message = request.form["address"]
-        admin_message =  f"Hi Etsy, \n\n  {full_name} , {email} has booked an appointment with The Coaching Studio NY  for {date_str} {start_time} \n\n with message {message}" 
+        admin_message =  f"Hi Etsy, \n\n  {full_name} , {email} has booked an appointment with The Coaching Studio NY  for {date_str} {start_time}  with message {message}" 
     else:
         admin_message =  f"Hi Etsy, \n\n  {full_name} , {email} has booked an appointment with The Coaching Studio NY  for {date_str} {start_time}"
 
