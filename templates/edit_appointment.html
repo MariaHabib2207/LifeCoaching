@@ -128,11 +128,6 @@
             margin: 9px;
         }
 
-        .time-block.disabled {
-            background-color: #94a8b7;
-            color: #000000;
-        }
-
         .time-block.active {
             background-color: var(--secondary-color) !important;
             color: #000000;
@@ -142,6 +137,20 @@
             cursor: pointer;
             background-color: #3acfff;
             color: #000000;
+        }
+
+        .disabled-time-slot {
+            pointer-events: none;
+            cursor: pointer;
+            background-color: #e90800;
+            color: #fff9f9;
+        }
+
+        .booked-time-slot {
+            pointer-events: none;
+            cursor: pointer;
+            background-color: #002be9 !important;
+            color: #fff9f9;
         }
     </style>
 </head>
@@ -313,6 +322,7 @@
                 }
             });
         }
+
 
 
         $(document).ready(function () {
