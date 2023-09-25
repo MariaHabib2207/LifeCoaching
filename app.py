@@ -128,7 +128,7 @@ def send_mail():
     msg = Message(subject, sender=email , recipients=['info@coachingstudiony.com'])
     msg.body = admin_message
     mail.send(msg)
-    return  url_for('hello_world')
+    return redirect(url_for('hello_world'))
     
 @app.route('/success', methods=['GET', 'POST'])
 def success():
