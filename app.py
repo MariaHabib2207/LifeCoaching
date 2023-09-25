@@ -29,7 +29,13 @@ mail = Mail(app)
 stripe.api_key = 'sk_test_51Nhx76L1PTlx4hpyJFwk2JxUkQdXXOTpIiEjkY2bOirQaAAISoBxIjszf0C8hyNH4BIwC1dEhUN4O9dukA7wE1TN00cMWvhPR3'
 YOUR_DOMAIN = 'http://localhost:5000'
 app.secret_key = 'your_secret_key_here'
-
+full_name=""
+admin_full_name = "Coaching Studio NY"
+admin_email="info@coachingstudiony.com"
+start_time =""
+date=""
+phone=""
+message=""
 ##### appointment class ####################
 
 class Appointment(db.Model):
@@ -105,11 +111,24 @@ def create_checkout_session():
     return redirect(checkout_session.url, code=303)
 
 ###########send mail function ####################
-def send_mail(method, email, full_name, message, subject):
+def send_mail():
+    global full_name, email, date, start_time,phone,message
+    subject = "Appointment Booked "
+    if  len(message)>0:
+        admin_message =  f"Hi Etsy, \n\n  Appointment has been booked for \n\n Name: {full_name} \n\n Email: {email}  \n\n Phone: {phone} \n\n Date: {date} {start_time}  \n\n Message: {message}" 
+    else:
+         admin_message =  f"Hi Etsy, \n\n  Appointment has been booked for \n\n Name: {full_name} \n\n Email: {email}  \n\n Phone: {phone} \n\n Date: {date} {start_time}"
+      
+    share_message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio NY has been booked for {date} {start_time}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
+    subject = "Appointment Booked"
+    method = "checkout"
     msg = Message(subject, sender='info@coachingstudiony.com', recipients=[email])
-    msg.body = message
+    msg.body = share_message
     mail.send(msg)
-    return  create_checkout_session()
+    msg = Message(subject, sender=email , recipients=['info@coachingstudiony.com'])
+    msg.body = admin_message
+    mail.send(msg)
+    return  url_for('hello_world')
     
 @app.route('/success', methods=['GET', 'POST'])
 def success():
@@ -117,7 +136,7 @@ def success():
     if last_appointment:
         last_appointment.payment_status = "paid"
         db.session.commit()
-    return render_template('index.html')
+    return send_mail()
     
 
 
@@ -129,11 +148,13 @@ def cancel():
 # Route and view function for booking an appointment
 @app.route('/create_appointment', methods=['POST'])
 def create_appointment():
+    global full_name, email, date, start_time,phone,message
     full_name = request.form['full_name']
     email = request.form['email']
     date_str = request.form['date']
     start_time = request.form['time']
     phone = request.form['phone']
+    message = request.form['address']
     # Create a new Appointment record
     new_appointment = Appointment(
         full_name=full_name,
@@ -165,28 +186,9 @@ def create_appointment():
     parsed_date = parser.parse(date_str)
 
     # Format the parsed date in the desired format
-    date_str = parsed_date.strftime("%B %d, %Y")
-    if  request.form['address']:
-        message = request.form["address"]
-        admin_message =  f"Hi Etsy, \n\n  {full_name} , {email} has booked an appointment with The Coaching Studio NY  for {date_str} {start_time}  with message {message}" 
-    else:
-        admin_message =  f"Hi Etsy, \n\n  {full_name} , {email} has booked an appointment with The Coaching Studio NY  for {date_str} {start_time}"
-
+    date = parsed_date.strftime("%B %d, %Y")
+    return create_checkout_session()
     
-
-    # Compose email message
-    
-    admin_full_name = "Coaching Studio NY"
-    admin_email="info@coachingstudiony.com"
-    message = f"Hi {full_name},\n\nYour appointment with The Coaching Studio NY has been booked for {date_str} {start_time}.\n\nFor questions or to change your appointment, you can reach us at 347-369-7385 or email us at info@coachingstudiony.com.\n\nAll the best,\n\nThe Coaching Studio"
-    subject = "Appointment Booked"
-    method = "checkout"
-    send_mail(method, admin_email, admin_full_name, admin_message, subject)
-
-        # Call the create_checkout_session function with the correct parameters
-    return send_mail(method=method, email=email, full_name=full_name, message=message, subject=subject)
-
-
 ##### edit  appointment and admin view ####################
 
 @app.route('/edit_appointment/<int:appointment_id>', methods=['GET', 'POST'])
