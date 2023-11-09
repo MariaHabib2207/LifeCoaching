@@ -881,9 +881,6 @@ margin-bottom: 20px;
     margin-top: 0px !important;
     margin-bottom: 55px !important;
   }
-  .contact-sec-pink{
-    margin-top: -25% !important;
-  }
 
   #sec-mission h2{
     margin-top: 12px;
@@ -1010,8 +1007,12 @@ margin-bottom: 40px;
 
   .contact-sec-pink{
     width: 100%;
-    padding: 8%;
-    margin-top: -35%;
+    padding: 40px 20px;
+    margin-top: 40px !important;
+  }
+
+  #contact-form-b input[type="text"], textarea, input[type="number"]{
+    height: 60px;
   }
 
   .btn-pink-bg{
@@ -1026,7 +1027,7 @@ margin-bottom: 40px;
   }
 
   #sec-contact{
-    height: 60vh;
+    height: 100%;
   }
 
   #latest-news{
