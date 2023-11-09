@@ -754,17 +754,30 @@ font-weight: 500;
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   h2 {
-    font-size: 25px;
+    font-size: 25px !important;
+    line-height: 35px !important;
   }
 
   p {
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 16px !important;
+    line-height: 22px !important;
   }
 
   #sec-shop {
     height: 100%;
     padding: 40px 20px;
+  }
+
+  #sec-mission{
+    padding-top: 0px !important;
+  }
+
+  #book-appointment .mb-5{
+    margin-bottom: 10px !important;
+  }
+
+  #book-appointment{
+    padding-top: 20px !important;
   }
 
   .btn-black {
@@ -785,9 +798,79 @@ font-weight: 500;
     height: 100%;
   }
 
+  .goals-sec-pink{
+    padding: 30px 10px !important;
+  }
+
+  .custom-dropdown .datepicker-days table{
+    font-size: 16px;
+  }
+
+  .appoint-leaf-img,
+  .green-leaf-img{
+    display: none;
+  }
+
+  .diamond-card, 
+  .diamond-card .diamond-card-inner{
+    transform: none;
+  }
+
+  .diamond-card .diamond-card-inner{
+    padding: 30px 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .diamond-card{
+    width: 100%;
+    height: auto;
+    margin: 0px;
+  }
+
+  .diamond-card .card-text{
+    font-size: 14px !important;
+  }
+
+  .green-circle-wrapper{
+    left: calc(50% - 60px);
+    bottom: -61px;
+  }
+
+  #sec-gateway .row .px-5{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  #program-works .custom-card .px-2,
+  #program-works .custom-card .px-4{
+padding-left: 0px !important;
+padding-right: 0px !important;
+  }
+  .green-circle-wrapper img{
+    width: 100px;
+  }
+  #sec-about .mm-b{
+margin-bottom: 20px;
+  }
+
+  #sec-about .mt-5,
+  #sec-about .mt-5{
+    padding-top: 20px !important;
+    margin-top: 20px !important;
+  }
+
+
   .slider-head {
-    font-size: 40px;
-    line-height: 45px;
+    font-size: 28px !important;
+    line-height: 38px !important;
+  }
+
+  .carousel-indicators{
+    bottom: 50px !important;
+  }
+
+  .carousel-indicators [data-bs-target]{
+    width: 12px !important;
+    height: 12px !important;
   }
 
   .section-padding-tb {
@@ -796,11 +879,16 @@ font-weight: 500;
 
   #program-works .custom-card{
     margin-top: 0px !important;
-    margin-bottom: 60px;
+    margin-bottom: 55px !important;
   }
   .contact-sec-pink{
     margin-top: -25% !important;
   }
+
+  #sec-mission h2{
+    margin-top: 12px;
+  }
+
 }
 
 /* Small devices (landscape phones, less than 768px) */
@@ -826,9 +914,35 @@ font-weight: 500;
     font-size: 20px;
     line-height: 27px;
   }
+#logo{
+  width: 200px;
+}
 
+.btn-green-bg{
+  width: 100% !important;
+}
+
+.slider-text{
+  font-size: 18px !important;
+  line-height: 22px;
+}
+.carousel-item{
+  height: 45vh !important;
+}
+
+.carousel-caption{
+  height: 45vh !important;
+}
+
+.carousel-item.zoominheader img{
+  height: 35vh;
+}
+#neubar .px-5{
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
   .section-padding-tb {
-    padding: 60px 40px !important;
+    padding: 60px 40px;
   }
   .shop-head {
     font-size: 40px;
@@ -887,7 +1001,11 @@ margin-top: 60px;
   }
 
   #latest-news .custom-card {
-margin-bottom: 55px;
+margin-bottom: 40px;
+  }
+
+  footer .w-50{
+    width: 100% !important;
   }
 
   .contact-sec-pink{
@@ -896,8 +1014,39 @@ margin-bottom: 55px;
     margin-top: -35%;
   }
 
+  .btn-pink-bg{
+    width: 100% !important;
+  }
+
+  #popup .popup-content{
+    height: 100vh;
+    width: 100%;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  #sec-contact{
+    height: 60vh;
+  }
+
+  #latest-news{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .footer-icon{
+    font-size: 20px;
+    padding: 7px;
+  }
+
+  .footer-above .info-text{
+margin-bottom: 10px !important;
+  }
+
+  .footer-above {
+    margin-top: 40px !important;
+  }
   .number-icon{
-    left: calc(50% - 11%);
+    left: calc(50% - 13%);
   }
 
   .goals-sec-pink{
@@ -934,7 +1083,7 @@ margin-bottom: 55px;
   }
 
   .slider-text {
-    font-size: 28px;
+    font-size: 22px;
   }
 }
 
