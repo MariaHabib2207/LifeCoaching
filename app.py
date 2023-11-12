@@ -26,7 +26,7 @@ app.config['MAIL_PASSWORD'] = 'XqDg9E2zWw70ZKrC'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
-stripe.api_key = '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'
+stripe.api_key = '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'
 YOUR_DOMAIN = 'http://localhost:5000'
 app.secret_key = 'your_secret_key_here'
 full_name=""
@@ -91,7 +91,7 @@ def create_checkout_session():
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
-                    'price': 'price_1O1s3PL1PTlx4hpyWJDmpevM',
+                    'price': 'price_1OArefL1PTlx4hpydZUEJ8yE',
                     'quantity': 1,
                 },
             ],

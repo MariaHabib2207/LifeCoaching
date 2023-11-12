@@ -139,6 +139,10 @@ html {
   font-family: "Baskerville Regular";
 }
 
+.btn-cont{
+  display: flex;
+}
+
 /* #neubar .nav-item a:hover{
   border-bottom: 2px solid var(--primary-color);
 } */
@@ -764,7 +768,6 @@ font-weight: 500;
   }
 
   #sec-shop {
-    height: 100%;
     padding: 40px 20px;
   }
 
@@ -914,6 +917,14 @@ margin-bottom: 20px;
 #logo{
   width: 200px;
 }
+#neubar{
+  padding-bottom: 20px;
+}
+
+.mobile-no-padding{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 
 .btn-green-bg{
   width: 100% !important;
@@ -946,7 +957,6 @@ margin-bottom: 20px;
   }
 
   #sec-shop {
-    height: 100%;
     padding: 40px;
   }
 
